@@ -6,6 +6,7 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import ExpertiseSection from "@/components/sections/ExpertiseSection";
 import LeadFormSection from "@/components/sections/LeadFormSection";
 import Footer from "@/components/sections/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
         <LeadFormSection />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
