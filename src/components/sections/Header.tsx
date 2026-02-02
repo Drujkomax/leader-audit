@@ -43,7 +43,7 @@ const Header = () => {
             <a
               key={link.href}
               href={link.href}
-              className={`font-medium text-sm xl:text-base transition-colors duration-200 hover:text-primary ${
+              className={`font-medium text-sm xl:text-base transition-colors duration-200 hover:text-cta ${
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               }`}
             >
@@ -52,7 +52,7 @@ const Header = () => {
           ))}
           <a
             href="#contact"
-            className="btn-cta px-4 xl:px-6 py-2 xl:py-2.5 rounded-lg text-cta-foreground flex items-center gap-2 text-sm xl:text-base"
+            className="btn-cta px-4 xl:px-6 py-2 xl:py-2.5 rounded-lg text-cta-foreground flex items-center gap-2 text-sm xl:text-base transition-transform duration-200 hover:scale-105 active:scale-95"
           >
             <Phone className="w-4 h-4" />
             <span>Консультация</span>
