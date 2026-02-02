@@ -7,6 +7,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ExpertiseSection from "@/components/sections/ExpertiseSection";
 import LeadFormSection from "@/components/sections/LeadFormSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import MapSection from "@/components/sections/MapSection";
 import Footer from "@/components/sections/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
@@ -24,6 +25,7 @@ const Index = () => {
         <ExpertiseSection />
         <LeadFormSection />
         <TestimonialsSection />
+        <MapSection />
       </main>
       <Footer />
       <ScrollToTop />
