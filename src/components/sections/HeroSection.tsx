@@ -7,12 +7,9 @@ const HeroSection = () => {
     <section className="relative min-h-screen bg-hero-pattern flex items-center overflow-hidden">
       {/* Geometric decorations - hidden on mobile */}
       <div className="hidden sm:block absolute top-20 left-10 w-20 md:w-32 h-20 md:h-32 bg-primary-foreground/5 geo-diamond animate-float" />
-      <div
-        className="hidden sm:block absolute bottom-40 right-20 w-16 md:w-24 h-16 md:h-24 bg-cta/10 geo-triangle animate-float"
-        style={{ animationDelay: "2s" }}
-      />
+      <div className="hidden sm:block absolute bottom-40 right-20 w-16 md:w-24 h-16 md:h-24 bg-cta/10 geo-triangle animate-float" style={{ animationDelay: "2s" }} />
       <div className="hidden md:block absolute top-1/3 right-10 w-16 h-16 bg-primary-foreground/10 rounded-full animate-pulse-slow" />
-
+      
       <div className="container-wide relative z-10 py-24 sm:py-28 md:py-32 lg:py-40">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Column - Text */}
@@ -40,15 +37,15 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/80 mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
-              Профессиональный аудит по международным стандартам. Находим скрытые риски там, где их не видит ваш
-              главбух.
+              Профессиональный аудит по международным стандартам. 
+              Находим скрытые риски там, где их не видит ваш главбух.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10 justify-center lg:justify-start">
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 0.1 }}
-                whileTap={{ scale: 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="btn-cta px-5 sm:px-6 lg:px-8 py-3 sm:py-3.5 lg:py-4 rounded-lg text-sm sm:text-base lg:text-lg font-semibold text-cta-foreground text-center"
               >
                 Получить экспресс-анализ рисков
@@ -64,7 +61,11 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6 text-xs sm:text-sm text-primary-foreground/70 justify-center lg:justify-start">
-              {["Стандарты МСА", "Материальная ответственность", "100% конфиденциальность"].map((item, index) => (
+              {[
+                "Стандарты МСА",
+                "Материальная ответственность",
+                "100% конфиденциальность"
+              ].map((item, index) => (
                 <motion.div
                   key={item}
                   initial={{ opacity: 0, y: 10 }}
@@ -88,9 +89,9 @@ const HeroSection = () => {
           >
             <div className="relative">
               <div className="absolute inset-0 bg-primary-foreground/10 rounded-full blur-3xl scale-75" />
-              <img
-                src={shieldImage}
-                alt="Leader Audit Shield"
+              <img 
+                src={shieldImage} 
+                alt="Leader Audit Shield" 
                 className="relative w-64 xl:w-80 2xl:w-96 h-auto animate-float drop-shadow-2xl"
               />
             </div>
