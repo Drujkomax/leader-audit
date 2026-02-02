@@ -1,5 +1,53 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Award, Scale, Lock, Briefcase, CheckCircle2 } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+
+// Counter animation hook
+const useCountUp = (end: number, duration: number = 2000, startCounting: boolean = false) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startCounting) return;
+    
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [end, duration, startCounting]);
+
+  return count;
+};
+
+const AnimatedNumber = ({ value, suffix = "", prefix = "" }: { value: number; suffix?: string; prefix?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const count = useCountUp(value, 2000, isInView);
+
+  return (
+    <div ref={ref} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-1 sm:mb-2">
+      {prefix}{count}{suffix}
+    </div>
+  );
+};
 
 const ExpertiseSection = () => {
   const facts = [
@@ -26,10 +74,10 @@ const ExpertiseSection = () => {
   ];
 
   const stats = [
-    { value: "15+", label: "Лет на рынке" },
-    { value: "500+", label: "Успешных проектов" },
-    { value: "100%", label: "Клиентов довольны" },
-    { value: "0", label: "Претензий ГНК" },
+    { value: 15, suffix: "+", label: "Лет на рынке" },
+    { value: 500, suffix: "+", label: "Успешных проектов" },
+    { value: 100, suffix: "%", label: "Клиентов довольны" },
+    { value: 0, suffix: "", label: "Претензий ГНК" },
   ];
 
   return (
@@ -101,9 +149,7 @@ const ExpertiseSection = () => {
                     transition={{ delay: 0.3 + index * 0.1 }}
                     className="text-center p-3 sm:p-4 bg-primary-foreground/10 rounded-lg sm:rounded-xl"
                   >
-                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-1 sm:mb-2">
-                      {stat.value}
-                    </div>
+                    <AnimatedNumber value={stat.value} suffix={stat.suffix} />
                     <div className="text-primary-foreground/80 text-xs sm:text-sm font-medium">
                       {stat.label}
                     </div>

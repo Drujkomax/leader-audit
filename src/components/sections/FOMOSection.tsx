@@ -1,5 +1,53 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { AlertTriangle, TrendingDown, Ban, DollarSign, Clock } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+
+// Counter animation hook
+const useCountUp = (end: number, duration: number = 2000, startCounting: boolean = false) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startCounting) return;
+    
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [end, duration, startCounting]);
+
+  return count;
+};
+
+const AnimatedStat = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const count = useCountUp(value, 2000, isInView);
+
+  return (
+    <span ref={ref} className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cta group-hover:text-red-500 transition-colors">
+      {count}{suffix}
+    </span>
+  );
+};
 
 const FOMOSection = () => {
   const problems = [
@@ -7,19 +55,23 @@ const FOMOSection = () => {
       icon: TrendingDown,
       title: "Налоговый разрыв",
       description: "90% проверок заканчиваются доначислениями из-за ошибок прошлых периодов.",
-      stat: "90%",
+      statValue: 90,
+      statSuffix: "%",
     },
     {
       icon: Ban,
       title: "Заморозка счетов",
       description: "Неверная трактовка новых законов может остановить ваш бизнес за 1 день.",
-      stat: "1 день",
+      statValue: 1,
+      statSuffix: " день",
     },
     {
       icon: DollarSign,
       title: "Скрытые убытки",
       description: "Неоптимальная налоговая нагрузка съедает бюджет на развитие.",
-      stat: "до 30%",
+      statValue: 30,
+      statSuffix: "%",
+      statPrefix: "до ",
     },
   ];
 
@@ -64,9 +116,12 @@ const FOMOSection = () => {
               className="group relative bg-primary/50 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 hover:bg-primary/70 transition-all duration-300"
             >
               <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
-                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cta/30 group-hover:text-cta/50 transition-colors">
-                  {problem.stat}
-                </span>
+                {'statPrefix' in problem && (
+                  <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cta group-hover:text-red-500 transition-colors">
+                    {problem.statPrefix}
+                  </span>
+                )}
+                <AnimatedStat value={problem.statValue} suffix={problem.statSuffix} />
               </div>
               
               <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-cta/20 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 md:mb-5">
