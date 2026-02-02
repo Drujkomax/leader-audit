@@ -12,13 +12,13 @@ const TrustBar = () => {
   ];
 
   return (
-    <section className="bg-card py-12 border-y border-border">
+    <section className="bg-card py-8 sm:py-10 md:py-12 border-y border-border">
       <div className="container-wide">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center text-muted-foreground text-sm font-medium uppercase tracking-wider mb-8"
+          className="text-center text-muted-foreground text-xs sm:text-sm font-medium uppercase tracking-wider mb-6 sm:mb-8"
         >
           Нам доверяют лидеры рынка
         </motion.p>
@@ -28,7 +28,7 @@ const TrustBar = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16"
+          className="grid grid-cols-3 sm:grid-cols-6 gap-3 sm:gap-4 md:gap-8 lg:gap-12"
         >
           {clients.map((client, index) => (
             <motion.div
@@ -37,9 +37,9 @@ const TrustBar = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * index }}
-              className="trust-logo flex items-center justify-center w-24 h-16 md:w-32 md:h-20 bg-muted rounded-lg"
+              className="trust-logo flex items-center justify-center h-12 sm:h-14 md:h-16 lg:h-20 bg-muted rounded-lg"
             >
-              <span className="text-2xl md:text-3xl font-bold text-muted-foreground">
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-muted-foreground">
                 {client.initials}
               </span>
             </motion.div>

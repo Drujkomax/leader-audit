@@ -24,7 +24,7 @@ const FOMOSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-primary-dark relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-24 lg:py-32 bg-primary-dark relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full" 
@@ -39,21 +39,21 @@ const FOMOSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-cta/20 px-4 py-2 rounded-full mb-6">
-            <AlertTriangle className="w-5 h-5 text-cta" />
-            <span className="text-cta font-semibold">Внимание: критические риски</span>
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-cta/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6">
+            <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-cta" />
+            <span className="text-cta font-semibold text-xs sm:text-sm">Внимание: критические риски</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-3 sm:mb-4">
             О чём вам не скажет бухгалтерия?
           </h2>
-          <p className="text-primary-foreground/70 text-lg max-w-2xl mx-auto">
+          <p className="text-primary-foreground/70 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
             Большинство финансовых рисков невидимы, пока не станет слишком поздно.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 mb-8 sm:mb-12">
           {problems.map((problem, index) => (
             <motion.div
               key={problem.title}
@@ -61,23 +61,23 @@ const FOMOSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
-              className="group relative bg-primary/50 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-6 lg:p-8 hover:bg-primary/70 transition-all duration-300"
+              className="group relative bg-primary/50 backdrop-blur-sm border border-primary-foreground/10 rounded-xl p-4 sm:p-5 md:p-6 lg:p-8 hover:bg-primary/70 transition-all duration-300"
             >
-              <div className="absolute top-4 right-4">
-                <span className="text-4xl lg:text-5xl font-bold text-cta/30 group-hover:text-cta/50 transition-colors">
+              <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-cta/30 group-hover:text-cta/50 transition-colors">
                   {problem.stat}
                 </span>
               </div>
               
-              <div className="w-14 h-14 bg-cta/20 rounded-xl flex items-center justify-center mb-5">
-                <problem.icon className="w-7 h-7 text-cta" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-cta/20 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 md:mb-5">
+                <problem.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-cta" />
               </div>
               
-              <h3 className="text-xl font-bold text-primary-foreground mb-3">
+              <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary-foreground mb-2 sm:mb-3 pr-16 sm:pr-20">
                 {problem.title}
               </h3>
               
-              <p className="text-primary-foreground/70 leading-relaxed">
+              <p className="text-primary-foreground/70 text-sm sm:text-base leading-relaxed">
                 {problem.description}
               </p>
             </motion.div>
@@ -89,11 +89,11 @@ const FOMOSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="text-center"
+          className="text-center px-4"
         >
-          <div className="inline-flex items-center gap-3 bg-cta/10 border border-cta/30 rounded-full px-6 py-3">
-            <Clock className="w-5 h-5 text-cta animate-pulse" />
-            <span className="text-primary-foreground font-medium">
+          <div className="inline-flex items-center gap-2 sm:gap-3 bg-cta/10 border border-cta/30 rounded-full px-4 sm:px-6 py-2.5 sm:py-3">
+            <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-cta animate-pulse flex-shrink-0" />
+            <span className="text-primary-foreground font-medium text-xs sm:text-sm md:text-base">
               Пока вы читаете этот текст, риски вашего бизнеса могут расти
             </span>
           </div>

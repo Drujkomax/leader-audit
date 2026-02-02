@@ -30,26 +30,26 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="section-padding bg-background">
+    <section id="services" className="py-12 sm:py-16 md:py-24 lg:py-32 bg-background">
       <div className="container-wide">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <span className="text-primary font-semibold uppercase tracking-wider text-sm">
+          <span className="text-primary font-semibold uppercase tracking-wider text-xs sm:text-sm">
             Решения для бизнеса
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 sm:mt-3 mb-3 sm:mb-4">
             Продуктовая матрица
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
             Комплексные решения для защиты вашего бизнеса от финансовых рисков
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -57,26 +57,26 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group card-gradient border border-border rounded-2xl p-6 lg:p-8 hover:shadow-lg transition-all duration-300"
+              className="group card-gradient border border-border rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 hover:shadow-lg transition-all duration-300"
             >
-              <div className="flex items-start gap-5">
-                <div className="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                  <service.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors" />
+              <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 md:gap-5">
+                <div className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-primary/10 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                  <service.icon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-primary group-hover:text-primary-foreground transition-colors" />
                 </div>
                 
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-foreground mb-1.5 sm:mb-2 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
+                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-3 sm:mb-4">
                     {service.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                     {service.features.map((feature) => (
                       <span
                         key={feature}
-                        className="text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full"
+                        className="text-[10px] sm:text-xs font-medium bg-primary/10 text-primary px-2 sm:px-3 py-0.5 sm:py-1 rounded-full"
                       >
                         {feature}
                       </span>
@@ -85,10 +85,10 @@ const ServicesSection = () => {
 
                   <a 
                     href="#contact" 
-                    className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 text-primary font-semibold text-sm sm:text-base hover:gap-2 sm:hover:gap-3 transition-all"
                   >
                     Подробнее
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </a>
                 </div>
               </div>
