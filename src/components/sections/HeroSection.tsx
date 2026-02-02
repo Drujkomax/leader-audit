@@ -47,8 +47,9 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10 justify-center lg:justify-start">
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 0.1 }}
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.1, ease: "easeOut" }}
                 className="btn-cta px-5 sm:px-6 lg:px-8 py-3 sm:py-3.5 lg:py-4 rounded-lg text-sm sm:text-base lg:text-lg font-semibold text-cta-foreground text-center"
               >
                 Получить экспресс-анализ рисков
