@@ -81,7 +81,7 @@ const ExpertiseSection = () => {
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-24 lg:py-32 bg-secondary relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-24 lg:py-32 bg-secondary relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
       
