@@ -5,6 +5,7 @@ import FOMOSection from "@/components/sections/FOMOSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ExpertiseSection from "@/components/sections/ExpertiseSection";
 import LeadFormSection from "@/components/sections/LeadFormSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import Footer from "@/components/sections/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
@@ -20,6 +21,7 @@ const Index = () => {
         <ServicesSection />
         <ExpertiseSection />
         <LeadFormSection />
+        <TestimonialsSection />
       </main>
       <Footer />
       <ScrollToTop />

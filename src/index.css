@@ -285,6 +285,14 @@
   animation: scroll-right 30s linear infinite;
 }
 
+.animate-scroll-left-slow {
+  animation: scroll-left 45s linear infinite;
+}
+
+.animate-scroll-right-slow {
+  animation: scroll-right 45s linear infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
