@@ -101,9 +101,9 @@ const ServicesSection = () => {
                   {service.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start gap-2 text-sm sm:text-base text-foreground/80"
+                      className="flex items-center gap-2.5 text-sm sm:text-base text-foreground/80"
                     >
-                      <span className="text-primary mt-1">•</span>
+                      <span className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></span>
                       {feature}
                     </li>
                   ))}
