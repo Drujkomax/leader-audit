@@ -2,6 +2,13 @@ import { motion } from "framer-motion";
 import { Shield, FileCheck, Receipt, Building2 } from "lucide-react";
 
 const AboutSection = () => {
+  const stats = [
+    { value: "13", label: "года в сфере аудита и бухгалтерского сопровождения" },
+    { value: "220", label: "проведенных аудиторских проверок" },
+    { value: "10", label: "высококвалифицированных сертифицированных аудиторов с огромным стажем" },
+    { value: "200+", label: "Млрд сумов содействие в возврате НДС" },
+  ];
+
   const documents = [
     {
       icon: Shield,
@@ -44,28 +51,75 @@ const AboutSection = () => {
           </p>
         </motion.div>
 
-        {/* Company Info */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 mb-8 sm:mb-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-14"
         >
-          <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 rounded-xl flex items-center justify-center">
-              <Building2 className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
-            </div>
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">
-                Leader Audit
-              </h3>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                Аудиторская организация с многолетним опытом работы на рынке Узбекистана. 
-                Мы оказываем полный спектр аудиторских и консультационных услуг для предприятий 
-                всех форм собственности в соответствии с Международными стандартами аудита (МСА) 
-                и национальным законодательством.
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6"
+            >
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-2">
+                {stat.value}
+              </div>
+              <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+                {stat.label}
               </p>
-            </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Company Info - two columns */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-14"
+        >
+          <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 space-y-5">
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <strong className="text-foreground">АО ООО «LEADER AUDIT» —</strong> надежный партнер в области
+              аудита и консалтинга, созданный на основании Закона Республики Узбекистан «Об аудиторской деятельности»
+              № 3РУ-677 от 25 февраля 2021 года. Компания зарегистрирована в Министерстве юстиции Республики
+              Узбекистан 2 июля 2012 года (регистрационный номер №398).
+            </p>
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <strong className="text-foreground">Мы несем полную ответственность за качество</strong> предоставляемых
+              услуг, что подтверждается страхованием профессиональной ответственности в страховой компании
+              ООО «APEX INSURANCE».
+            </p>
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <strong className="text-foreground">Основатели нашей компании —</strong> это опытные аудиторы
+              с международными и национальными сертификатами и дипломами, включая CAP, CIPA, DipIFR (Diploma
+              in International Financial Reporting) и сертификаты аудитора, выданные Министерством финансов
+              Республики Узбекистан.
+            </p>
+          </div>
+
+          <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 space-y-5">
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              Наша команда обладает многолетним опытом работы с финансово-хозяйственной деятельностью компаний
+              различных отраслей и форм собственности.
+            </p>
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              — Партнерская сеть компании включает ведущих разработчиков программного обеспечения. Совместно с ними
+              мы внедряем передовые решения в области управления предприятиями, мотивации персонала и оптимизации
+              бизнес-процессов.
+            </p>
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <strong className="text-foreground">Основное направление нашей деятельности –</strong> налоговый
+              аудит правильности исчисления и уплаты налогов и обязательных платежей, налоговая экспертиза, оптимизация
+              налогообложения, постановка и восстановление, помощь составления финансовой отчётности, консалтинговые
+              услуги по бухгалтерскому учёту, менеджменту и другим вопросам финансово-хозяйственной деятельности.
+            </p>
           </div>
         </motion.div>
 
