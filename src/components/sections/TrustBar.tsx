@@ -10,6 +10,10 @@ import nokiaLogo from "@/assets/clients/nokia.png";
 import dvePalochkiLogo from "@/assets/clients/dve-palochki.png";
 import alkimLogo from "@/assets/clients/alkim-tekstil.png";
 import eurasiaLogo from "@/assets/clients/eurasia-alliance-tex.png";
+import pharmaLogo from "@/assets/clients/pharma-choice.png";
+import segTascoLogo from "@/assets/clients/seg-tasco.png";
+import nvbsLogo from "@/assets/clients/nvbs-tech.png";
+import quantoLogo from "@/assets/clients/quanto-servicing.png";
 
 const TrustBar = () => {
   const topRowLogos = [
