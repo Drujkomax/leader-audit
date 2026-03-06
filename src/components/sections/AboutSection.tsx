@@ -100,30 +100,11 @@ const AboutSection = () => {
         </motion.div>
 
         {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-14"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-14">
           {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6"
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-2">
-                {stat.value}
-              </div>
-              <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                {stat.label}
-              </p>
-            </motion.div>
+            <AnimatedStat key={index} value={stat.value} suffix={stat.suffix} label={stat.label} />
           ))}
-        </motion.div>
+        </div>
 
         {/* Company Info - two columns */}
         <motion.div
