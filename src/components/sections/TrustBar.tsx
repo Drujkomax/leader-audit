@@ -10,6 +10,10 @@ import nokiaLogo from "@/assets/clients/nokia.png";
 import dvePalochkiLogo from "@/assets/clients/dve-palochki.png";
 import alkimLogo from "@/assets/clients/alkim-tekstil.png";
 import eurasiaLogo from "@/assets/clients/eurasia-alliance-tex.png";
+import pharmaLogo from "@/assets/clients/pharma-choice.png";
+import segTascoLogo from "@/assets/clients/seg-tasco.png";
+import nvbsLogo from "@/assets/clients/nvbs-tech.png";
+import quantoLogo from "@/assets/clients/quanto-servicing.png";
 
 const TrustBar = () => {
   const topRowLogos = [
@@ -18,6 +22,8 @@ const TrustBar = () => {
     { name: "Rozmetov", src: rozmetovLogo },
     { name: "Ona Foundation", src: onaLogo },
     { name: "Sherin", src: sherinLogo },
+    { name: "Pharma Choice", src: pharmaLogo },
+    { name: "SEG Tasco", src: segTascoLogo },
   ];
 
   const bottomRowLogos = [
@@ -26,6 +32,8 @@ const TrustBar = () => {
     { name: "Две палочки", src: dvePalochkiLogo },
     { name: "Alkim Tekstil", src: alkimLogo },
     { name: "Eurasia Alliance Tex", src: eurasiaLogo },
+    { name: "NVBS Tech", src: nvbsLogo },
+    { name: "Quanto Servicing", src: quantoLogo },
   ];
 
   const topRowDuplicated = [...topRowLogos, ...topRowLogos, ...topRowLogos];
