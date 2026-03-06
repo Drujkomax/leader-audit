@@ -1,12 +1,60 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Shield, FileCheck, Receipt, Building2 } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+
+const useCountUp = (end: number, duration: number = 2000, startCounting: boolean = false) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!startCounting) return;
+    let startTime: number | null = null;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [end, duration, startCounting]);
+
+  return count;
+};
+
+const AnimatedStat = ({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const count = useCountUp(value, 2000, isInView);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6"
+    >
+      <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-2">
+        {count}{suffix}
+      </div>
+      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+        {label}
+      </p>
+    </motion.div>
+  );
+};
 
 const AboutSection = () => {
   const stats = [
-    { value: "13", label: "года в сфере аудита и бухгалтерского сопровождения" },
-    { value: "220", label: "проведенных аудиторских проверок" },
-    { value: "10", label: "высококвалифицированных сертифицированных аудиторов с огромным стажем" },
-    { value: "200+", label: "Млрд сумов содействие в возврате НДС" },
+    { value: 13, suffix: "", label: "года в сфере аудита и бухгалтерского сопровождения" },
+    { value: 220, suffix: "", label: "проведенных аудиторских проверок" },
+    { value: 10, suffix: "", label: "высококвалифицированных сертифицированных аудиторов с огромным стажем" },
+    { value: 200, suffix: "+", label: "Млрд сумов содействие в возврате НДС" },
   ];
 
   const documents = [
