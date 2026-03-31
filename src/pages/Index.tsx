@@ -6,7 +6,6 @@ import ServicesSection from "@/components/sections/ServicesSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ExpertiseSection from "@/components/sections/ExpertiseSection";
 import LeadFormSection from "@/components/sections/LeadFormSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import Footer from "@/components/sections/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
@@ -23,7 +22,8 @@ const Index = () => {
         <AboutSection />
         <ExpertiseSection />
         <LeadFormSection />
-        <TestimonialsSection />
+        {/* Временно скрыто по запросу */}
+        {/* <TestimonialsSection /> */}
       </main>
       <Footer />
       <ScrollToTop />

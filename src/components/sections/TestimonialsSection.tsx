@@ -78,25 +78,6 @@ const TestimonialsSection = () => {
 
   return (
     <section className="bg-background py-12 sm:py-16 lg:py-20 overflow-hidden">
-      <div className="container-wide mb-8 sm:mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <span className="inline-block px-4 py-1.5 bg-cta/10 text-cta rounded-full text-xs sm:text-sm font-medium mb-4">
-            Отзывы клиентов
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Нам доверяют <span className="text-cta">500+</span> компаний
-          </h2>
-          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
-            Узнайте, что говорят наши клиенты о сотрудничестве с Leader Audit
-          </p>
-        </motion.div>
-      </div>
-
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
