@@ -16,7 +16,7 @@ const FloatingContact = () => {
     {
       name: "Instagram",
       icon: Instagram,
-      href: "https://instagram.com/leaderaudit",
+      href: "https://www.instagram.com/leader_audit_uz/",
       color: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
       external: true,
     },
