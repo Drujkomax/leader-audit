@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Instagram } from "lucide-react";
+import { MessageCircle, X, Send, Instagram, PhoneCall } from "lucide-react";
 
 const FloatingContact = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,12 +11,21 @@ const FloatingContact = () => {
       icon: Send,
       href: "https://t.me/leaderaudit",
       color: "bg-[#0088cc] hover:bg-[#0077b5]",
+      external: true,
     },
     {
       name: "Instagram",
       icon: Instagram,
       href: "https://instagram.com/leaderaudit",
       color: "bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90",
+      external: true,
+    },
+    {
+      name: "Позвонить",
+      icon: PhoneCall,
+      href: "tel:+998974100447",
+      color: "bg-emerald-600 hover:bg-emerald-700",
+      external: false,
     },
   ];
 
@@ -35,8 +44,8 @@ const FloatingContact = () => {
               <motion.a
                 key={contact.name}
                 href={contact.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={contact.external ? "_blank" : undefined}
+                rel={contact.external ? "noopener noreferrer" : undefined}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}

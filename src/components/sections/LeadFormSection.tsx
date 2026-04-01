@@ -4,6 +4,8 @@ import { Send, Phone, Building2, User, CheckCircle, Shield } from "lucide-react"
 import { z } from "zod";
 import { toast } from "sonner";
 
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/xqegblwl";
+
 const formSchema = z.object({
   name: z.string().trim().min(2, "Имя должно содержать минимум 2 символа").max(100, "Имя слишком длинное"),
   phone: z.string().trim().min(9, "Введите корректный номер телефона").max(20, "Номер слишком длинный"),
@@ -37,18 +39,23 @@ const LeadFormSection = () => {
 
     try {
       const validated = formSchema.parse(formData);
-      
-      // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
-      // Store in localStorage for now (ready for DB integration)
-      const leads = JSON.parse(localStorage.getItem("leader_audit_leads") || "[]");
-      leads.push({
-        ...validated,
-        submittedAt: new Date().toISOString(),
+
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...validated,
+          _subject: "Новая заявка с сайта Leader Audit",
+        }),
       });
-      localStorage.setItem("leader_audit_leads", JSON.stringify(leads));
-      
+
+      if (!response.ok) {
+        throw new Error("Formspree request failed");
+      }
+
       setIsSubmitted(true);
       toast.success("Заявка успешно отправлена!");
     } catch (error) {
@@ -60,6 +67,8 @@ const LeadFormSection = () => {
           }
         });
         setErrors(fieldErrors);
+      } else {
+        toast.error("Не удалось отправить заявку. Попробуйте ещё раз.");
       }
     } finally {
       setIsSubmitting(false);
@@ -187,7 +196,7 @@ const LeadFormSection = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+998 90 123 45 67"
+                      placeholder="+998 97 410 04 47"
                       className={`w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all text-sm sm:text-base ${
                         errors.phone ? "border-destructive" : "border-border"
                       }`}
