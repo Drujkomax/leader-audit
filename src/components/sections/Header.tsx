@@ -59,16 +59,26 @@ const Header = () => {
           </a>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`lg:hidden p-2 rounded-lg transition-colors ${
-            isScrolled ? "text-foreground" : "text-primary-foreground"
-          }`}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
+          <a
+            href="#contact"
+            className="btn-cta px-3 sm:px-4 py-2 rounded-lg text-cta-foreground flex items-center gap-1.5 text-xs sm:text-sm font-semibold transition-transform duration-200 active:scale-95"
+          >
+            <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span>Консультация</span>
+          </a>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`p-1.5 sm:p-2 rounded-lg transition-colors ${
+              isScrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -91,14 +101,6 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="btn-cta px-5 py-3 rounded-lg text-cta-foreground text-center flex items-center justify-center gap-2 text-sm font-semibold"
-              >
-                <Phone className="w-4 h-4" />
-                <span>Консультация</span>
-              </a>
             </nav>
           </motion.div>
         )}

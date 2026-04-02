@@ -9,7 +9,7 @@ const FloatingContact = () => {
     {
       name: "Telegram",
       icon: Send,
-      href: "https://t.me/leaderaudit",
+      href: "https://t.me/LeaderAudit_uz",
       color: "bg-[#0088cc] hover:bg-[#0077b5]",
       external: true,
     },
