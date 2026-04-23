@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { Shield, FileCheck, Receipt, Building2 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import { useLanguage } from "@/contexts/language-context";
 
 const useCountUp = (end: number, duration: number = 2000, startCounting: boolean = false) => {
   const [count, setCount] = useState(0);
@@ -50,31 +51,33 @@ const AnimatedStat = ({ value, suffix = "", label }: { value: number; suffix?: s
 };
 
 const AboutSection = () => {
+  const { t } = useLanguage();
+
   const stats = [
-    { value: 13, suffix: "", label: "года в сфере аудита и бухгалтерского сопровождения" },
-    { value: 220, suffix: "", label: "проведенных аудиторских проверок" },
-    { value: 10, suffix: "", label: "высококвалифицированных сертифицированных аудиторов с огромным стажем" },
-    { value: 200, suffix: "+", label: "Млрд сумов содействие в возврате НДС" },
+    { value: 13, suffix: "", label: t.about.stats[0] },
+    { value: 220, suffix: "", label: t.about.stats[1] },
+    { value: 10, suffix: "", label: t.about.stats[2] },
+    { value: 200, suffix: "+", label: t.about.stats[3] },
   ];
 
   const documents = [
     {
       icon: Shield,
-      title: "Страховой полис",
-      description: "Профессиональная ответственность аудитора застрахована в соответствии с требованиями Закона Республики Узбекистан «Об аудиторской деятельности»",
-      details: "Полис гарантирует возмещение убытков в случае профессиональной ошибки",
+      title: t.about.documents[0].title,
+      description: t.about.documents[0].description,
+      details: t.about.documents[0].details,
     },
     {
       icon: FileCheck,
-      title: "Гувохнома (Лицензия)",
-      description: "Лицензия на осуществление аудиторской деятельности, выданная Министерством финансов Республики Узбекистан",
-      details: "Подтверждает право на проведение обязательного и инициативного аудита",
+      title: t.about.documents[1].title,
+      description: t.about.documents[1].description,
+      details: t.about.documents[1].details,
     },
     {
       icon: Receipt,
-      title: "Регистрационный код НДС",
-      description: "Компания зарегистрирована как плательщик налога на добавленную стоимость в Государственном налоговом комитете",
-      details: "Все услуги предоставляются с выставлением счёт-фактуры",
+      title: t.about.documents[2].title,
+      description: t.about.documents[2].description,
+      details: t.about.documents[2].details,
     },
   ];
 
@@ -88,14 +91,13 @@ const AboutSection = () => {
           className="text-center mb-8 sm:mb-12 md:mb-16"
         >
           <span className="text-primary font-semibold uppercase tracking-wider text-xs sm:text-sm">
-            О компании
+            {t.about.badge}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 sm:mt-3 mb-3 sm:mb-4">
-            О нас
+            {t.about.title}
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
-            Лицензированная аудиторская организация, осуществляющая деятельность 
-            в соответствии с законодательством Республики Узбекистан
+            {t.about.description}
           </p>
         </motion.div>
 
@@ -114,48 +116,26 @@ const AboutSection = () => {
           className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-14"
         >
           <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 space-y-5">
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              <strong className="text-foreground">АО ООО «LEADER AUDIT» —</strong> надежный партнер в области
-              аудита и консалтинга, созданный на основании Закона Республики Узбекистан «Об аудиторской деятельности»
-              № 3РУ-677 от 25 февраля 2021 года. Компания зарегистрирована в Министерстве юстиции Республики
-              Узбекистан 2 июля 2012 года (регистрационный номер №398).
-            </p>
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              <strong className="text-foreground">Мы несем полную ответственность за качество</strong> предоставляемых
-              услуг, что подтверждается страхованием профессиональной ответственности в страховой компании
-              ООО «APEX INSURANCE».
-            </p>
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              <strong className="text-foreground">Основатели нашей компании —</strong> это опытные аудиторы
-              с международными и национальными сертификатами и дипломами, включая CAP, CIPA, DipIFR (Diploma
-              in International Financial Reporting) и сертификаты аудитора, выданные Министерством финансов
-              Республики Узбекистан.
-            </p>
+            {t.about.paragraphsLeft.map((paragraph) => (
+              <p key={paragraph} className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
 
           <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 space-y-5">
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              Наша команда обладает многолетним опытом работы с финансово-хозяйственной деятельностью компаний
-              различных отраслей и форм собственности.
-            </p>
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              — Партнерская сеть компании включает ведущих разработчиков программного обеспечения. Совместно с ними
-              мы внедряем передовые решения в области управления предприятиями, мотивации персонала и оптимизации
-              бизнес-процессов.
-            </p>
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-              <strong className="text-foreground">Основное направление нашей деятельности –</strong> налоговый
-              аудит правильности исчисления и уплаты налогов и обязательных платежей, налоговая экспертиза, оптимизация
-              налогообложения, постановка и восстановление, помощь составления финансовой отчётности, консалтинговые
-              услуги по бухгалтерскому учёту, менеджменту и другим вопросам финансово-хозяйственной деятельности.
-            </p>
+            {t.about.paragraphsRight.map((paragraph) => (
+              <p key={paragraph} className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </motion.div>
 
         {/* Documents Section */}
         <div className="mb-6 sm:mb-8">
           <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground text-center mb-6 sm:mb-8">
-            Документы, подтверждающие деятельность
+            {t.about.documentsTitle}
           </h3>
           
           <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
@@ -195,8 +175,7 @@ const AboutSection = () => {
           viewport={{ once: true }}
           className="text-center text-xs sm:text-sm text-muted-foreground bg-secondary/50 rounded-lg p-4"
         >
-          Деятельность осуществляется на основании Закона Республики Узбекистан 
-          «Об аудиторской деятельности» от 26 мая 2000 года № 78-II
+          {t.about.legalNote}
         </motion.div>
       </div>
     </section>

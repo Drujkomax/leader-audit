@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Shield, ChevronDown, CheckCircle } from "lucide-react";
 import shieldImage from "@/assets/shield.png";
+import { useLanguage } from "@/contexts/language-context";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen bg-hero-pattern flex items-center overflow-hidden">
       {/* Geometric decorations - hidden on mobile */}
@@ -26,19 +29,18 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6"
             >
               <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cta" />
-              <span className="text-xs sm:text-sm font-medium">Лицензия Министерства финансов РУз</span>
+              <span className="text-xs sm:text-sm font-medium">{t.hero.license}</span>
             </motion.div>
 
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 sm:mb-6">
-              Leader Audit: Ваша финансовая безопасность
+              {t.hero.title}
               <span className="block text-primary-foreground/80 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl mt-2 sm:mt-3 font-semibold">
-                в эпоху тотального налогового контроля
+                {t.hero.titleAccent}
               </span>
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-foreground/80 mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
-              Профессиональный аудит по международным стандартам. 
-              Находим скрытые риски там, где их не видит ваш главбух.
+              {t.hero.description}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10 justify-center lg:justify-start">
@@ -48,7 +50,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.98 }}
                 className="btn-cta px-5 sm:px-6 lg:px-8 py-3 sm:py-3.5 lg:py-4 rounded-lg text-sm sm:text-base lg:text-lg font-semibold text-cta-foreground text-center"
               >
-                Получить экспресс-анализ рисков
+                {t.hero.ctaPrimary}
               </motion.a>
               <motion.a
                 href="#services"
@@ -56,16 +58,12 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.98 }}
                 className="px-5 sm:px-6 lg:px-8 py-3 sm:py-3.5 lg:py-4 rounded-lg text-sm sm:text-base lg:text-lg font-semibold border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-colors text-center"
               >
-                Наши услуги
+                {t.hero.ctaSecondary}
               </motion.a>
             </div>
 
             <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6 text-xs sm:text-sm text-primary-foreground/70 justify-center lg:justify-start">
-              {[
-                "Стандарты МСА",
-                "Материальная ответственность",
-                "100% конфиденциальность"
-              ].map((item, index) => (
+              {t.hero.features.map((item, index) => (
                 <motion.div
                   key={item}
                   initial={{ opacity: 0, y: 10 }}
@@ -111,7 +109,7 @@ const HeroSection = () => {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center text-primary-foreground/60"
         >
-          <span className="text-xs mb-2">Узнать больше</span>
+          <span className="text-xs mb-2">{t.hero.learnMore}</span>
           <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
         </motion.div>
       </motion.div>

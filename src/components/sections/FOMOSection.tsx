@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { AlertTriangle, TrendingDown, Ban, DollarSign, Clock } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import { useLanguage } from "@/contexts/language-context";
 
 // Counter animation hook
 const useCountUp = (end: number, duration: number = 2000, startCounting: boolean = false) => {
@@ -50,28 +51,30 @@ const AnimatedStat = ({ value, suffix = "" }: { value: number; suffix?: string }
 };
 
 const FOMOSection = () => {
+  const { t } = useLanguage();
+
   const problems = [
     {
       icon: TrendingDown,
-      title: "Налоговый разрыв",
-      description: "90% проверок заканчиваются доначислениями из-за ошибок прошлых периодов.",
+      title: t.fomo.problems[0].title,
+      description: t.fomo.problems[0].description,
       statValue: 90,
-      statSuffix: "%",
+      statSuffix: t.fomo.problems[0].statSuffix,
     },
     {
       icon: Ban,
-      title: "Заморозка счетов",
-      description: "Неверная трактовка новых законов может остановить ваш бизнес за 1 день.",
+      title: t.fomo.problems[1].title,
+      description: t.fomo.problems[1].description,
       statValue: 1,
-      statSuffix: " день",
+      statSuffix: t.fomo.problems[1].statSuffix,
     },
     {
       icon: DollarSign,
-      title: "Скрытые убытки",
-      description: "Неоптимальная налоговая нагрузка съедает бюджет на развитие.",
+      title: t.fomo.problems[2].title,
+      description: t.fomo.problems[2].description,
       statValue: 30,
-      statSuffix: "%",
-      statPrefix: "до ",
+      statSuffix: t.fomo.problems[2].statSuffix,
+      statPrefix: t.fomo.problems[2].statPrefix,
     },
   ];
 
@@ -95,13 +98,13 @@ const FOMOSection = () => {
         >
           <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-cta/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6">
             <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-cta" />
-            <span className="text-cta font-semibold text-xs sm:text-sm">Внимание: критические риски</span>
+            <span className="text-cta font-semibold text-xs sm:text-sm">{t.fomo.badge}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-3 sm:mb-4">
-            О чём вам не скажет бухгалтерия?
+            {t.fomo.title}
           </h2>
           <p className="text-primary-foreground/70 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
-            Большинство финансовых рисков невидимы, пока не станет слишком поздно.
+            {t.fomo.description}
           </p>
         </motion.div>
 
@@ -149,7 +152,7 @@ const FOMOSection = () => {
           <div className="inline-flex items-center gap-2 sm:gap-3 bg-cta/10 border border-cta/30 rounded-full px-4 sm:px-6 py-2.5 sm:py-3">
             <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-cta animate-pulse flex-shrink-0" />
             <span className="text-primary-foreground font-medium text-xs sm:text-sm md:text-base">
-              Пока вы читаете этот текст, риски вашего бизнеса могут расти
+              {t.fomo.growingRisk}
             </span>
           </div>
         </motion.div>

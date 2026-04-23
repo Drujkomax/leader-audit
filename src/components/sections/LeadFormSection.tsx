@@ -3,24 +3,28 @@ import { motion } from "framer-motion";
 import { Send, Phone, Building2, User, CheckCircle, Shield } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { useLanguage } from "@/contexts/language-context";
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/xqegblwl";
-
-const formSchema = z.object({
-  name: z.string().trim().min(2, "Имя должно содержать минимум 2 символа").max(100, "Имя слишком длинное"),
-  phone: z.string().trim().min(9, "Введите корректный номер телефона").max(20, "Номер слишком длинный"),
-  company: z.string().trim().min(2, "Введите название компании").max(200, "Название слишком длинное"),
-});
-
-type FormData = z.infer<typeof formSchema>;
+type FormData = {
+  name: string;
+  phone: string;
+  company: string;
+};
 
 const LeadFormSection = () => {
+  const { t } = useLanguage();
+  const formSchema = z.object({
+    name: z.string().trim().min(2, t.leadForm.validation.nameMin).max(100, t.leadForm.validation.nameMax),
+    phone: z.string().trim().min(9, t.leadForm.validation.phoneMin).max(20, t.leadForm.validation.phoneMax),
+    company: z.string().trim().min(2, t.leadForm.validation.companyMin).max(200, t.leadForm.validation.companyMax),
+  });
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
     company: "",
   });
-  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -48,7 +52,7 @@ const LeadFormSection = () => {
         },
         body: JSON.stringify({
           ...validated,
-          _subject: "Новая заявка с сайта Leader Audit",
+          _subject: t.leadForm.subject,
         }),
       });
 
@@ -57,10 +61,10 @@ const LeadFormSection = () => {
       }
 
       setIsSubmitted(true);
-      toast.success("Заявка успешно отправлена!");
+      toast.success(t.leadForm.successToast);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        const fieldErrors: Partial<FormData> = {};
+        const fieldErrors: Partial<Record<keyof FormData, string>> = {};
         error.errors.forEach((err) => {
           if (err.path[0]) {
             fieldErrors[err.path[0] as keyof FormData] = err.message;
@@ -68,7 +72,7 @@ const LeadFormSection = () => {
         });
         setErrors(fieldErrors);
       } else {
-        toast.error("Не удалось отправить заявку. Попробуйте ещё раз.");
+        toast.error(t.leadForm.errorToast);
       }
     } finally {
       setIsSubmitting(false);
@@ -88,10 +92,10 @@ const LeadFormSection = () => {
               <CheckCircle className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 text-green-600" />
             </div>
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-3 sm:mb-4">
-              Спасибо за заявку!
+              {t.leadForm.successTitle}
             </h3>
             <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
-              Наш партнёр свяжется с вами в течение 24 часов для назначения консультации.
+              {t.leadForm.successDescription}
             </p>
             <button
               onClick={() => {
@@ -100,7 +104,7 @@ const LeadFormSection = () => {
               }}
               className="text-primary font-semibold hover:underline text-sm sm:text-base"
             >
-              Отправить ещё одну заявку
+              {t.leadForm.submitAnother}
             </button>
           </motion.div>
         </div>
@@ -124,25 +128,24 @@ const LeadFormSection = () => {
             className="text-primary-foreground text-center lg:text-left"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-              Назначьте встречу с партнёром Leader Audit
+              {t.leadForm.title}
             </h2>
             <p className="text-primary-foreground/80 text-sm sm:text-base md:text-lg mb-6 sm:mb-8">
-              Первая консультация — бесплатно. Получите экспертную оценку рисков 
-              вашего бизнеса от профессионалов с международным опытом.
+              {t.leadForm.description}
             </p>
 
             <div className="space-y-3 sm:space-y-4 inline-block text-left">
               <div className="flex items-center gap-2 sm:gap-3 text-primary-foreground/80 text-sm sm:text-base">
                 <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-cta flex-shrink-0" />
-                <span>Полная конфиденциальность на этапе первого звонка</span>
+                <span>{t.leadForm.benefits[0]}</span>
               </div>
               <div className="flex items-center gap-2 sm:gap-3 text-primary-foreground/80 text-sm sm:text-base">
                 <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-cta flex-shrink-0" />
-                <span>Ответ в течение 24 часов</span>
+                <span>{t.leadForm.benefits[1]}</span>
               </div>
               <div className="flex items-center gap-2 sm:gap-3 text-primary-foreground/80 text-sm sm:text-base">
                 <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-cta flex-shrink-0" />
-                <span>Без обязательств</span>
+                <span>{t.leadForm.benefits[2]}</span>
               </div>
             </div>
           </motion.div>
@@ -162,7 +165,7 @@ const LeadFormSection = () => {
                 {/* Name Field */}
                 <div>
                   <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
-                    Ваше имя
+                    {t.leadForm.nameLabel}
                   </label>
                   <div className="relative">
                     <User className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
@@ -172,7 +175,7 @@ const LeadFormSection = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Иван Иванов"
+                      placeholder={t.leadForm.namePlaceholder}
                       className={`w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all text-sm sm:text-base ${
                         errors.name ? "border-destructive" : "border-border"
                       }`}
@@ -186,7 +189,7 @@ const LeadFormSection = () => {
                 {/* Phone Field */}
                 <div>
                   <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
-                    Телефон
+                    {t.leadForm.phoneLabel}
                   </label>
                   <div className="relative">
                     <Phone className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
@@ -210,7 +213,7 @@ const LeadFormSection = () => {
                 {/* Company Field */}
                 <div>
                   <label htmlFor="company" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
-                    Название компании / ИНН
+                    {t.leadForm.companyLabel}
                   </label>
                   <div className="relative">
                     <Building2 className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
@@ -220,7 +223,7 @@ const LeadFormSection = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      placeholder="ООО «Название» или ИНН"
+                      placeholder={t.leadForm.companyPlaceholder}
                       className={`w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all text-sm sm:text-base ${
                         errors.company ? "border-destructive" : "border-border"
                       }`}
@@ -242,19 +245,19 @@ const LeadFormSection = () => {
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-cta-foreground/30 border-t-cta-foreground rounded-full animate-spin" />
-                      <span>Отправка...</span>
+                      <span>{t.leadForm.submitting}</span>
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4 sm:w-5 sm:h-5" />
-                      <span>Записаться на консультацию</span>
+                      <span>{t.leadForm.submit}</span>
                     </>
                   )}
                 </motion.button>
               </div>
 
               <p className="text-muted-foreground text-[10px] sm:text-xs text-center mt-3 sm:mt-4">
-                Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+                {t.leadForm.privacy}
               </p>
             </form>
           </motion.div>

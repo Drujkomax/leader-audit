@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Instagram, PhoneCall } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 const FloatingContact = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const contacts = [
     {
@@ -21,7 +23,7 @@ const FloatingContact = () => {
       external: true,
     },
     {
-      name: "Позвонить",
+      name: t.floatingContact.call,
       icon: PhoneCall,
       href: "tel:+998974100447",
       color: "bg-emerald-600 hover:bg-emerald-700",
@@ -65,7 +67,7 @@ const FloatingContact = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileTap={{ scale: 0.95 }}
         className="relative group"
-        aria-label={isOpen ? "Закрыть" : "Связаться с нами"}
+        aria-label={isOpen ? t.floatingContact.close : t.floatingContact.contactUs}
       >
         {/* Glow effect */}
         {!isOpen && (

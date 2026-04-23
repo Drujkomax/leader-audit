@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
+import LanguageDropdown from "@/components/language/LanguageDropdown";
+import { useLanguage } from "@/contexts/language-context";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,9 +19,9 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#services", label: "Услуги" },
-    { href: "#about", label: "О нас" },
-    { href: "#contact", label: "Контакты" },
+    { href: "#services", label: t.header.services },
+    { href: "#about", label: t.header.about },
+    { href: "#contact", label: t.header.contact },
   ];
 
   return (
@@ -50,22 +53,24 @@ const Header = () => {
               {link.label}
             </a>
           ))}
+          <LanguageDropdown isScrolled={isScrolled} />
           <a
             href="#contact"
             className="btn-cta px-4 xl:px-6 py-2 xl:py-2.5 rounded-lg text-cta-foreground flex items-center gap-2 text-sm xl:text-base transition-transform duration-200 hover:scale-105 active:scale-95"
           >
             <Phone className="w-4 h-4" />
-            <span>Консультация</span>
+            <span>{t.header.consultation}</span>
           </a>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-4 lg:hidden">
+          <LanguageDropdown isScrolled={isScrolled} />
           <a
             href="#contact"
             className="btn-cta px-3 sm:px-4 py-2 rounded-lg text-cta-foreground flex items-center gap-1.5 text-xs sm:text-sm font-semibold transition-transform duration-200 active:scale-95"
           >
             <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span>Консультация</span>
+            <span>{t.header.consultation}</span>
           </a>
 
           {/* Mobile Menu Button */}
@@ -74,7 +79,7 @@ const Header = () => {
             className={`p-1.5 sm:p-2 rounded-lg transition-colors ${
               isScrolled ? "text-foreground" : "text-primary-foreground"
             }`}
-            aria-label="Toggle menu"
+            aria-label={t.header.toggleMenu}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

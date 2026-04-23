@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Instagram, Send } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useLanguage } from "@/contexts/language-context";
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -18,9 +20,7 @@ const Footer = () => {
           >
             <img src={logo} alt="Leader Audit" className="h-10 sm:h-12 w-auto mb-3 sm:mb-4" />
             <p className="text-primary-foreground/70 text-sm sm:text-base max-w-md mb-4 sm:mb-6">
-              Leader Audit — лицензированная аудиторская компания. Мы защищаем ваш 
-              бизнес от финансовых рисков и обеспечиваем полное соответствие 
-              требованиям законодательства.
+              {t.footer.description}
             </p>
             <div className="flex items-center gap-3">
               <a
@@ -28,7 +28,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center text-primary-foreground hover:bg-cta hover:text-cta-foreground transition-colors"
-                aria-label="Instagram"
+                aria-label={t.footer.instagram}
               >
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
@@ -37,7 +37,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center text-primary-foreground hover:bg-cta hover:text-cta-foreground transition-colors"
-                aria-label="Telegram"
+                aria-label={t.footer.telegram}
               >
                 <Send className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
@@ -51,7 +51,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h4 className="text-primary-foreground font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Контакты</h4>
+            <h4 className="text-primary-foreground font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{t.footer.contacts}</h4>
             <ul className="space-y-2.5 sm:space-y-3">
               <li>
                 <a 
@@ -73,7 +73,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2.5 sm:gap-3 text-primary-foreground/70 text-sm sm:text-base">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 flex-shrink-0" />
-                <span>г. Ташкент, ул. Мустакиллик, 12</span>
+                <span>{t.footer.address}</span>
               </li>
             </ul>
           </motion.div>
@@ -85,14 +85,9 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h4 className="text-primary-foreground font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Услуги</h4>
+            <h4 className="text-primary-foreground font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{t.footer.services}</h4>
             <ul className="space-y-1.5 sm:space-y-2">
-              {[
-                "Обязательный аудит",
-                "Инициативный аудит",
-                "Налоговый консалтинг",
-                "Сопровождение проверок",
-              ].map((service) => (
+              {t.footer.serviceLinks.map((service) => (
                 <li key={service}>
                   <a
                     href="#services"
@@ -109,8 +104,8 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:justify-between md:items-center text-primary-foreground/50 text-xs sm:text-sm text-center md:text-left">
-            <p>© {currentYear} Leader Audit. Все права защищены.</p>
-            <p className="max-w-md">Лицензия на осуществление аудиторской деятельности выдана Министерством финансов Республики Узбекистан</p>
+            <p>© {currentYear} Leader Audit. {t.footer.rights}</p>
+            <p className="max-w-md">{t.footer.license}</p>
           </div>
         </div>
       </div>

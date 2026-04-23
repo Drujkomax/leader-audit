@@ -14,8 +14,11 @@ import pharmaLogo from "@/assets/clients/pharma-choice.png";
 import segTascoLogo from "@/assets/clients/seg-tasco.png";
 import nvbsLogo from "@/assets/clients/nvbs-tech.png";
 import quantoLogo from "@/assets/clients/quanto-servicing.png";
+import { useLanguage } from "@/contexts/language-context";
 
 const TrustBar = () => {
+  const { t } = useLanguage();
+
   const topRowLogos = [
     { name: "EVOS", src: evosLogo },
     { name: "Iteca Exhibitions", src: itecaLogo },
@@ -29,7 +32,7 @@ const TrustBar = () => {
   const bottomRowLogos = [
     { name: "Jizzax Organic", src: jizzaxLogo },
     { name: "Nokia", src: nokiaLogo },
-    { name: "Две палочки", src: dvePalochkiLogo },
+    { name: t.trustBar.twoSticksName, src: dvePalochkiLogo },
     { name: "Alkim Tekstil", src: alkimLogo },
     { name: "Eurasia Alliance Tex", src: eurasiaLogo },
     { name: "NVBS Tech", src: nvbsLogo },
@@ -48,7 +51,7 @@ const TrustBar = () => {
           viewport={{ once: true }}
           className="text-center text-muted-foreground text-xs sm:text-sm font-medium uppercase tracking-wider"
         >
-          Нам доверяют лидеры рынка
+          {t.trustBar.title}
         </motion.p>
       </div>
 

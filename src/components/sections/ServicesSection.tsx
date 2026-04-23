@@ -1,55 +1,34 @@
 import { motion } from "framer-motion";
 import { ClipboardCheck, Calculator, Users, FileText, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: ClipboardCheck,
-      title: "Аудиторские услуги",
-      description: "Профессиональный аудит в соответствии с международными стандартами и законодательством Республики Узбекистан.",
-      features: [
-        "Обязательный аудит",
-        "Инициативный аудит",
-        "Аудит отчётности по НСБУ",
-        "Аудит отчётности по МСФО",
-        "Аудит специального вопроса",
-      ],
+      title: t.services.cards[0].title,
+      description: t.services.cards[0].description,
+      features: t.services.cards[0].features,
     },
     {
       icon: FileText,
-      title: "Бухгалтерские услуги",
-      description: "Комплексное сопровождение бухгалтерского учёта для компаний любого масштаба в Ташкенте.",
-      features: [
-        "Ведение и восстановление учёта",
-        "Подготовка финансовой отчётности",
-        "Трансформация из НСБУ в МСФО",
-        "Налоговая и статистическая отчётность",
-        "Оптимизация бухгалтерии",
-      ],
+      title: t.services.cards[1].title,
+      description: t.services.cards[1].description,
+      features: t.services.cards[1].features,
     },
     {
       icon: Calculator,
-      title: "Налоговый консалтинг",
-      description: "Законная оптимизация налогообложения и правовая поддержка бизнеса в Узбекистане.",
-      features: [
-        "Налоговое консультирование",
-        "Возврат НДС",
-        "Международное налогообложение",
-        "Трансфертное ценообразование",
-        "Открытие бизнеса в Узбекистане",
-      ],
+      title: t.services.cards[2].title,
+      description: t.services.cards[2].description,
+      features: t.services.cards[2].features,
     },
     {
       icon: Users,
-      title: "Аутсорсинг услуг",
-      description: "Передача непрофильных функций профессионалам — сокращение затрат и повышение эффективности.",
-      features: [
-        "Аутсорсинг бухгалтерии",
-        "Кадровый аутсорсинг",
-        "Расчёт заработных плат",
-        "Электронный документооборот",
-        "Услуги виртуального ассистента",
-      ],
+      title: t.services.cards[3].title,
+      description: t.services.cards[3].description,
+      features: t.services.cards[3].features,
     },
   ];
 
@@ -63,13 +42,13 @@ const ServicesSection = () => {
           className="text-center mb-8 sm:mb-12 md:mb-16"
         >
           <span className="text-primary font-semibold uppercase tracking-wider text-xs sm:text-sm">
-            Решения для бизнеса
+            {t.services.badge}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 sm:mt-3 mb-3 sm:mb-4">
-            Наши услуги в Ташкенте
+            {t.services.title}
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
-            Комплексные решения для бизнеса в Узбекистане — от аудита до полного сопровождения учёта
+            {t.services.description}
           </p>
         </motion.div>
 
@@ -113,7 +92,7 @@ const ServicesSection = () => {
                   href="#contact" 
                   className="inline-flex items-center gap-1.5 sm:gap-2 text-primary font-semibold text-sm sm:text-base hover:gap-2 sm:hover:gap-3 transition-all mt-2"
                 >
-                  Узнать подробнее
+                  {t.services.learnMore}
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </a>
               </div>

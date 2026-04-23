@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { Award, Scale, Lock, Briefcase, CheckCircle2 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import { useLanguage } from "@/contexts/language-context";
 
 // Counter animation hook
 const useCountUp = (end: number, duration: number = 2000, startCounting: boolean = false) => {
@@ -50,34 +51,36 @@ const AnimatedNumber = ({ value, suffix = "", prefix = "" }: { value: number; su
 };
 
 const ExpertiseSection = () => {
+  const { t } = useLanguage();
+
   const facts = [
     {
       icon: Award,
-      title: "Международные стандарты",
-      description: "Работа по стандартам МСА (Международные стандарты аудита)",
+      title: t.expertise.facts[0].title,
+      description: t.expertise.facts[0].description,
     },
     {
       icon: Scale,
-      title: "Материальная ответственность",
-      description: "Полная материальная ответственность за качество заключения",
+      title: t.expertise.facts[1].title,
+      description: t.expertise.facts[1].description,
     },
     {
       icon: Lock,
-      title: "Конфиденциальность",
-      description: "Строжайшая политика конфиденциальности на всех этапах",
+      title: t.expertise.facts[2].title,
+      description: t.expertise.facts[2].description,
     },
     {
       icon: Briefcase,
-      title: "Сложные ниши",
-      description: "Опыт в Medical, IT, Manufacturing и других отраслях",
+      title: t.expertise.facts[3].title,
+      description: t.expertise.facts[3].description,
     },
   ];
 
   const stats = [
-    { value: 15, suffix: "+", label: "Лет на рынке" },
-    { value: 500, suffix: "+", label: "Успешных проектов" },
-    { value: 100, suffix: "%", label: "Клиентов довольны" },
-    { value: 0, suffix: "", label: "Претензий ГНК" },
+    { value: 15, suffix: "+", label: t.expertise.statsLabels[0] },
+    { value: 500, suffix: "+", label: t.expertise.statsLabels[1] },
+    { value: 100, suffix: "%", label: t.expertise.statsLabels[2] },
+    { value: 0, suffix: "", label: t.expertise.statsLabels[3] },
   ];
 
   return (
@@ -95,14 +98,13 @@ const ExpertiseSection = () => {
             className="text-center lg:text-left"
           >
             <span className="text-primary font-semibold uppercase tracking-wider text-xs sm:text-sm">
-              Почему мы
+              {t.expertise.badge}
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 sm:mt-3 mb-4 sm:mb-6">
-              Экспертность и надёжность
+              {t.expertise.title}
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
-              Профессиональная защита вашего капитала от внешних угроз. 
-              Каждый проект подкреплён международной экспертизой и полной материальной ответственностью.
+              {t.expertise.description}
             </p>
 
             <div className="space-y-3 sm:space-y-4">
@@ -136,7 +138,7 @@ const ExpertiseSection = () => {
           >
             <div className="bg-primary rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 lg:p-10">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary-foreground mb-5 sm:mb-6 md:mb-8 text-center">
-                Leader Audit в цифрах
+                {t.expertise.statsTitle}
               </h3>
               
               <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6">
@@ -160,7 +162,7 @@ const ExpertiseSection = () => {
               <div className="mt-5 sm:mt-6 md:mt-8 pt-4 sm:pt-5 md:pt-6 border-t border-primary-foreground/20">
                 <div className="flex items-center justify-center gap-2 text-primary-foreground text-xs sm:text-sm md:text-base">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-cta flex-shrink-0" />
-                  <span className="font-medium">Лицензированная аудиторская компания</span>
+                  <span className="font-medium">{t.expertise.licensed}</span>
                 </div>
               </div>
             </div>

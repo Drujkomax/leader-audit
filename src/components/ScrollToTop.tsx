@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -31,7 +33,7 @@ const ScrollToTop = () => {
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
           className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 group"
-          aria-label="Наверх"
+          aria-label={t.scrollTop.ariaLabel}
         >
           {/* Glow ring */}
           <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping-slow" />
