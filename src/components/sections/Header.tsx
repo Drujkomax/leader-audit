@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import LanguageDropdown from "@/components/language/LanguageDropdown";
 import { useLanguage } from "@/contexts/language-context";
@@ -8,7 +9,11 @@ import { useLanguage } from "@/contexts/language-context";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const location = useLocation();
+  const isHome = location.pathname === "/" || location.pathname === "/uz" || location.pathname === "/en" ||
+    location.pathname === "/uz/" || location.pathname === "/en/";
+  const langPrefix = language === "ru" ? "" : `/${language}`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,9 +24,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#services", label: t.header.services },
-    { href: "#about", label: t.header.about },
-    { href: "#contact", label: t.header.contact },
+    { href: isHome ? "#services" : `${langPrefix}/#services`, label: t.header.services },
+    { href: `${langPrefix}/about`, label: t.header.about },
+    { href: `${langPrefix}/blog`, label: language === "ru" ? "Блог" : language === "uz" ? "Blog" : "Blog" },
+    { href: `${langPrefix}/contact`, label: t.header.contact },
   ];
 
   return (
@@ -36,8 +42,8 @@ const Header = () => {
       }`}
     >
       <div className="container-wide flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
-          <img src={logo} alt="Leader Audit" className="h-8 sm:h-10 md:h-12 w-auto" />
+        <a href={`${langPrefix}/`} className="flex items-center gap-2" aria-label="Leader Audit — главная">
+          <img src={logo} alt="Leader Audit — лицензированная аудиторская компания в Узбекистане" className="h-8 sm:h-10 md:h-12 w-auto" />
         </a>
 
         {/* Desktop Navigation */}

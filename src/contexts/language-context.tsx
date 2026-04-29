@@ -686,11 +686,23 @@ const STORAGE_KEY = "leader-audit-language";
 
 const isLanguage = (value: string | null): value is Language => value === "ru" || value === "uz" || value === "en";
 
+const detectLanguageFromUrl = (): Language => {
+  if (typeof window === "undefined") return "ru";
+  const path = window.location.pathname;
+  if (path.startsWith("/uz")) return "uz";
+  if (path.startsWith("/en")) return "en";
+  return "ru";
+};
+
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>(() => {
     if (typeof window === "undefined") {
       return "ru";
     }
+
+    // URL takes priority — if user is on /uz/... or /en/... use that
+    const urlLang = detectLanguageFromUrl();
+    if (urlLang !== "ru") return urlLang;
 
     const storedLanguage = window.localStorage.getItem(STORAGE_KEY);
     return isLanguage(storedLanguage) ? storedLanguage : "ru";
