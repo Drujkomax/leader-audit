@@ -114,18 +114,18 @@ const BlogPost = () => {
       <div className="min-h-screen bg-background">
         <Header />
         <main>
-          <article className="pt-28 pb-12 sm:pt-32 sm:pb-16">
+          <section className="bg-primary-dark pt-28 pb-12 sm:pt-32 sm:pb-16">
             <div className="container-wide max-w-3xl">
               <Link
                 to={`${langPrefix}/blog`}
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-6 text-sm"
+                className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground mb-6 text-sm"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {language === "ru" ? "Все статьи" : language === "uz" ? "Barcha maqolalar" : "All articles"}
               </Link>
 
-              <div className="flex items-center gap-3 text-xs text-muted-foreground mb-4">
-                <span className="px-2 py-1 bg-primary/10 text-primary rounded-md font-medium">
+              <div className="flex items-center gap-3 text-xs text-primary-foreground/70 mb-4 flex-wrap">
+                <span className="px-2 py-1 bg-primary-foreground/10 text-primary-foreground rounded-md font-medium">
                   {post.category}
                 </span>
                 <span className="flex items-center gap-1">
@@ -138,11 +138,15 @@ const BlogPost = () => {
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-foreground mb-4 leading-tight">
                 {post.title}
               </h1>
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8">{post.excerpt}</p>
+              <p className="text-base sm:text-lg text-primary-foreground/80 leading-relaxed">{post.excerpt}</p>
+            </div>
+          </section>
 
+          <article className="py-10 sm:py-14">
+            <div className="container-wide max-w-3xl">
               <div className="prose prose-lg max-w-none">{renderContent()}</div>
             </div>
           </article>

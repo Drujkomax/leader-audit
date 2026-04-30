@@ -44,6 +44,13 @@ const About = () => {
     },
   };
 
+  const heroCopy = {
+    ru: { title: "О компании Leader Audit", subtitle: "Лицензированный аудитор Узбекистана с 2013 года" },
+    uz: { title: "Leader Audit kompaniyasi haqida", subtitle: "2013 yildan beri litsenziyalangan O'zbekiston auditori" },
+    en: { title: "About Leader Audit", subtitle: "Licensed auditor of Uzbekistan since 2013" },
+  } as const;
+  const hero = heroCopy[language];
+
   return (
     <>
       <SEO
@@ -55,7 +62,13 @@ const About = () => {
       />
       <div className="min-h-screen bg-background">
         <Header />
-        <main className="pt-20">
+        <main>
+          <section className="bg-primary-dark pt-28 pb-16 sm:pt-32 sm:pb-20">
+            <div className="container-wide max-w-5xl">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary-foreground mb-4">{hero.title}</h1>
+              <p className="text-primary-foreground/80 text-lg">{hero.subtitle}</p>
+            </div>
+          </section>
           <AboutSection />
           <ExpertiseSection />
           <LeadFormSection />

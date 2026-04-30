@@ -79,6 +79,11 @@ const routes = [
   { path: "/uz/contact", lang: "uz", title: "Leader Audit kontaktlari | Toshkentdagi auditorlik kompaniyasi", description: "Leader Audit bilan bog'laning: telefon +998 97 410 04 47, email info@leaderaudit.uz." },
   { path: "/en/contact", lang: "en", title: "Contact Leader Audit | Audit firm in Tashkent", description: "Contact Leader Audit: phone +998 97 410 04 47, email info@leaderaudit.uz, address 12 Mustaqillik St, Tashkent." },
 
+  // Cases — RU/UZ/EN
+  { path: "/cases", lang: "ru", title: "Кейсы Leader Audit | Реальные результаты аудита и налогового консалтинга в Узбекистане", description: "Реальные кейсы Leader Audit: возврат НДС 18 млрд сум для производителя, выявление налоговых рисков на 4,2 млрд сум, подготовка отчётности по МСФО для IT-компании. Цифры, сроки, результат.", keywords: "кейсы аудита Узбекистан, примеры аудиторских проверок, возврат НДС кейс, оптимизация налогов результат" },
+  { path: "/uz/cases", lang: "uz", title: "Leader Audit keyslari | O'zbekistonda audit va soliq konsalting natijalari", description: "Leader Auditning haqiqiy keyslari: ishlab chiqaruvchi uchun 18 mlrd so'm QQS qaytarish, 4,2 mlrd so'm soliq xavflarini aniqlash. Raqamlar, muddatlar, natija.", keywords: "audit keyslari O'zbekiston, audit tekshiruvlari misollari, QQS qaytarish keysi" },
+  { path: "/en/cases", lang: "en", title: "Leader Audit Case Studies | Real Results of Audit & Tax Consulting in Uzbekistan", description: "Real Leader Audit cases: 18 bn UZS VAT refund for a manufacturer, 4.2 bn UZS tax risk identified, IFRS reporting prepared for an IT company. Numbers, timelines, outcomes.", keywords: "audit case studies Uzbekistan, audit examples, VAT refund case" },
+
   // Blog index
   { path: "/blog", lang: "ru", title: "Блог Leader Audit | Экспертные статьи по аудиту и налогам в Узбекистане", description: "Экспертные статьи по аудиту, налоговому консалтингу, бухгалтерии и возврату НДС в Узбекистане." },
   { path: "/uz/blog", lang: "uz", title: "Leader Audit blogi | O'zbekistonda audit va soliqlar bo'yicha ekspert maqolalari", description: "O'zbekistonda audit, soliq konsalting, buxgalteriya va QQS qaytarish bo'yicha ekspert maqolalar." },
@@ -90,6 +95,7 @@ const routes = [
   { path: "/blog/isa-vs-nas-uzbekistan", lang: "ru", title: "МСА vs НСБУ: разница, применение, выбор для бизнеса в Узбекистане | Leader Audit", description: "Чем отличаются международные стандарты МСА/МСФО от национальных НСБУ Узбекистана." },
   { path: "/blog/transfer-pricing-uzbekistan", lang: "ru", title: "Трансфертное ценообразование в Узбекистане 2026: правила, документация, риски | Leader Audit", description: "Полный гид по трансфертному ценообразованию в Узбекистане: контролируемые сделки, методы определения цен, документация." },
   { path: "/blog/tax-audit-checklist", lang: "ru", title: "Как подготовиться к налоговой проверке в Узбекистане 2026 | Чек-лист от Leader Audit", description: "Пошаговый чек-лист подготовки к налоговой проверке в Узбекистане: документы, типичные риски, как защитить позицию." },
+  { path: "/blog/tax-code-2026-changes", lang: "ru", title: "Изменения в Налоговом кодексе Узбекистана 2026: ключевые поправки и их влияние на бизнес | Leader Audit", description: "Главные изменения в Налоговом кодексе РУз с 2026 года: ставки НДС и налога на прибыль, льготы для IT-Парка, трансфертное ценообразование, налог с оборота." },
 
   // Blog posts — UZ
   { path: "/uz/blog/obligatory-audit-guide-2026", lang: "uz", title: "O'zbekistonda majburiy audit 2026: kim, qachon, qancha turadi | Leader Audit", description: "O'zbekistonda 2026 yilda majburiy audit bo'yicha to'liq qo'llanma: kim majburdir, muddatlar, narx, buzgan uchun oqibatlar." },
@@ -97,6 +103,7 @@ const routes = [
   { path: "/uz/blog/isa-vs-nas-uzbekistan", lang: "uz", title: "XAS va MHXS: O'zbekistonda farq, qo'llash, tanlash | Leader Audit", description: "O'zbekistonda xalqaro XAS/XHXS standartlari MHXSdan qanday farq qiladi." },
   { path: "/uz/blog/transfer-pricing-uzbekistan", lang: "uz", title: "O'zbekistonda transfer narxlash 2026: qoidalar, hujjatlar, xavflar | Leader Audit", description: "O'zbekistonda transfer narxlash bo'yicha to'liq qo'llanma: nazorat ostidagi bitimlar, narxlash usullari, hujjatlar." },
   { path: "/uz/blog/tax-audit-checklist", lang: "uz", title: "O'zbekistonda 2026 soliq tekshiruviga qanday tayyorlanish | Leader Audit chek-listi", description: "O'zbekistonda soliq tekshiruviga bosqichma-bosqich tayyorgarlik chek-listi." },
+  { path: "/uz/blog/tax-code-2026-changes", lang: "uz", title: "O'zbekiston Soliq kodeksining 2026 yildagi o'zgarishlari: asosiy tuzatishlar va biznesga ta'siri | Leader Audit", description: "RUz Soliq kodeksining 2026 yildan boshlab asosiy o'zgarishlari: QQS va foyda solig'i stavkalari, IT-Park imtiyozlari, transfer narxlash." },
 
   // Blog posts — EN
   { path: "/en/blog/obligatory-audit-guide-2026", lang: "en", title: "Statutory Audit in Uzbekistan 2026: Who, When, How Much | Leader Audit", description: "Complete guide to statutory audit in Uzbekistan 2026: who is required to undergo it, deadlines, costs, consequences for non-compliance." },
@@ -104,6 +111,7 @@ const routes = [
   { path: "/en/blog/isa-vs-nas-uzbekistan", lang: "en", title: "ISA vs NAS: Difference, Application, Choice for Business in Uzbekistan | Leader Audit", description: "How international ISA/IFRS standards differ from national NAS of Uzbekistan." },
   { path: "/en/blog/transfer-pricing-uzbekistan", lang: "en", title: "Transfer Pricing in Uzbekistan 2026: Rules, Documentation, Risks | Leader Audit", description: "Complete guide to transfer pricing in Uzbekistan: controlled transactions, pricing methods, documentation." },
   { path: "/en/blog/tax-audit-checklist", lang: "en", title: "How to Prepare for Tax Inspection in Uzbekistan 2026 | Leader Audit Checklist", description: "Step-by-step checklist for tax inspection preparation in Uzbekistan." },
+  { path: "/en/blog/tax-code-2026-changes", lang: "en", title: "Uzbekistan Tax Code 2026 Changes: Key Amendments and Their Business Impact | Leader Audit", description: "Main changes to the Uzbekistan Tax Code from 2026: VAT and profit tax rates, IT Park benefits, transfer pricing, turnover tax. Practical guide for accountants and owners." },
 ];
 
 const buildAlternates = (route) => {

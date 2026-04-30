@@ -3,14 +3,14 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
 
-  <!-- Homepage -->
+  <!-- ============== Homepage ============== -->
   <url>
     <loc>https://leaderaudit.uz/</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/" />
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -18,134 +18,467 @@
       <image:title>Leader Audit — Аудиторская компания Узбекистана</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-  <!-- Service: Obligatory Audit -->
+  <!-- ============== Services ============== -->
   <url>
     <loc>https://leaderaudit.uz/services/obligatory-audit</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/obligatory-audit" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/obligatory-audit" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/obligatory-audit" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/services/obligatory-audit" />
-    <lastmod>2026-04-27</lastmod>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/services/obligatory-audit</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/obligatory-audit" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/obligatory-audit" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/obligatory-audit" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/services/obligatory-audit</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/obligatory-audit" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/obligatory-audit" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/obligatory-audit" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Service: Initiative Audit -->
   <url>
     <loc>https://leaderaudit.uz/services/initiative-audit</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/initiative-audit" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/initiative-audit" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/initiative-audit" />
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/services/initiative-audit" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/services/initiative-audit</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/initiative-audit" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/initiative-audit" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/initiative-audit" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/services/initiative-audit</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/initiative-audit" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/initiative-audit" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/initiative-audit" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Service: Tax Consulting -->
   <url>
     <loc>https://leaderaudit.uz/services/tax-consulting</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/tax-consulting" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/tax-consulting" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/tax-consulting" />
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/services/tax-consulting" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/services/tax-consulting</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/tax-consulting" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/tax-consulting" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/tax-consulting" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/services/tax-consulting</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/tax-consulting" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/tax-consulting" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/tax-consulting" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Service: VAT Refund -->
   <url>
     <loc>https://leaderaudit.uz/services/vat-refund</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/vat-refund" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/vat-refund" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/vat-refund" />
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/services/vat-refund" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/services/vat-refund</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/vat-refund" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/vat-refund" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/vat-refund" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/services/vat-refund</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/vat-refund" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/vat-refund" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/vat-refund" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
 
-  <!-- Service: Accounting -->
   <url>
     <loc>https://leaderaudit.uz/services/accounting</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/accounting" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/accounting" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/accounting" />
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/services/accounting" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/services/accounting</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/accounting" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/accounting" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/accounting" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/services/accounting</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/services/accounting" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/services/accounting" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/services/accounting" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
-  <!-- About -->
+  <!-- ============== About ============== -->
   <url>
     <loc>https://leaderaudit.uz/about</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/about" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/about" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/about" />
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/about" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/about</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/about" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/about" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/about" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/about" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/about" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Contact -->
+  <!-- ============== Cases (NEW) ============== -->
+  <url>
+    <loc>https://leaderaudit.uz/cases</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/cases" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/cases" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/cases" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/cases" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/cases</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/cases" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/cases" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/cases" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/cases</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/cases" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/cases" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/cases" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- ============== Contact ============== -->
   <url>
     <loc>https://leaderaudit.uz/contact</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/contact" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/contact" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/contact" />
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/contact" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/contact</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/contact" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/contact" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/contact" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/contact" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/contact" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
 
-  <!-- Blog Index -->
+  <!-- ============== Blog Index ============== -->
   <url>
     <loc>https://leaderaudit.uz/blog</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog" />
     <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog" />
     <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog" />
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/blog" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/blog</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/blog</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog: Obligatory Audit Guide -->
+  <!-- ============== Blog Posts (with hreflang) ============== -->
   <url>
     <loc>https://leaderaudit.uz/blog/obligatory-audit-guide-2026</loc>
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/obligatory-audit-guide-2026" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/obligatory-audit-guide-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/obligatory-audit-guide-2026" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/blog/obligatory-audit-guide-2026" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/blog/obligatory-audit-guide-2026</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/obligatory-audit-guide-2026" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/obligatory-audit-guide-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/obligatory-audit-guide-2026" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/blog/obligatory-audit-guide-2026</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/obligatory-audit-guide-2026" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/obligatory-audit-guide-2026" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/obligatory-audit-guide-2026" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog: VAT Refund Guide -->
   <url>
     <loc>https://leaderaudit.uz/blog/vat-refund-uzbekistan</loc>
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/vat-refund-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/vat-refund-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/vat-refund-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/blog/vat-refund-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/blog/vat-refund-uzbekistan</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/vat-refund-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/vat-refund-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/vat-refund-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/blog/vat-refund-uzbekistan</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/vat-refund-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/vat-refund-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/vat-refund-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog: ISA vs NAS -->
   <url>
     <loc>https://leaderaudit.uz/blog/isa-vs-nas-uzbekistan</loc>
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/isa-vs-nas-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/isa-vs-nas-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/isa-vs-nas-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/blog/isa-vs-nas-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/blog/isa-vs-nas-uzbekistan</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/isa-vs-nas-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/isa-vs-nas-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/isa-vs-nas-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/blog/isa-vs-nas-uzbekistan</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/isa-vs-nas-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/isa-vs-nas-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/isa-vs-nas-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog: Transfer Pricing -->
   <url>
     <loc>https://leaderaudit.uz/blog/transfer-pricing-uzbekistan</loc>
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/transfer-pricing-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/transfer-pricing-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/transfer-pricing-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/blog/transfer-pricing-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/blog/transfer-pricing-uzbekistan</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/transfer-pricing-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/transfer-pricing-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/transfer-pricing-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/blog/transfer-pricing-uzbekistan</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/transfer-pricing-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/transfer-pricing-uzbekistan" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/transfer-pricing-uzbekistan" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog: Tax Audit Survival -->
   <url>
     <loc>https://leaderaudit.uz/blog/tax-audit-checklist</loc>
-    <lastmod>2026-04-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/tax-audit-checklist" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/tax-audit-checklist" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/tax-audit-checklist" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/blog/tax-audit-checklist" />
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/blog/tax-audit-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/tax-audit-checklist" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/tax-audit-checklist" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/tax-audit-checklist" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/blog/tax-audit-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/tax-audit-checklist" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/tax-audit-checklist" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/tax-audit-checklist" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ============== NEW: Tax Code 2026 ============== -->
+  <url>
+    <loc>https://leaderaudit.uz/blog/tax-code-2026-changes</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/tax-code-2026-changes" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/tax-code-2026-changes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/tax-code-2026-changes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leaderaudit.uz/blog/tax-code-2026-changes" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/uz/blog/tax-code-2026-changes</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/tax-code-2026-changes" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/tax-code-2026-changes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/tax-code-2026-changes" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://leaderaudit.uz/en/blog/tax-code-2026-changes</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://leaderaudit.uz/blog/tax-code-2026-changes" />
+    <xhtml:link rel="alternate" hreflang="uz" href="https://leaderaudit.uz/uz/blog/tax-code-2026-changes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://leaderaudit.uz/en/blog/tax-code-2026-changes" />
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
 
 </urlset>

@@ -87,9 +87,13 @@ const HeroSection = () => {
           >
             <div className="relative">
               <div className="absolute inset-0 bg-primary-foreground/10 rounded-full blur-3xl scale-75" />
-              <img 
-                src={shieldImage} 
-                alt="Leader Audit Shield" 
+              <img
+                src={shieldImage}
+                alt="Leader Audit — лицензированная аудиторская компания Узбекистана"
+                width="384"
+                height="384"
+                fetchPriority="high"
+                decoding="async"
                 className="relative w-64 xl:w-80 2xl:w-96 h-auto animate-float drop-shadow-2xl"
               />
             </div>

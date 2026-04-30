@@ -73,6 +73,10 @@ const TrustBar = () => {
                 <img
                   src={logo.src}
                   alt={logo.name}
+                  width="160"
+                  height="56"
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-10 sm:max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300"
                 />
               </div>
@@ -91,6 +95,10 @@ const TrustBar = () => {
                 <img
                   src={logo.src}
                   alt={logo.name}
+                  width="160"
+                  height="56"
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-10 sm:max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300"
                 />
               </div>

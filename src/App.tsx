@@ -14,6 +14,7 @@ import VATRefund from "./pages/services/VATRefund";
 import Accounting from "./pages/services/Accounting";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Cases from "./pages/Cases";
 import BlogIndex from "./pages/blog/BlogIndex";
 import BlogPost from "./pages/blog/BlogPost";
 
@@ -37,9 +38,10 @@ const App = () => (
               <Route path="/services/vat-refund" element={<VATRefund />} />
               <Route path="/services/accounting" element={<Accounting />} />
 
-              {/* About / Contact */}
+              {/* About / Contact / Cases */}
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/cases" element={<Cases />} />
 
               {/* Blog */}
               <Route path="/blog" element={<BlogIndex />} />
@@ -54,6 +56,7 @@ const App = () => (
               <Route path="/uz/services/accounting" element={<Accounting />} />
               <Route path="/uz/about" element={<About />} />
               <Route path="/uz/contact" element={<Contact />} />
+              <Route path="/uz/cases" element={<Cases />} />
               <Route path="/uz/blog" element={<BlogIndex />} />
               <Route path="/uz/blog/:slug" element={<BlogPost />} />
 
@@ -66,6 +69,7 @@ const App = () => (
               <Route path="/en/services/accounting" element={<Accounting />} />
               <Route path="/en/about" element={<About />} />
               <Route path="/en/contact" element={<Contact />} />
+              <Route path="/en/cases" element={<Cases />} />
               <Route path="/en/blog" element={<BlogIndex />} />
               <Route path="/en/blog/:slug" element={<BlogPost />} />
 
