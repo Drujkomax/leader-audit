@@ -4,8 +4,22 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/((?!api/|assets/|.*\\.[^/]+$).*)", "destination": "/index.html" }
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.leaderaudit.uz" }],
+      "destination": "https://leaderaudit.uz/:path*",
+      "permanent": true
+    },
+    { "source": "/tpost/:slug*", "destination": "/blog", "permanent": true },
+    { "source": "/uz/tpost/:slug*", "destination": "/uz/blog", "permanent": true },
+    { "source": "/en/tpost/:slug*", "destination": "/en/blog", "permanent": true },
+    { "source": "/runews", "destination": "/blog", "permanent": true },
+    { "source": "/runews/:path*", "destination": "/blog", "permanent": true },
+    { "source": "/uznews", "destination": "/uz/blog", "permanent": true },
+    { "source": "/uznews/:path*", "destination": "/uz/blog", "permanent": true },
+    { "source": "/ennews", "destination": "/en/blog", "permanent": true },
+    { "source": "/ennews/:path*", "destination": "/en/blog", "permanent": true }
   ],
   "headers": [
     {
