@@ -12,15 +12,16 @@ import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/language-context";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const { language } = useLanguage();
 
   const seo = {
     ru: {
-      title: "Leader Audit — Аудиторская компания в Узбекистане | Аудит, налоговый консалтинг, возврат НДС в Ташкенте",
-      description: "Лицензированная аудиторская компания в Ташкенте. Обязательный и инициативный аудит по МСА и НСБУ, налоговый консалтинг, возврат НДС, бухгалтерский аутсорсинг. 13 лет опыта, 220+ проверок. Лицензия Минфина РУз.",
-      keywords: "аудит Ташкент, аудиторская компания Узбекистан, обязательный аудит, инициативный аудит, налоговый консалтинг, возврат НДС, МСА, МСФО, НСБУ, бухгалтерский аутсорсинг",
+      title: "Аудиторская компания в Узбекистане и Ташкенте | Обязательный аудит, налоговый консалтинг, возврат НДС — Leader Audit",
+      description: "Leader Audit — аудиторская компания в Узбекистане. Обязательный аудит, инициативный аудит, налоговый консалтинг, возврат НДС, бухгалтерский аутсорсинг. Бухгалтерские услуги и аудит в Ташкенте для бизнеса.",
+      keywords: "обязательный аудит, инициативный аудит, налоговый консалтинг, возврат НДС, бухгалтерский аутсорсинг, аудиторская компания в узбекистане, бухгалтерские услуги в ташкенте, бухгалтерские услуги и аудит в ташкенте, бизнес аудит в ташкенте, налоговое сопровождение, налоговый аудит в узбекистане",
     },
     uz: {
       title: "Leader Audit — Toshkentdagi auditorlik kompaniyasi | Audit, soliq konsalting, QQS qaytarish",
@@ -36,6 +37,7 @@ const Index = () => {
 
   const canonical = language === "ru" ? "https://leaderaudit.uz/" : `https://leaderaudit.uz/${language}/`;
   const meta = seo[language];
+  const langPrefix = language === "ru" ? "" : `/${language}`;
 
   return (
     <>
@@ -52,6 +54,26 @@ const Index = () => {
           <TrustBar />
           <FOMOSection />
           <ServicesSection />
+          {language === "ru" && (
+            <section className="py-10 sm:py-14 bg-secondary/20">
+              <div className="container-wide max-w-5xl">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                  Бухгалтерские услуги и аудит в Ташкенте для бизнеса
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  Предоставляем полный комплекс услуг для компаний в Узбекистане: обязательный аудит, инициативный аудит, налоговый консалтинг, налоговое сопровождение, возврат НДС и бухгалтерский аутсорсинг.
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-3 text-foreground">
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/obligatory-audit`}>Обязательный аудит</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/initiative-audit`}>Инициативный аудит</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/tax-consulting`}>Налоговый консалтинг и налоговое сопровождение</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/vat-refund`}>Возврат НДС</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/accounting`}>Бухгалтерский аутсорсинг</Link></li>
+                  <li><span>Бизнес аудит в Ташкенте и по Узбекистану</span></li>
+                </ul>
+              </div>
+            </section>
+          )}
           <AboutSection />
           <ExpertiseSection />
           <FAQSection />
