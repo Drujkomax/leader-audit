@@ -11,7 +11,7 @@ type FAQItem = {
 const faqContent: Record<"ru" | "uz" | "en", { badge: string; title: string; description: string; items: FAQItem[] }> = {
   ru: {
     badge: "Частые вопросы",
-    title: "Ответы на популярные вопросы",
+    title: "Частые вопросы об аудите в Узбекистане",
     description: "Самое важное про аудит и налоговый консалтинг в Узбекистане",
     items: [
       {

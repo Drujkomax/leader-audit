@@ -5,32 +5,14 @@ import { useLanguage } from "@/contexts/language-context";
 const ServicesSection = () => {
   const { t } = useLanguage();
 
-  const services = [
-    {
-      icon: ClipboardCheck,
-      title: t.services.cards[0].title,
-      description: t.services.cards[0].description,
-      features: t.services.cards[0].features,
-    },
-    {
-      icon: FileText,
-      title: t.services.cards[1].title,
-      description: t.services.cards[1].description,
-      features: t.services.cards[1].features,
-    },
-    {
-      icon: Calculator,
-      title: t.services.cards[2].title,
-      description: t.services.cards[2].description,
-      features: t.services.cards[2].features,
-    },
-    {
-      icon: Users,
-      title: t.services.cards[3].title,
-      description: t.services.cards[3].description,
-      features: t.services.cards[3].features,
-    },
-  ];
+  const icons = [ClipboardCheck, FileText, Calculator, Users, ClipboardCheck, FileText];
+  
+  const services = t.services.cards.map((card, index) => ({
+    icon: icons[index % icons.length],
+    title: card.title,
+    description: card.description,
+    features: card.features,
+  }));
 
   return (
     <section id="services" className="py-12 sm:py-16 md:py-24 lg:py-32 bg-background">
