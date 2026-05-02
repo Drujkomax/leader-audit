@@ -12,9 +12,9 @@ const Contact = () => {
 
   const content = {
     ru: {
-      title: "Контакты Leader Audit | Аудиторская компания в Ташкенте",
-      description: "Свяжитесь с Leader Audit: телефон +998 97 410 04 47, email info@leaderaudit.uz, адрес г. Ташкент, ул. Мустакиллик, 12. Часы работы: Пн-Пт 9:00-18:00.",
-      keywords: "контакты Leader Audit, телефон аудиторская компания Ташкент, адрес Leader Audit",
+      title: "Контакты Leader Audit | Аудиторская организация Ташкент",
+      description: "Свяжитесь с Leader Audit: телефон +998 97 410 04 47. Консультации по аудиту организаций в Узбекистане, консультации по срокам проведения и аналитике рисков. г. Ташкент, ул. Мустакиллик, 12.",
+      keywords: "контакты Leader Audit, аудиторская организация Ташкент, консультации по аудиту организаций в Узбекистане, сроки проведения аудита, аналитика рисков, кадровый аудит, МСФО",
       pageTitle: "Контакты",
       pageSubtitle: "Свяжитесь с нами удобным для вас способом",
       hoursLabel: "Часы работы",
@@ -22,9 +22,9 @@ const Contact = () => {
       addressLabel: "Адрес офиса",
     },
     uz: {
-      title: "Leader Audit kontaktlari | Toshkentdagi auditorlik kompaniyasi",
-      description: "Leader Audit bilan bog'laning: telefon +998 97 410 04 47, email info@leaderaudit.uz, manzil Toshkent shahri, Mustaqillik ko'chasi, 12. Ish vaqti: Du-Ju 9:00-18:00.",
-      keywords: "Leader Audit kontaktlari, Toshkent auditorlik kompaniyasi telefon",
+      title: "Leader Audit kontaktlari | Toshkentdagi auditorlik tashkiloti",
+      description: "Leader Audit bilan bog'laning: telefon +998 97 410 04 47. O'zbekistonda tashkilotlar auditi bo'yicha konsultatsiyalar, xatarlarni tahlil qilish. Toshkent shahri, Mustaqillik ko'chasi, 12.",
+      keywords: "Leader Audit kontaktlari, Toshkent auditorlik tashkiloti, audit konsultatsiyalari, xatarlar tahlili, kadrlar auditi, MHXS",
       pageTitle: "Kontaktlar",
       pageSubtitle: "Biz bilan o'zingiz uchun qulay tarzda bog'laning",
       hoursLabel: "Ish vaqti",

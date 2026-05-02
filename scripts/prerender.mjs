@@ -112,6 +112,9 @@ const routes = [
   { path: "/en/blog/transfer-pricing-uzbekistan", lang: "en", title: "Transfer Pricing in Uzbekistan 2026: Rules, Documentation, Risks | Leader Audit", description: "Complete guide to transfer pricing in Uzbekistan: controlled transactions, pricing methods, documentation." },
   { path: "/en/blog/tax-audit-checklist", lang: "en", title: "How to Prepare for Tax Inspection in Uzbekistan 2026 | Leader Audit Checklist", description: "Step-by-step checklist for tax inspection preparation in Uzbekistan." },
   { path: "/en/blog/tax-code-2026-changes", lang: "en", title: "Uzbekistan Tax Code 2026 Changes: Key Amendments and Their Business Impact | Leader Audit", description: "Main changes to the Uzbekistan Tax Code from 2026: VAT and profit tax rates, IT Park benefits, transfer pricing, turnover tax. Practical guide for accountants and owners." },
+
+  // 404 Page (for static server fallback to prevent soft-404)
+  { path: "/404", lang: "ru", title: "404 - Страница не найдена | Leader Audit", description: "Страница не найдена.", noindex: true },
 ];
 
 const buildAlternates = (route) => {
@@ -142,6 +145,13 @@ const buildHtml = (route) => {
     /<meta name="description" content="[\s\S]*?"\s*\/>/,
     `<meta name="description" content="${escapeHtml(route.description)}" />`,
   );
+
+  if (route.noindex) {
+    html = html.replace(
+      /<meta name="robots" content="[\s\S]*?"\s*\/>/,
+      `<meta name="robots" content="noindex, nofollow" />`,
+    );
+  }
 
   if (keywords) {
     html = html.replace(
@@ -214,7 +224,7 @@ for (const route of routes) {
   //   "/services/obligatory-audit" → dist/services/obligatory-audit/index.html
   let outRel = route.path;
   if (outRel.endsWith("/")) outRel = outRel.slice(0, -1);
-  const outPath = outRel === "" ? "index.html" : path.join(outRel.slice(1), "index.html");
+  const outPath = outRel === "" ? "index.html" : outRel === "/404" ? "404.html" : path.join(outRel.slice(1), "index.html");
   const outFull = path.join(distDir, outPath);
 
   fs.mkdirSync(path.dirname(outFull), { recursive: true });

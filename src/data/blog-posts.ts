@@ -20,11 +20,11 @@ export const blogPosts: BlogPosts = {
   ru: {
     "obligatory-audit-guide-2026": {
       slug: "obligatory-audit-guide-2026",
-      title: "Обязательный аудит в Узбекистане 2026: полное руководство",
-      metaTitle: "Обязательный аудит в Узбекистане 2026: кому, когда, сколько стоит | Leader Audit",
-      metaDescription: "Полный гид по обязательному аудиту в Узбекистане 2026: кто обязан проходить, сроки, стоимость, последствия за нарушение. Актуальное законодательство РУз.",
-      keywords: "обязательный аудит 2026, аудит АО Узбекистан, аудит банков РУз, обязательный аудит сроки, штрафы за непрохождение аудита",
-      excerpt: "Кто в Узбекистане обязан проходить ежегодный аудит, какие сроки и санкции за нарушение, как выбрать аудитора и сколько это стоит — разбираем по полочкам с учётом последних изменений 2026 года.",
+      title: "Обязательный аудит финансовой отчетности предприятия 2026",
+      metaTitle: "Обязательный аудит организаций в Узбекистане: сроки, подготовка, изменения в учете | Leader Audit",
+      metaDescription: "Консультации по аудиту организаций в Узбекистане: консультации по срокам проведения и аналитике рисков. Какие организации подлежат аудиту, как подготовиться к аудиту и что изменить в учете? Разъяснения по новому закону.",
+      keywords: "обязательный аудит 2026, аудит финансовой отчетности предприятия, аудиторская организация Ташкент, как подготовиться к аудиту, изменения в учете, сроки проведения аудита, консалтинг",
+      excerpt: "Какие организации подлежат аудиту, как подготовиться к аудиту и что изменить в учете? Получите разъяснения по новому закону, практические рекомендации по срокам проведения и аналитике рисков.",
       publishedDate: "2026-04-15",
       modifiedDate: "2026-04-27",
       readingTime: "8 мин",
@@ -501,11 +501,11 @@ export const blogPosts: BlogPosts = {
   uz: {
     "obligatory-audit-guide-2026": {
       slug: "obligatory-audit-guide-2026",
-      title: "O'zbekistonda majburiy audit 2026: to'liq qo'llanma",
-      metaTitle: "O'zbekistonda majburiy audit 2026: kim, qachon, qancha turadi | Leader Audit",
-      metaDescription: "O'zbekistonda 2026 yilda majburiy audit bo'yicha to'liq qo'llanma: kim majburdir, muddatlar, narx, buzgan uchun oqibatlar.",
-      keywords: "majburiy audit 2026, O'zbekiston AJ auditi, RUz banklar auditi, majburiy audit muddatlari",
-      excerpt: "O'zbekistonda kim yillik majburiy auditdan o'tishi shart, qaysi muddatlar va sanksiyalar mavjud, auditorni qanday tanlash va qancha turadi — 2026 yil o'zgarishlarini hisobga olib batafsil tahlil qilamiz.",
+      title: "Korxona moliyaviy hisoboti auditi 2026",
+      metaTitle: "O'zbekistonda tashkilotlar auditi: muddatlar, xatarlar tahlili va tayyorgarlik | Leader Audit",
+      metaDescription: "O'zbekistonda tashkilotlar auditi bo'yicha konsultatsiyalar: o'tkazish muddatlari va xatarlarni tahlil qilish. Qaysi tashkilotlar auditdan o'tishi kerak, auditga qanday tayyorlanish va hisobda nimani o'zgartirish lozim?",
+      keywords: "majburiy audit 2026, korxona moliyaviy hisoboti auditi, Toshkent auditorlik tashkiloti, auditga qanday tayyorlanish, hisobni o'zgartirish, audit o'tkazish muddatlari, konsalting",
+      excerpt: "Qaysi tashkilotlar auditdan o'tishi kerak, auditga qanday tayyorlanish va hisobda nimani o'zgartirish lozim? Yangi qonun bo'yicha tushuntirishlar va xatarlarni tahlil qilish bo'yicha amaliy tavsiyalar oling.",
       publishedDate: "2026-04-15",
       modifiedDate: "2026-04-27",
       readingTime: "8 daqiqa",

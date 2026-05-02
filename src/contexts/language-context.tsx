@@ -13,10 +13,10 @@ const russianDictionary = {
   },
   hero: {
     license: "Лицензия Министерства финансов РУз",
-    title: "Аудиторские услуги в Ташкенте",
+    title: "Аудиторская организация Ташкент",
     titleAccent: "и по всему Узбекистану",
     description:
-      "Профессиональный аудит по международным стандартам. Находим скрытые риски там, где их не видит ваш главбух.",
+      "Консультации по аудиту организаций в Узбекистане, аналитике рисков и срокам проведения. Профессиональный финансовый анализ и аудит отчетности по международным стандартам.",
     ctaPrimary: "Получить экспресс-анализ рисков",
     ctaSecondary: "Наши услуги",
     features: ["Стандарты МСА", "Материальная ответственность", "100% конфиденциальность"],
@@ -52,8 +52,8 @@ const russianDictionary = {
   },
   services: {
     badge: "Решения для бизнеса",
-    title: "Услуги Leader Audit",
-    description: "Комплексные решения для бизнеса в Узбекистане — от аудита до полного сопровождения учёта",
+    title: "Аудит финансовой отчетности предприятия",
+    description: "Комплексные решения для бизнеса в Узбекистане — от финансового анализа и консультаций по аудиту до полного сопровождения учёта",
     learnMore: "Узнать подробнее",
     cards: [
       {
@@ -72,9 +72,9 @@ const russianDictionary = {
         features: ["Налоговое консультирование", "Возврат НДС", "Международное налогообложение", "Сопровождение налоговых проверок"],
       },
       {
-        title: "Бухгалтерский аутсорсинг",
-        description: "Комплексное сопровождение бухгалтерского учёта для компаний любого масштаба в Ташкенте.",
-        features: ["Ведение и восстановление учёта", "Подготовка финансовой отчётности", "Налоговая и статистическая отчётность", "Кадровый учёт"],
+        title: "Бухгалтерский и кадровый аутсорсинг",
+        description: "Комплексное сопровождение учёта и кадровый аудит для компаний любого масштаба в Ташкенте. Постановка учета с нуля.",
+        features: ["Ведение и восстановление учёта", "Кадровый аудит", "Налоговая и статистическая отчётность", "Финансовый анализ"],
       },
       {
         title: "Аудит по МСФО и трансформация отчётности",
@@ -222,10 +222,10 @@ const dictionaries = {
     },
     hero: {
       license: "O'zbekiston Respublikasi Moliya vazirligi litsenziyasi",
-      title: "Leader Audit: Sizning moliyaviy xavfsizligingiz",
-      titleAccent: "to'liq soliq nazorati davrida",
+      title: "Toshkent auditorlik tashkiloti",
+      titleAccent: "va butun O'zbekiston bo'ylab",
       description:
-        "Xalqaro standartlar asosida professional audit. Xatarlarni bosh buxgalter ko'rmaydigan joydan topamiz.",
+        "O'zbekistonda tashkilotlar auditi, xatarlar tahlili va o'tkazish muddatlari bo'yicha konsultatsiyalar. Xalqaro standartlar asosida moliyaviy tahlil.",
       ctaPrimary: "Xatarlar bo'yicha tezkor tahlil olish",
       ctaSecondary: "Xizmatlarimiz",
       features: ["XAS standartlari", "Moddiy javobgarlik", "100% maxfiylik"],
@@ -261,9 +261,9 @@ const dictionaries = {
     },
     services: {
       badge: "Biznes uchun yechimlar",
-      title: "Toshkentdagi xizmatlarimiz",
+      title: "Korxona moliyaviy hisoboti auditi",
       description:
-        "O'zbekistondagi biznes uchun kompleks yechimlar: auditdan to to'liq buxgalteriya qo'llab-quvvatlashigacha",
+        "O'zbekistondagi biznes uchun kompleks yechimlar: moliyaviy tahlil va audit konsultatsiyalaridan to to'liq buxgalteriya qo'llab-quvvatlashigacha",
       learnMore: "Batafsil",
       cards: [
         {
@@ -282,9 +282,9 @@ const dictionaries = {
           features: ["Soliq bo'yicha maslahat", "QQSni qaytarish", "Xalqaro soliqqa tortish", "Soliq tekshiruvlarida hamrohlik"],
         },
         {
-          title: "Buxgalteriya autsorsingi",
-          description: "Toshkentdagi har qanday miqyosdagi kompaniyalar uchun kompleks buxgalteriya qo'llab-quvvatlovi.",
-          features: ["Hisob yuritish va tiklash", "Moliyaviy hisobot tayyorlash", "Soliq va statistik hisobot", "Kadrlar hisobi"],
+          title: "Buxgalteriya va kadrlar autsorsingi",
+          description: "Toshkentdagi har qanday miqyosdagi kompaniyalar uchun kompleks hisob va kadrlar auditi.",
+          features: ["Hisob yuritish va tiklash", "Kadrlar auditi", "Soliq va statistik hisobot", "Moliyaviy tahlil"],
         },
         {
           title: "MHXS bo'yicha audit va hisobot transformatsiyasi",

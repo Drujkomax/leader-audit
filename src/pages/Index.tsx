@@ -74,6 +74,46 @@ const Index = () => {
               </div>
             </section>
           )}
+          {language === "uz" && (
+            <section className="py-10 sm:py-14 bg-secondary/20">
+              <div className="container-wide max-w-5xl">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                  Toshkentda biznes uchun buxgalteriya va audit xizmatlari
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  O'zbekistondagi kompaniyalar uchun to'liq xizmatlar to'plamini taqdim etamiz: majburiy audit, tashabbuskor audit, soliq konsaltingi, soliq nazorati, QQSni qaytarish va buxgalteriya autsorsingi.
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-3 text-foreground">
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/obligatory-audit`}>Majburiy audit</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/initiative-audit`}>Tashabbuskor audit</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/tax-consulting`}>Soliq konsaltingi va nazorati</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/vat-refund`}>QQSni qaytarish</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/accounting`}>Buxgalteriya autsorsingi</Link></li>
+                  <li><span>Toshkent va O'zbekiston bo'ylab biznes auditi</span></li>
+                </ul>
+              </div>
+            </section>
+          )}
+          {language === "en" && (
+            <section className="py-10 sm:py-14 bg-secondary/20">
+              <div className="container-wide max-w-5xl">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                  Accounting and Audit Services in Tashkent for Business
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  We provide a full range of services for companies in Uzbekistan: statutory audit, initiative audit, tax consulting, tax support, VAT refunds, and accounting outsourcing.
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-3 text-foreground">
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/obligatory-audit`}>Statutory Audit</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/initiative-audit`}>Initiative Audit</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/tax-consulting`}>Tax Consulting and Support</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/vat-refund`}>VAT Refund</Link></li>
+                  <li><Link className="hover:text-primary transition-colors" to={`${langPrefix}/services/accounting`}>Accounting Outsourcing</Link></li>
+                  <li><span>Business Audit in Tashkent and Uzbekistan</span></li>
+                </ul>
+              </div>
+            </section>
+          )}
           <AboutSection />
           <ExpertiseSection />
           <FAQSection />
