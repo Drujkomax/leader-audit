@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
 
-import evosLogo from "@/assets/clients/evos.png";
-import itecaLogo from "@/assets/clients/iteca.png";
-import rozmetovLogo from "@/assets/clients/rozmetov.png";
-import onaLogo from "@/assets/clients/ona.png";
-import sherinLogo from "@/assets/clients/sherin.png";
-import jizzaxLogo from "@/assets/clients/jizzax-organic.png";
-import nokiaLogo from "@/assets/clients/nokia.png";
-import dvePalochkiLogo from "@/assets/clients/dve-palochki.png";
-import alkimLogo from "@/assets/clients/alkim-tekstil.png";
-import eurasiaLogo from "@/assets/clients/eurasia-alliance-tex.png";
-import pharmaLogo from "@/assets/clients/pharma-choice.png";
-import segTascoLogo from "@/assets/clients/seg-tasco.png";
-import nvbsLogo from "@/assets/clients/nvbs-tech.png";
-import quantoLogo from "@/assets/clients/quanto-servicing.png";
+import evosLogo from "@/assets/clients/evos.webp";
+import itecaLogo from "@/assets/clients/iteca.webp";
+import rozmetovLogo from "@/assets/clients/rozmetov.webp";
+import onaLogo from "@/assets/clients/ona.webp";
+import sherinLogo from "@/assets/clients/sherin.webp";
+import jizzaxLogo from "@/assets/clients/jizzax-organic.webp";
+import nokiaLogo from "@/assets/clients/nokia.webp";
+import dvePalochkiLogo from "@/assets/clients/dve-palochki.webp";
+import alkimLogo from "@/assets/clients/alkim-tekstil.webp";
+import eurasiaLogo from "@/assets/clients/eurasia-alliance-tex.webp";
+import pharmaLogo from "@/assets/clients/pharma-choice.webp";
+import segTascoLogo from "@/assets/clients/seg-tasco.webp";
+import nvbsLogo from "@/assets/clients/nvbs-tech.webp";
+import quantoLogo from "@/assets/clients/quanto-servicing.webp";
 import { useLanguage } from "@/contexts/language-context";
 
 const TrustBar = () => {

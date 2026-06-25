@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -5,18 +6,20 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "@/contexts/language-context";
-import ObligatoryAudit from "./pages/services/ObligatoryAudit";
-import InitiativeAudit from "./pages/services/InitiativeAudit";
-import TaxConsulting from "./pages/services/TaxConsulting";
-import VATRefund from "./pages/services/VATRefund";
-import Accounting from "./pages/services/Accounting";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Cases from "./pages/Cases";
-import BlogIndex from "./pages/blog/BlogIndex";
-import BlogPost from "./pages/blog/BlogPost";
+
+// Home stays eager (it is the LCP route); every other page is code-split.
+const NotFound = lazy(() => import("./pages/NotFound"));
+const ObligatoryAudit = lazy(() => import("./pages/services/ObligatoryAudit"));
+const InitiativeAudit = lazy(() => import("./pages/services/InitiativeAudit"));
+const TaxConsulting = lazy(() => import("./pages/services/TaxConsulting"));
+const VATRefund = lazy(() => import("./pages/services/VATRefund"));
+const Accounting = lazy(() => import("./pages/services/Accounting"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Cases = lazy(() => import("./pages/Cases"));
+const BlogIndex = lazy(() => import("./pages/blog/BlogIndex"));
+const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
 
 const queryClient = new QueryClient();
 
@@ -28,6 +31,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <Suspense fallback={<div className="min-h-screen bg-background" />}>
             <Routes>
               <Route path="/" element={<Index />} />
 
@@ -76,6 +80,7 @@ const App = () => (
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </Suspense>
           </BrowserRouter>
         </TooltipProvider>
       </LanguageProvider>

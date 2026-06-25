@@ -125,3 +125,7 @@ Allow: /
 
 # === Sitemap ===
 Sitemap: https://leaderaudit.uz/sitemap.xml
+
+# === LLM-friendly content (llms.txt standard) ===
+# LLM content: https://leaderaudit.uz/llms.txt
+# LLM full text: https://leaderaudit.uz/llms-full.txt

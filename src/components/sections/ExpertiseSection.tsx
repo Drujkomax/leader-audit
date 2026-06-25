@@ -76,9 +76,11 @@ const ExpertiseSection = () => {
     },
   ];
 
+  // Aligned to the canonical figures used across the site, schema and no-JS fallback
+  // (founded 2013 → 13 years; 220+ audit engagements) to avoid contradictory E-E-A-T signals.
   const stats = [
-    { value: 15, suffix: "+", label: t.expertise.statsLabels[0] },
-    { value: 500, suffix: "+", label: t.expertise.statsLabels[1] },
+    { value: 13, suffix: "+", label: t.expertise.statsLabels[0] },
+    { value: 220, suffix: "+", label: t.expertise.statsLabels[1] },
     { value: 100, suffix: "%", label: t.expertise.statsLabels[2] },
     { value: 0, suffix: "", label: t.expertise.statsLabels[3] },
   ];

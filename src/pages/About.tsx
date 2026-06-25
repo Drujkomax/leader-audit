@@ -13,18 +13,18 @@ const About = () => {
 
   const seo = {
     ru: {
-      title: "О компании Leader Audit | Лицензированный аудитор Узбекистана с 2013 года",
-      description: "АО ООО «LEADER AUDIT» — лицензированная аудиторская компания в Ташкенте с 13-летним опытом. Сертификаты CAP, CIPA, DipIFR. Лицензия Минфина РУз. 220+ проверок, 200+ млрд сумов возврата НДС.",
+      title: "О компании Leader Audit — аудитор с 2013 года",
+      description: "ООО «LEADER AUDIT» — лицензированный аудитор в Ташкенте. 13 лет, 220+ проверок, сертификаты CAP, CIPA, DipIFR. Лицензия Минфина РУз.",
       keywords: "о компании Leader Audit, аудиторская компания Ташкент, лицензированный аудитор, CAP CIPA DipIFR, страхование ответственности",
     },
     uz: {
-      title: "Leader Audit kompaniyasi haqida | 2013 yildan litsenziyalangan auditor",
-      description: "АО ООО «LEADER AUDIT» — Toshkentdagi 13 yillik tajribaga ega litsenziyalangan auditorlik kompaniyasi. CAP, CIPA, DipIFR sertifikatlari. Moliya vazirligi litsenziyasi.",
+      title: "Leader Audit haqida — 2013 yildan auditor",
+      description: "«LEADER AUDIT» — Toshkentdagi litsenziyalangan auditor. 13 yil, 220+ tekshiruv, CAP, CIPA, DipIFR sertifikatlari. Moliya vazirligi litsenziyasi.",
       keywords: "Leader Audit haqida, Toshkent auditorlik kompaniyasi, litsenziyalangan auditor",
     },
     en: {
-      title: "About Leader Audit | Licensed Auditor of Uzbekistan since 2013",
-      description: "Leader Audit LLC is a licensed audit firm in Tashkent with 13 years of experience. CAP, CIPA, DipIFR certifications. Ministry of Finance license. 220+ engagements.",
+      title: "About Leader Audit — auditor since 2013",
+      description: "Leader Audit LLC is a licensed auditor in Tashkent. 13 years, 220+ engagements, CAP, CIPA, DipIFR certifications, Ministry of Finance license.",
       keywords: "about Leader Audit, Tashkent audit firm, licensed auditor, CAP CIPA DipIFR",
     },
   } as const;
@@ -33,16 +33,7 @@ const About = () => {
   const canonical = `https://leaderaudit.uz${langPrefix}/about`;
   const meta = seo[language];
 
-  const aboutPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: meta.title,
-    description: meta.description,
-    url: canonical,
-    mainEntity: {
-      "@id": "https://leaderaudit.uz/#organization",
-    },
-  };
+  // JSON-LD (AboutPage + Breadcrumb) is emitted by the static prerender as one @graph.
 
   const heroCopy = {
     ru: { title: "О компании Leader Audit", subtitle: "Лицензированный аудитор Узбекистана с 2013 года" },
@@ -58,7 +49,6 @@ const About = () => {
         description={meta.description}
         keywords={meta.keywords}
         canonical={canonical}
-        schemaJsonLd={aboutPageSchema}
       />
       <div className="min-h-screen bg-background">
         <Header />

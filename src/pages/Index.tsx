@@ -19,23 +19,23 @@ const Index = () => {
 
   const seo = {
     ru: {
-      title: "Аудиторские услуги в Ташкенте — Leader Audit | Узбекистан",
-      description: "Профессиональный аудит, бухгалтерский учёт и налоговый консалтинг в Узбекистане. Лицензия Минфина РУз. Бесплатная консультация — оставьте заявку.",
-      keywords: "обязательный аудит, инициативный аудит, налоговый консалтинг, возврат НДС, бухгалтерский аутсорсинг, аудиторская компания в узбекистане, бухгалтерские услуги в ташкенте, бухгалтерские услуги и аудит в ташкенте, бизнес аудит в ташкенте, налоговое сопровождение, налоговый аудит в узбекистане",
+      title: "Leader Audit — аудиторская компания в Ташкенте",
+      description: "Лицензированный аудит по МСА и НСБУ, налоговый консалтинг, возврат НДС и бухгалтерский аутсорсинг в Ташкенте. 13 лет, 220+ проверок. Лицензия Минфина РУз.",
+      keywords: "обязательный аудит, инициативный аудит, налоговый консалтинг, возврат НДС, бухгалтерский аутсорсинг, аудиторская компания в узбекистане, бухгалтерские услуги в ташкенте, бизнес аудит в ташкенте, налоговое сопровождение, налоговый аудит в узбекистане",
     },
     uz: {
-      title: "Leader Audit — Toshkentdagi auditorlik kompaniyasi | Audit, soliq konsalting, QQS qaytarish",
-      description: "Toshkentdagi litsenziyalangan auditorlik kompaniyasi. Majburiy va tashabbuskor audit XAS va MHXS bo'yicha, soliq konsalting, QQS qaytarish, buxgalteriya autsorsing. 13 yil tajriba, 220+ tekshiruv.",
+      title: "Leader Audit — Toshkentda auditorlik kompaniyasi",
+      description: "Toshkentda XAS va MHXS bo'yicha litsenziyalangan audit, soliq konsalting, QQS qaytarish va buxgalteriya autsorsing. 13 yil, 220+ tekshiruv.",
       keywords: "audit Toshkent, auditorlik kompaniyasi O'zbekiston, majburiy audit, soliq konsalting, QQS qaytarish, XAS, XHXS, MHXS",
     },
     en: {
-      title: "Leader Audit — Audit & Tax Consulting Firm in Uzbekistan | Tashkent",
-      description: "Licensed audit firm in Tashkent, Uzbekistan. Statutory & initiative audits under ISA and NAS, tax consulting, VAT refund, accounting outsourcing. 13 years experience, 220+ engagements. Licensed by the Ministry of Finance of Uzbekistan.",
+      title: "Leader Audit — Audit & Tax Firm in Tashkent",
+      description: "Licensed audit (ISA & NAS), tax consulting, VAT refund and accounting outsourcing in Tashkent, Uzbekistan. 13 years, 220+ engagements.",
       keywords: "audit Tashkent, audit firm Uzbekistan, statutory audit, tax consulting Uzbekistan, VAT refund, ISA, IFRS, NAS, accounting outsourcing",
     },
   } as const;
 
-  const canonical = language === "ru" ? "https://leaderaudit.uz/" : `https://leaderaudit.uz/${language}/`;
+  const canonical = language === "ru" ? "https://leaderaudit.uz/" : `https://leaderaudit.uz/${language}`;
   const meta = seo[language];
   const langPrefix = language === "ru" ? "" : `/${language}`;
 

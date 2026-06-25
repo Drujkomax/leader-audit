@@ -23,62 +23,8 @@ const ServicePageTemplate = ({ slug }: ServicePageTemplateProps) => {
   const langPrefix = language === "ru" ? "" : `/${language}`;
   const canonical = `${SITE_URL}${langPrefix}/services/${slug}`;
 
-  // FAQPage Schema for this specific service
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: content.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
-
-  // Service Schema
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: content.title,
-    serviceType: content.schemaServiceType,
-    provider: {
-      "@id": "https://leaderaudit.uz/#organization",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "Uzbekistan",
-    },
-    description: content.metaDescription,
-    url: canonical,
-  };
-
-  // BreadcrumbList Schema
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: language === "ru" ? "Главная" : language === "uz" ? "Bosh sahifa" : "Home",
-        item: `${SITE_URL}${langPrefix}/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: language === "ru" ? "Услуги" : language === "uz" ? "Xizmatlar" : "Services",
-        item: `${SITE_URL}${langPrefix}/`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: content.title,
-        item: canonical,
-      },
-    ],
-  };
+  // JSON-LD for this page is emitted by the static prerender (scripts/seo-shared.mjs) as a
+  // single complete @graph, so it is intentionally NOT duplicated at runtime here.
 
   return (
     <>
@@ -88,7 +34,6 @@ const ServicePageTemplate = ({ slug }: ServicePageTemplateProps) => {
         keywords={content.keywords}
         canonical={canonical}
         type="service"
-        schemaJsonLd={[serviceSchema, faqSchema, breadcrumbSchema]}
       />
       <div className="min-h-screen bg-background">
         <Header />

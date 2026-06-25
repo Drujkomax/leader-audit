@@ -12,8 +12,8 @@ const Contact = () => {
 
   const content = {
     ru: {
-      title: "Контакты Leader Audit | Аудиторская организация Ташкент",
-      description: "Свяжитесь с Leader Audit: телефон +998 97 410 04 47. Консультации по аудиту организаций в Узбекистане, консультации по срокам проведения и аналитике рисков. г. Ташкент, ул. Мустакиллик, 12.",
+      title: "Контакты Leader Audit — Ташкент",
+      description: "Свяжитесь с Leader Audit: +998 97 410 04 47, info@leaderaudit.uz, г. Ташкент, ул. Мустакиллик, 12. Часы работы: Пн–Пт 9:00–18:00.",
       keywords: "контакты Leader Audit, аудиторская организация Ташкент, консультации по аудиту организаций в Узбекистане, сроки проведения аудита, аналитика рисков, кадровый аудит, МСФО",
       pageTitle: "Контакты",
       pageSubtitle: "Свяжитесь с нами удобным для вас способом",
@@ -22,8 +22,8 @@ const Contact = () => {
       addressLabel: "Адрес офиса",
     },
     uz: {
-      title: "Leader Audit kontaktlari | Toshkentdagi auditorlik tashkiloti",
-      description: "Leader Audit bilan bog'laning: telefon +998 97 410 04 47. O'zbekistonda tashkilotlar auditi bo'yicha konsultatsiyalar, xatarlarni tahlil qilish. Toshkent shahri, Mustaqillik ko'chasi, 12.",
+      title: "Leader Audit kontaktlari — Toshkent",
+      description: "Leader Audit bilan bog'laning: +998 97 410 04 47, info@leaderaudit.uz, Toshkent, Mustaqillik ko'chasi, 12. Ish vaqti: Du–Ju 9:00–18:00.",
       keywords: "Leader Audit kontaktlari, Toshkent auditorlik tashkiloti, audit konsultatsiyalari, xatarlar tahlili, kadrlar auditi, MHXS",
       pageTitle: "Kontaktlar",
       pageSubtitle: "Biz bilan o'zingiz uchun qulay tarzda bog'laning",
@@ -32,8 +32,8 @@ const Contact = () => {
       addressLabel: "Ofis manzili",
     },
     en: {
-      title: "Contact Leader Audit | Audit firm in Tashkent",
-      description: "Contact Leader Audit: phone +998 97 410 04 47, email info@leaderaudit.uz, address 12 Mustaqillik St, Tashkent. Hours: Mon-Fri 9:00-18:00.",
+      title: "Contact Leader Audit — Tashkent",
+      description: "Contact Leader Audit: +998 97 410 04 47, info@leaderaudit.uz, 12 Mustaqillik St, Tashkent. Hours: Mon–Fri 9:00–18:00.",
       keywords: "Leader Audit contacts, Tashkent audit firm phone",
       pageTitle: "Contact us",
       pageSubtitle: "Reach out in the way that works for you",
@@ -47,14 +47,7 @@ const Contact = () => {
   const langPrefix = language === "ru" ? "" : `/${language}`;
   const canonical = `https://leaderaudit.uz${langPrefix}/contact`;
 
-  const contactSchema = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: c.title,
-    description: c.description,
-    url: canonical,
-    mainEntity: { "@id": "https://leaderaudit.uz/#organization" },
-  };
+  // JSON-LD (ContactPage + Breadcrumb) is emitted by the static prerender as one @graph.
 
   return (
     <>
@@ -63,7 +56,6 @@ const Contact = () => {
         description={c.description}
         keywords={c.keywords}
         canonical={canonical}
-        schemaJsonLd={contactSchema}
       />
       <div className="min-h-screen bg-background">
         <Header />

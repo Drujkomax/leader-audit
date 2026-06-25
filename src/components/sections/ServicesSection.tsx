@@ -1,17 +1,31 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ClipboardCheck, Calculator, Users, FileText, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
+// Card order → the most relevant service page (the IFRS-audit and Due-Diligence cards
+// point to their closest dedicated page so every card passes link equity to a money page).
+const SERVICE_SLUGS = [
+  "obligatory-audit",
+  "initiative-audit",
+  "tax-consulting",
+  "accounting",
+  "obligatory-audit",
+  "initiative-audit",
+];
+
 const ServicesSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const langPrefix = language === "ru" ? "" : `/${language}`;
 
   const icons = [ClipboardCheck, FileText, Calculator, Users, ClipboardCheck, FileText];
-  
+
   const services = t.services.cards.map((card, index) => ({
     icon: icons[index % icons.length],
     title: card.title,
     description: card.description,
     features: card.features,
+    href: `${langPrefix}/services/${SERVICE_SLUGS[index] ?? "obligatory-audit"}`,
   }));
 
   return (
@@ -70,13 +84,13 @@ const ServicesSection = () => {
                   ))}
                 </ul>
 
-                <a 
-                  href="#contact" 
+                <Link
+                  to={service.href}
                   className="inline-flex items-center gap-1.5 sm:gap-2 text-primary font-semibold text-sm sm:text-base hover:gap-2 sm:hover:gap-3 transition-all mt-2"
                 >
                   {t.services.learnMore}
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}

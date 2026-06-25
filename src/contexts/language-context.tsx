@@ -100,7 +100,7 @@ const russianDictionary = {
       "млрд сумов содействие в возврате НДС",
     ],
     paragraphsLeft: [
-      "АО ООО «LEADER AUDIT» — надежный партнер в области аудита и консалтинга, созданный на основании Закона Республики Узбекистан «Об аудиторской деятельности».",
+      "ООО «LEADER AUDIT» — надежный партнер в области аудита и консалтинга, созданный на основании Закона Республики Узбекистан «Об аудиторской деятельности».",
       "Мы несем полную ответственность за качество предоставляемых услуг, что подтверждается страхованием профессиональной ответственности.",
       "Основатели нашей компании — опытные аудиторы с международными и национальными сертификатами, включая CAP, CIPA и DipIFR.",
     ],
@@ -310,7 +310,7 @@ const dictionaries = {
         "mlrd so'm QQS qaytarishga ko'mak",
       ],
       paragraphsLeft: [
-        "'LEADER AUDIT' MCHJ OAJ O'zbekiston Respublikasining 'Auditorlik faoliyati to'g'risida'gi qonuni asosida tashkil etilgan audit va konsalting sohasidagi ishonchli hamkor.",
+        "'LEADER AUDIT' MCHJ O'zbekiston Respublikasining 'Auditorlik faoliyati to'g'risida'gi qonuni asosida tashkil etilgan audit va konsalting sohasidagi ishonchli hamkor.",
         "Biz xizmatlar sifati uchun to'liq javobgarlikni o'z zimmamizga olamiz; bu professional javobgarlik sug'urtasi bilan tasdiqlangan.",
         "Kompaniyamiz asoschilari CAP, CIPA, DipIFR kabi xalqaro va milliy sertifikatlarga ega tajribali auditorlardir.",
       ],
@@ -641,29 +641,20 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 const STORAGE_KEY = "leader-audit-language";
 
-const isLanguage = (value: string | null): value is Language => value === "ru" || value === "uz" || value === "en";
-
 const detectLanguageFromUrl = (): Language => {
   if (typeof window === "undefined") return "ru";
   const path = window.location.pathname;
-  if (path.startsWith("/uz")) return "uz";
-  if (path.startsWith("/en")) return "en";
+  if (/^\/uz(\/|$)/.test(path)) return "uz";
+  if (/^\/en(\/|$)/.test(path)) return "en";
   return "ru";
 };
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>(() => {
-    if (typeof window === "undefined") {
-      return "ru";
-    }
-
-    // URL takes priority — if user is on /uz/... or /en/... use that
-    const urlLang = detectLanguageFromUrl();
-    if (urlLang !== "ru") return urlLang;
-
-    const storedLanguage = window.localStorage.getItem(STORAGE_KEY);
-    return isLanguage(storedLanguage) ? storedLanguage : "ru";
-  });
+  // Seed strictly from the URL so a bare default-locale path (no /uz, /en prefix) always
+  // resolves to RU. This prevents a stored language from producing a /uz canonical on a
+  // non-prefixed URL (duplicate/conflicting canonical). The language switcher navigates to
+  // the localized URL, so the URL is always the source of truth.
+  const [language, setLanguage] = useState<Language>(() => detectLanguageFromUrl());
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, language);

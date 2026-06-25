@@ -17,10 +17,12 @@ const SITE_URL = "https://leaderaudit.uz";
 const buildAlternates = (canonical: string) => {
   const path = canonical.replace(SITE_URL, "");
   const cleanPath = path.replace(/^\/(uz|en)\//, "/").replace(/^\/(uz|en)$/, "/");
+  // /uz and /en stay slash-less (matches prerender + sitemap + vercel trailingSlash:false);
+  // only the RU root keeps its trailing slash.
   return {
     ru: `${SITE_URL}${cleanPath}`,
-    uz: cleanPath === "/" ? `${SITE_URL}/uz/` : `${SITE_URL}/uz${cleanPath}`,
-    en: cleanPath === "/" ? `${SITE_URL}/en/` : `${SITE_URL}/en${cleanPath}`,
+    uz: cleanPath === "/" ? `${SITE_URL}/uz` : `${SITE_URL}/uz${cleanPath}`,
+    en: cleanPath === "/" ? `${SITE_URL}/en` : `${SITE_URL}/en${cleanPath}`,
   };
 };
 
@@ -29,7 +31,7 @@ export const SEO = ({
   description,
   canonical,
   keywords,
-  image = `${SITE_URL}/leader-audit-logo.png?v=20260427`,
+  image = `${SITE_URL}/og-image.png?v=20260626`,
   type = "website",
   schemaJsonLd,
   noindex = false,
@@ -48,13 +50,12 @@ export const SEO = ({
         name="robots"
         content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}
       />
-      <link rel="canonical" href={canonical} />
-
-      {/* Hreflang */}
-      <link rel="alternate" hrefLang="ru" href={alternates.ru} />
-      <link rel="alternate" hrefLang="uz" href={alternates.uz} />
-      <link rel="alternate" hrefLang="en" href={alternates.en} />
-      <link rel="alternate" hrefLang="x-default" href={alternates.ru} />
+      {/* canonical + hreflang only on indexable pages (skip on noindex/404) */}
+      {!noindex && <link rel="canonical" href={canonical} />}
+      {!noindex && <link rel="alternate" hrefLang="ru" href={alternates.ru} />}
+      {!noindex && <link rel="alternate" hrefLang="uz" href={alternates.uz} />}
+      {!noindex && <link rel="alternate" hrefLang="en" href={alternates.en} />}
+      {!noindex && <link rel="alternate" hrefLang="x-default" href={alternates.ru} />}
 
       {/* Open Graph */}
       <meta property="og:type" content={type === "service" ? "website" : type} />

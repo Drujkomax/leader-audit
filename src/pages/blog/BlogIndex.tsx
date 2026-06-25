@@ -16,23 +16,23 @@ const BlogIndex = () => {
 
   const labels = {
     ru: {
-      title: "Блог Leader Audit | Экспертные статьи по аудиту и налогам в Узбекистане",
-      description: "Консультации по аудиту организаций в Узбекистане, аналитика рисков, МСФО и кадровый аудит. Практические советы от лицензированных аудиторов Leader Audit.",
+      title: "Блог Leader Audit — аудит и налоги",
+      description: "Экспертные статьи по аудиту, налогам, МСФО и бухгалтерии в Узбекистане. Практические советы от лицензированных аудиторов Leader Audit.",
       keywords: "блог аудит, статьи налоги Узбекистан, консультации по аудиту организаций, МСФО, кадровый аудит, финансовый анализ",
       h1: "Блог Leader Audit",
       subtitle: "Консультации по аудиту, налогам и бухгалтерии в Узбекистане",
       readMore: "Читать статью",
     },
     uz: {
-      title: "Leader Audit blogi | O'zbekistonda audit va soliqlar bo'yicha ekspert maqolalari",
-      description: "O'zbekistonda audit, soliq konsalting, buxgalteriya va QQS qaytarish bo'yicha ekspert maqolalar.",
+      title: "Leader Audit blogi — audit va soliqlar",
+      description: "O'zbekistonda audit, soliq konsalting, buxgalteriya va QQS qaytarish bo'yicha ekspert maqolalar. Litsenziyalangan auditorlardan amaliy maslahatlar.",
       keywords: "audit blogi, O'zbekiston soliqlar maqolalar",
       h1: "Leader Audit blogi",
       subtitle: "O'zbekistonda audit, soliqlar va buxgalteriya bo'yicha ekspert maqolalar",
       readMore: "Maqolani o'qish",
     },
     en: {
-      title: "Leader Audit Blog | Expert Articles on Audit & Taxes in Uzbekistan",
+      title: "Leader Audit Blog — Audit & Taxes",
       description: "Expert articles on audit, tax consulting, accounting and VAT refund in Uzbekistan. Practical advice from licensed auditors.",
       keywords: "audit blog, tax articles Uzbekistan, expert audit articles",
       h1: "Leader Audit Blog",
@@ -44,22 +44,7 @@ const BlogIndex = () => {
   const c = labels[language];
   const posts = Object.values(blogPosts[language]);
 
-  const blogSchema = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    name: c.h1,
-    description: c.description,
-    url: canonical,
-    publisher: { "@id": "https://leaderaudit.uz/#organization" },
-    blogPost: posts.map((post) => ({
-      "@type": "BlogPosting",
-      headline: post.title,
-      datePublished: post.publishedDate,
-      dateModified: post.modifiedDate,
-      author: { "@id": "https://leaderaudit.uz/#organization" },
-      url: `${canonical}/${post.slug}`,
-    })),
-  };
+  // JSON-LD (CollectionPage + Blog + Breadcrumb) is emitted by the static prerender.
 
   return (
     <>
@@ -68,7 +53,6 @@ const BlogIndex = () => {
         description={c.description}
         keywords={c.keywords}
         canonical={canonical}
-        schemaJsonLd={blogSchema}
       />
       <div className="min-h-screen bg-background">
         <Header />

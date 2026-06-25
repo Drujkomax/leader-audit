@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useLanguage, type Language } from "@/contexts/language-context";
 
@@ -27,8 +28,21 @@ type LanguageDropdownProps = {
 
 const LanguageDropdown = ({ isScrolled }: LanguageDropdownProps) => {
   const { language, setLanguage, t } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const activeOption = options.find((option) => option.code === language) ?? options[0];
+
+  // Navigate to the localized URL so each language has a real, crawlable address and the
+  // canonical/hreflang stay consistent with the path (no localStorage-only state).
+  const switchLanguage = (code: Language) => {
+    if (code === language) return;
+    const basePath = location.pathname.replace(/^\/(uz|en)(?=\/|$)/, "") || "/";
+    const prefix = code === "ru" ? "" : `/${code}`;
+    const target = basePath === "/" ? prefix || "/" : `${prefix}${basePath}`;
+    setLanguage(code);
+    navigate(`${target}${location.hash || ""}`);
+  };
 
   return (
     <DropdownMenu>
@@ -54,7 +68,7 @@ const LanguageDropdown = ({ isScrolled }: LanguageDropdownProps) => {
         {options.map((option) => (
           <DropdownMenuItem
             key={option.code}
-            onClick={() => setLanguage(option.code)}
+            onClick={() => switchLanguage(option.code)}
             className="flex items-center justify-between"
           >
             <span className="flex items-center gap-2">

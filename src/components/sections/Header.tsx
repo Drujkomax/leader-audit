@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import logoWebp from "@/assets/logo.webp";
 import LanguageDropdown from "@/components/language/LanguageDropdown";
 import { useLanguage } from "@/contexts/language-context";
 
@@ -44,15 +45,17 @@ const Header = () => {
     >
       <div className="container-wide flex items-center justify-between">
         <a href={`${langPrefix}/`} className="flex items-center gap-2" aria-label="Leader Audit — главная">
-          <img
-            src={logo}
-            alt="Leader Audit — лицензированная аудиторская компания в Узбекистане"
-            width="180"
-            height="48"
-            fetchPriority="high"
-            decoding="async"
-            className="h-8 sm:h-10 md:h-12 w-auto"
-          />
+          <picture>
+            <source srcSet={logoWebp} type="image/webp" />
+            <img
+              src={logo}
+              alt="Leader Audit — лицензированная аудиторская компания в Узбекистане"
+              width="180"
+              height="98"
+              decoding="async"
+              className="h-8 sm:h-10 md:h-12 w-auto"
+            />
+          </picture>
         </a>
 
         {/* Desktop Navigation */}

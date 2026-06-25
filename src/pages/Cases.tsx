@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, Target, Lightbulb, TrendingUp, Lock, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Briefcase, Target, Lightbulb, TrendingUp, Lock, Clock, ArrowRight } from "lucide-react";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -9,8 +10,10 @@ import LeadFormSection from "@/components/sections/LeadFormSection";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/language-context";
 import { casesContent } from "@/data/cases-content";
+import { servicesContent } from "@/data/services-content";
 
 const SITE_URL = "https://leaderaudit.uz";
+const SERVICE_SLUGS = ["obligatory-audit", "initiative-audit", "tax-consulting", "vat-refund", "accounting"] as const;
 
 const Cases = () => {
   const { language } = useLanguage();
@@ -29,31 +32,7 @@ const Cases = () => {
       ? content.cases
       : content.cases.filter((c) => c.industryTag === activeFilter);
 
-  const schema = [
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      name: content.metaTitle,
-      description: content.metaDescription,
-      url: canonical,
-      inLanguage: language === "ru" ? "ru-RU" : language === "uz" ? "uz-UZ" : "en-US",
-      isPartOf: { "@id": `${SITE_URL}/#website` },
-      hasPart: content.cases.map((c) => ({
-        "@type": "Article",
-        headline: `${c.industry}: ${c.serviceType}`,
-        about: c.industry,
-        articleBody: `${c.challenge} ${c.outcomeNarrative}`,
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}${langPrefix}/` },
-        { "@type": "ListItem", position: 2, name: content.heroTitle, item: canonical },
-      ],
-    },
-  ];
+  // JSON-LD (CollectionPage + Breadcrumb) is emitted by the static prerender as one @graph.
 
   return (
     <>
@@ -62,7 +41,6 @@ const Cases = () => {
         description={content.metaDescription}
         keywords={content.keywords}
         canonical={canonical}
-        schemaJsonLd={schema}
       />
       <div className="min-h-screen bg-background">
         <Header />
@@ -227,6 +205,27 @@ const Cases = () => {
                   <p key={i} className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {p}
                   </p>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Services internal links */}
+          <section className="py-12 sm:py-16">
+            <div className="container-wide max-w-4xl">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground text-center mb-8">
+                {language === "ru" ? "Наши услуги" : language === "uz" ? "Bizning xizmatlar" : "Our services"}
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                {SERVICE_SLUGS.map((s) => (
+                  <Link
+                    key={s}
+                    to={`${langPrefix}/services/${s}`}
+                    className="flex items-center justify-between gap-2 bg-card border border-border rounded-xl p-4 hover:border-primary/40 hover:shadow-md transition-all text-foreground font-semibold"
+                  >
+                    {servicesContent[language][s].title}
+                    <ArrowRight className="w-4 h-4 text-primary flex-shrink-0" />
+                  </Link>
                 ))}
               </div>
             </div>

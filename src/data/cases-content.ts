@@ -43,9 +43,9 @@ type CasesContent = Record<Language, CasesPageContent>;
 
 export const casesContent: CasesContent = {
   ru: {
-    metaTitle: "Кейсы Leader Audit | Реальные результаты аудита и налогового консалтинга в Узбекистане",
+    metaTitle: "Кейсы Leader Audit: аудит и налоговый консалтинг",
     metaDescription:
-      "Реальные кейсы Leader Audit: возврат НДС 18 млрд сум для производителя, выявление налоговых рисков на 4,2 млрд сум, подготовка отчётности по МСФО для IT-компании. Цифры, сроки, результат.",
+      "Кейсы Leader Audit: возврат НДС 18,4 млрд сум для производителя, выявление налоговых рисков на 4,2 млрд сум, отчётность по МСФО для IT-компании.",
     keywords:
       "кейсы аудита Узбекистан, примеры аудиторских проверок, возврат НДС кейс, оптимизация налогов результат, Leader Audit отзывы",
     heroBadge: "Реальные результаты",
@@ -228,9 +228,9 @@ export const casesContent: CasesContent = {
   },
 
   uz: {
-    metaTitle: "Leader Audit keyslari | O'zbekistonda audit va soliq konsalting natijalari",
+    metaTitle: "Leader Audit keyslari: audit va soliq konsalting natijalari",
     metaDescription:
-      "Leader Auditning haqiqiy keyslari: ishlab chiqaruvchi uchun 18 mlrd so'm QQS qaytarish, 4,2 mlrd so'm soliq xavflarini aniqlash, IT-kompaniya uchun MHXS hisoboti tayyorlash. Raqamlar, muddatlar, natija.",
+      "Leader Audit keyslari: ishlab chiqaruvchi uchun 18,4 mlrd so'm QQS qaytarish, 4,2 mlrd so'm soliq xavfini aniqlash, IT uchun MHXS hisoboti.",
     keywords:
       "audit keyslari O'zbekiston, audit tekshiruvlari misollari, QQS qaytarish keysi, soliq optimallashtirish natijasi",
     heroBadge: "Haqiqiy natijalar",
@@ -413,9 +413,9 @@ export const casesContent: CasesContent = {
   },
 
   en: {
-    metaTitle: "Leader Audit Case Studies | Real Results of Audit & Tax Consulting in Uzbekistan",
+    metaTitle: "Audit & Tax Case Studies in Uzbekistan — Leader Audit",
     metaDescription:
-      "Real Leader Audit cases: 18 bn UZS VAT refund for a manufacturer, 4.2 bn UZS tax risk identified, IFRS reporting prepared for an IT company. Numbers, timelines, outcomes.",
+      "Leader Audit cases: 18.4 bn UZS VAT refund for a manufacturer, 4.2 bn UZS tax risks found, IFRS reporting for an IT company. Real numbers and outcomes.",
     keywords:
       "audit case studies Uzbekistan, audit examples, VAT refund case, tax optimization results, Leader Audit reviews",
     heroBadge: "Real Results",

@@ -8,8 +8,19 @@ import LeadFormSection from "@/components/sections/LeadFormSection";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/language-context";
 import { blogPosts } from "@/data/blog-posts";
+import { servicesContent } from "@/data/services-content";
 
 const SITE_URL = "https://leaderaudit.uz";
+
+// Each guide links to its most relevant service pages (contextual internal linking).
+const RELATED_SERVICES: Record<string, string[]> = {
+  "obligatory-audit-guide-2026": ["obligatory-audit", "initiative-audit"],
+  "vat-refund-uzbekistan": ["vat-refund", "tax-consulting"],
+  "isa-vs-nas-uzbekistan": ["obligatory-audit", "accounting"],
+  "transfer-pricing-uzbekistan": ["tax-consulting", "obligatory-audit"],
+  "tax-audit-checklist": ["tax-consulting", "accounting"],
+  "tax-code-2026-changes": ["tax-consulting", "accounting"],
+};
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -23,34 +34,8 @@ const BlogPost = () => {
   const post = blogPosts[language][slug];
   const canonical = `${SITE_URL}${langPrefix}/blog/${slug}`;
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.metaDescription,
-    image: `${SITE_URL}/leader-audit-logo.png`,
-    datePublished: post.publishedDate,
-    dateModified: post.modifiedDate,
-    author: { "@id": "https://leaderaudit.uz/#organization" },
-    publisher: { "@id": "https://leaderaudit.uz/#organization" },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": canonical,
-    },
-    inLanguage: language === "ru" ? "ru-RU" : language === "uz" ? "uz-UZ" : "en-US",
-    keywords: post.keywords,
-    articleSection: post.category,
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}${langPrefix}/` },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}${langPrefix}/blog` },
-      { "@type": "ListItem", position: 3, name: post.title, item: canonical },
-    ],
-  };
+  // JSON-LD (BlogPosting + Breadcrumb) is emitted by the static prerender as one @graph,
+  // so it is intentionally not duplicated at runtime.
 
   const renderContent = () => {
     return post.content.map((block, idx) => {
@@ -109,7 +94,6 @@ const BlogPost = () => {
         keywords={post.keywords}
         canonical={canonical}
         type="article"
-        schemaJsonLd={[articleSchema, breadcrumbSchema]}
       />
       <div className="min-h-screen bg-background">
         <Header />
@@ -132,6 +116,11 @@ const BlogPost = () => {
                   <Calendar className="w-3 h-3" />
                   {post.publishedDate}
                 </span>
+                {post.modifiedDate && post.modifiedDate !== post.publishedDate && (
+                  <span className="flex items-center gap-1">
+                    {language === "ru" ? "Обновлено" : language === "uz" ? "Yangilangan" : "Updated"}: {post.modifiedDate}
+                  </span>
+                )}
                 <span className="flex items-center gap-1">
                   <Clock className="w-3 h-3" />
                   {post.readingTime}
@@ -148,6 +137,27 @@ const BlogPost = () => {
           <article className="py-10 sm:py-14">
             <div className="container-wide max-w-3xl">
               <div className="prose prose-lg max-w-none">{renderContent()}</div>
+
+              {(RELATED_SERVICES[slug] ?? []).length > 0 && (
+                <aside className="mt-12 border-t border-border pt-8">
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
+                    {language === "ru" ? "Связанные услуги" : language === "uz" ? "Bog'liq xizmatlar" : "Related services"}
+                  </h2>
+                  <ul className="flex flex-wrap gap-3">
+                    {(RELATED_SERVICES[slug] ?? []).map((s) => (
+                      <li key={s}>
+                        <Link
+                          to={`${langPrefix}/services/${s}`}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 text-primary font-semibold text-sm hover:bg-primary/10 transition-colors"
+                        >
+                          {servicesContent[language][s as keyof (typeof servicesContent)["ru"]].title}
+                          <ArrowLeft className="w-4 h-4 rotate-180" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
+              )}
             </div>
           </article>
 
