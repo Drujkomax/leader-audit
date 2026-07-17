@@ -12,6 +12,7 @@ export type BlogPost = {
   readingTime: string;
   category: string;
   content: { type: "h2" | "h3" | "p" | "ul" | "ol" | "quote"; text?: string; items?: string[] }[];
+  faqs?: { question: string; answer: string }[];
 };
 
 type BlogPosts = Record<Language, Record<string, BlogPost>>;
@@ -154,6 +155,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "Обязательный аудит — это не «галочка» для государства, а инструмент защиты бизнеса от налоговых, финансовых и репутационных рисков. Своевременно проведённый качественный аудит позволяет выявить и устранить проблемы до того, как они станут дорогостоящими. Если у вас остались вопросы или вам нужна консультация по подготовке к аудиту, специалисты Leader Audit готовы помочь — первая консультация бесплатна."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Какие организации подлежат обязательному аудиту в Узбекистане в 2026 году?",
+          "answer": "Согласно Закону РУз «Об аудиторской деятельности», обязательному аудиту подлежат все акционерные общества (открытые и закрытые независимо от размера), банки и микрофинансовые организации, страховые компании, инвестиционные, паевые и пенсионные фонды, биржи, организации с государственной долей более 50%, а также крупные компании, превышающие пороги по выручке, активам или численности. Также аудит обязателен для компаний, публикующих консолидированную отчётность по МСФО. Актуальные пороговые значения смотрите в действующем законодательстве."
+        },
+        {
+          "question": "В какие сроки нужно провести обязательный аудит?",
+          "answer": "Аудит должен быть завершён до подачи годовой финансовой отчётности — для большинства компаний это конец апреля года, следующего за отчётным. Качественный аудит занимает 3-8 недель в зависимости от размера компании и сложности отчётности, поэтому начинать процесс рекомендуется в январе-феврале, чтобы избежать аврала и переплат."
+        },
+        {
+          "question": "Что будет, если не пройти обязательный аудит вовремя?",
+          "answer": "Последствия зависят от типа компании: штрафы по Кодексу об административной ответственности РУз, невозможность сдать годовую отчётность в срок, блокировка отдельных операций для финансовых организаций и даже потеря лицензии для банков, страховых компаний и инвестфондов. Кроме того, без аудиторского заключения ослабляется позиция компании в налоговых спорах, а участие в госзакупках и получение банковских кредитов становится недоступным."
+        },
+        {
+          "question": "Как выбрать надёжную аудиторскую компанию в Ташкенте?",
+          "answer": "Проверьте наличие действующей лицензии Министерства финансов РУз, страхование профессиональной ответственности аудитора, опыт работы в вашей отрасли и наличие у ведущих специалистов международных сертификатов (CAP, CIPA, DipIFR/ACCA). Важны также прозрачное ценообразование с фиксированной суммой в договоре, готовность подписать соглашение о неразглашении (NDA) и отзывы клиентов из вашей сферы. Компания Leader Audit работает с 2013 года по лицензии Минфина; специалисты имеют сертификаты CAP, CIPA и DipIFR."
         }
       ]
     },
@@ -313,6 +332,24 @@ export const blogPosts: BlogPosts = {
           "type": "p",
           "text": "Возврат НДС — это не привилегия, а законное право компании, которое государство обязано исполнить. Однако без правильной подготовки и сопровождения процесс часто превращается в долгие месяцы переписки с налоговой и итоговый отказ. Leader Audit специализируется на возврате НДС с 2013 года и помогла клиентам вернуть более 200 млрд сумов. Если у вас есть переплата НДС или вы экспортёр/инвестор — обращайтесь, рассчитаем перспективы возврата бесплатно."
         }
+      ],
+      "faqs": [
+        {
+          "question": "Кто имеет право на возврат НДС из бюджета Узбекистана?",
+          "answer": "Согласно Налоговому кодексу РУз, вернуть НДС могут компании, у которых сумма входящего НДС превышает исходящий, экспортёры товаров и услуг (при ставке 0%), участники инвестиционной деятельности, ввозящие оборудование и материалы, а также компании, реализующие товары по льготной ставке. Чаще всего возвратом пользуются экспортёры, импортёры с большим объёмом входящего НДС, производители с длительным циклом и IT-компании, оказывающие услуги нерезидентам."
+        },
+        {
+          "question": "Какие документы нужны для возврата НДС?",
+          "answer": "Базовый пакет включает заявление на возврат по установленной форме, налоговую декларацию по НДС за период, электронные счёт-фактуры (ЭСФ) от поставщиков, договоры с поставщиками и покупателями, а также акты выполненных работ или товарно-транспортные накладные. Для экспортёров дополнительно нужны ГТД, CMR и банковские выписки о поступлении валюты, а для инвестиционных проектов — документы, подтверждающие их статус."
+        },
+        {
+          "question": "Сколько времени занимает возврат НДС в Узбекистане?",
+          "answer": "После подачи заявления через личный кабинет налогоплательщика на сайте ГНК проводится камеральная проверка обоснованности возврата, которая может длиться до 60 дней. По её результатам ГНК принимает решение о полном возврате, частичном или отказе, и при положительном решении средства поступают на расчётный счёт компании в течение 10 рабочих дней. Важно оперативно отвечать на запросы инспектора, так как задержки увеличивают срок проверки."
+        },
+        {
+          "question": "Что делать, если налоговая отказала в возврате НДС?",
+          "answer": "Отказ можно оспорить на нескольких уровнях: подать возражения на акт проверки в ту же инспекцию в установленный срок, направить жалобу в вышестоящий налоговый орган (ГНК Республики), а затем обжаловать решение в Экономическом суде. Ключевую роль играет грамотный сбор аргументации и правильное оформление документов. Специалисты Leader Audit, вернувшие клиентам более 200 млрд сумов НДС с 2013 года, помогут выстроить защиту и оспорить отказ."
+        }
       ]
     },
     "isa-vs-nas-uzbekistan": {
@@ -457,6 +494,24 @@ export const blogPosts: BlogPosts = {
           "type": "p",
           "text": "Выбор между НСБУ и МСФО — это не «или-или», а вопрос правильной стратегии для вашего бизнеса. Большинство успешных средних компаний в Узбекистане ведут параллельный учёт или регулярно трансформируют отчётность — это открывает доступ к иностранному финансированию, повышает прозрачность для собственников и упрощает аудит. Если вы рассматриваете переход на МСФО или нуждаетесь в трансформации, специалисты Leader Audit с международными сертификатами CAP, CIPA, DipIFR помогут разработать оптимальное решение."
         }
+      ],
+      "faqs": [
+        {
+          "question": "Чем отличаются НСБУ и МСФО?",
+          "answer": "НСБУ (Национальные стандарты бухгалтерского учёта) разработаны Министерством финансов РУз и обязательны для всех резидентских компаний, тогда как МСФО — это международные стандарты, применяемые более чем в 140 странах и признанные «общим языком» бизнеса для инвесторов и банков. МСФО основаны на принципах и профессиональном суждении, оценивают активы по справедливой стоимости и требуют подробных раскрытий, а НСБУ ближе к чётким правилам с исторической стоимостью и стандартными формами отчётности."
+        },
+        {
+          "question": "Кто обязан вести учёт по МСФО в Узбекистане?",
+          "answer": "Применять МСФО обязаны банки и кредитные организации, страховые компании, профессиональные участники рынка ценных бумаг, публичные компании с акциями на бирже, а также дочерние компании иностранных холдингов по требованию материнской компании. Все остальные компании ведут учёт по НСБУ, но могут добровольно вести параллельный учёт по МСФО для привлечения инвесторов или выхода на международное финансирование."
+        },
+        {
+          "question": "Что лучше: параллельный учёт по МСФО или трансформация отчётности?",
+          "answer": "Параллельный учёт означает, что каждая операция одновременно отражается по НСБУ и МСФО — это дороже в обслуживании, но даёт точные данные в реальном времени. Трансформация же ведётся по НСБУ, а в конце периода отчётность пересчитывается в МСФО — это дешевле, но требует больших усилий в момент пересчёта и менее точна. Выбор зависит от целей: для регулярной международной отчётности удобнее параллельный учёт, для разовой подготовки к продаже бизнеса — трансформация за 2-3 года."
+        },
+        {
+          "question": "Нужно ли малому бизнесу переходить на МСФО?",
+          "answer": "Малому и среднему локальному бизнесу, как правило, достаточно учёта по НСБУ. Переход на МСФО целесообразен компаниям с иностранными инвесторами, планами IPO, кредитами в международных банках или подготовкой к продаже бизнеса зарубежному покупателю. Специалисты Leader Audit с международными сертификатами CAP, CIPA и DipIFR помогут оценить, нужен ли вашему бизнесу переход на МСФО, и разработать оптимальное решение по трансформации отчётности."
+        }
       ]
     },
     "transfer-pricing-uzbekistan": {
@@ -588,6 +643,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "Трансфертное ценообразование — это не разовое мероприятие, а постоянная практика. Качественная документация по ТЦО защищает компанию от значительных доначислений при налоговых проверках и позволяет использовать законные возможности оптимизации внутригрупповых сделок. Если ваша компания работает с аффилированными контрагентами или имеет международную структуру, стоит провести аудит текущей политики ТЦО — Leader Audit поможет с подготовкой документации и защитой позиции перед налоговыми органами."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Какие сделки считаются контролируемыми по трансфертному ценообразованию?",
+          "answer": "Согласно Налоговому кодексу РУз, контролируемыми признаются сделки между взаимозависимыми (связанными) лицами, сделки с резидентами стран из «чёрного списка» офшорных юрисдикций, внешнеторговые сделки с биржевыми товарами (нефть, металлы, сельхозпродукция) и сделки, превышающие установленные пороговые значения по обороту. Актуальные пороговые значения смотрите в действующей редакции НК РУз."
+        },
+        {
+          "question": "Когда нужна документация по трансфертному ценообразованию?",
+          "answer": "Подготовка документации по ТЦО обязательна для контролируемых сделок при превышении пороговых значений по сумме сделки и/или общему обороту компании. Конкретные пороги меняются, поэтому актуальные значения нужно смотреть в действующей редакции НК РУз. Документацию важно готовить заблаговременно — до подачи налоговой декларации, а не «задним числом» после получения уведомления о проверке."
+        },
+        {
+          "question": "Какие методы определения рыночной цены применяются в Узбекистане?",
+          "answer": "Налоговый кодекс РУз признаёт пять методов, аналогичных стандартам ОЭСР: метод сопоставимых рыночных цен (CUP), метод цены последующей реализации (RPM), метод «затраты плюс» (Cost Plus), метод сопоставимой рентабельности (TNMM) и метод распределения прибыли (Profit Split). Выбор метода должен быть обоснован с учётом функций, активов и рисков сторон сделки, а не применяться одинаково ко всем операциям."
+        },
+        {
+          "question": "Чем грозит отсутствие документации по ТЦО при налоговой проверке?",
+          "answer": "Если документация не подготовлена или подготовлена некачественно, компания рискует получить доначисление налога на прибыль на разницу между фактической и рыночной ценой, доначисление НДС, штрафы за нарушение правил ТЦО и пени за несвоевременную уплату налогов. Без документально обоснованной позиции защититься в споре крайне сложно. Leader Audit поможет подготовить документацию по ТЦО и защитить позицию компании перед налоговыми органами."
         }
       ]
     },
@@ -766,6 +839,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "Налоговая проверка — это не катастрофа, а закономерная часть работы любого бизнеса. Компании, которые ведут учёт качественно и регулярно проводят налоговый аудит, проходят проверки без существенных доначислений. Если вы готовитесь к проверке или уже получили акт с доначислениями — Leader Audit поможет защитить позицию компании. У нас есть опыт оспаривания доначислений на сотни миллиардов сумов."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Какие признаки указывают на предстоящую налоговую проверку?",
+          "answer": "Налоговая инспекция редко приходит без предупреждения — обычно есть индикаторы: запрос о предоставлении документов, запрос пояснений по конкретным операциям, вызов руководителя или главного бухгалтера в инспекцию, предупредительное уведомление о проверке. Насторожить должны также резкие изменения налоговых показателей в отчётности, сделки с проблемными контрагентами или офшорами и регулярные возвраты НДС в крупных суммах."
+        },
+        {
+          "question": "Какие документы нужно подготовить к налоговой проверке?",
+          "answer": "Подготовьте учредительные документы (устав, свидетельство о регистрации, лицензии), бухгалтерские документы (учётную политику, главную книгу, оборотно-сальдовые ведомости, первичные документы, договоры, акты сверок, инвентаризационные описи, кассовую книгу), налоговые документы (декларации по НДС, налогу на прибыль, налогу с оборота, НДФЛ, ЕСП, платёжные поручения, все ЭСФ) и кадровые документы (штатное расписание, трудовые договоры, приказы, расчётные листки, табели). Полный комплект по проверяемому периоду снижает риск доначислений."
+        },
+        {
+          "question": "Как правильно вести себя в день налоговой проверки?",
+          "answer": "Прежде всего уточните полномочия проверяющих (предписание, удостоверения) и назначьте ответственного за коммуникацию с инспекцией — обычно бухгалтера или внешнего консультанта. Не давайте устных пояснений: все ответы предоставляйте только в письменной форме, делайте копии всех передаваемых документов и фиксируйте запросы инспекторов со сроками ответа. Не подписывайте документы без юридической проверки и привлекайте налогового консультанта по сложным вопросам."
+        },
+        {
+          "question": "Что делать после получения акта налоговой проверки с доначислениями?",
+          "answer": "Акт проверки — не приговор: возражения на акт подаются в инспекцию в течение 10 рабочих дней с момента получения, затем можно подать жалобу в вышестоящий налоговый орган и, при необходимости, обжаловать решение в Экономическом суде. Каждый этап ограничен сроками, и пропуск срока означает потерю права на защиту, поэтому работать с актом нужно с первого дня. Leader Audit имеет опыт оспаривания доначислений на сотни миллиардов сумов и поможет защитить позицию компании."
         }
       ]
     },
@@ -954,6 +1045,24 @@ export const blogPosts: BlogPosts = {
           "type": "quote",
           "text": "Налоговое планирование — это не разовое мероприятие в декабре, а регулярный процесс, который должен идти параллельно с операционной деятельностью. Тогда поправки к Налоговому кодексу становятся возможностями, а не угрозами."
         }
+      ],
+      "faqs": [
+        {
+          "question": "Какая ставка НДС в Узбекистане в 2026 году?",
+          "answer": "Стандартная ставка НДС в 2026 году сохраняется на уровне 12% без изменений. Для экспортных операций (товары и услуги) применяется ставка 0%, а для отдельных социально значимых операций в сфере медицины, образования и культуры действует освобождение по установленному перечню. Порог обязательной регистрации плательщиком НДС пересматривается с учётом инфляции — актуальное значение смотрите в НК РУз."
+        },
+        {
+          "question": "Какие ставки налога на прибыль действуют в 2026 году?",
+          "answer": "Стандартная ставка налога на прибыль составляет 15%. Для банков, а также производителей цемента, полиэтилена, мобильных операторов и сектора горнодобычи она повышена до 20%. Дивиденды нерезидентов облагаются по ставке 10% с учётом международных соглашений об избежании двойного налогообложения. Актуальные ставки и условия применения смотрите в действующей редакции НК РУз."
+        },
+        {
+          "question": "Какие налоговые льготы сохраняются для резидентов IT-Парка в 2026 году?",
+          "answer": "Для резидентов IT-Парка сохраняются ключевые льготы: 0% налога на прибыль с доходов от профильной деятельности, 0% НДС для экспорта IT-услуг, льготная ставка ИНПС для IT-специалистов, упрощённое оформление иностранных специалистов и освобождение от ряда обязательных платежей. При этом компания должна соответствовать критериям резидентства по доле профильной выручки и видам деятельности — при неверном применении льгот возможны доначисления налогов со штрафами и пенями."
+        },
+        {
+          "question": "Что нужно сделать бухгалтеру и собственнику бизнеса в связи с изменениями 2026 года?",
+          "answer": "Рекомендуется провести налоговый аудит за 2025 год для оценки рисков, обновить учётную политику с учётом изменений, проверить соответствие критериям применяемых льгот (особенно IT-Парк), подготовить или обновить ТЦО-документацию по контролируемым сделкам и наладить регулярный мониторинг законодательства на сайте Министерства финансов РУз и налогового комитета. Изменения 2026 года носят в основном адаптивный характер, но ошибки в применении льгот или порогов могут дорого обойтись — специалисты Leader Audit помогут оценить влияние изменений на ваш бизнес и адаптировать налоговую функцию."
+        }
       ]
     }
   },
@@ -1094,6 +1203,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "Majburiy audit — bu davlat uchun «belgi qoʻyish» emas, balki biznesni soliq, moliyaviy va obroʻ-eʼtibor xavflaridan himoya qilish vositasidir. Oʻz vaqtida oʻtkazilgan sifatli audit muammolarni ular qimmatga tushmasidan oldin aniqlash va bartaraf etish imkonini beradi. Agar sizda savollar qolgan boʻlsa yoki auditga tayyorgarlik boʻyicha maslahat kerak boʻlsa, Leader Audit mutaxassislari yordam berishga tayyor — birinchi maslahat bepul."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "2026-yilda qaysi tashkilotlar majburiy auditdan oʻtishi shart?",
+          "answer": "RUz «Auditorlik faoliyati toʻgʻrisida»gi qonuniga muvofiq majburiy auditga barcha aksiyadorlik jamiyatlari (ochiq va yopiq), banklar, kredit va mikromoliya tashkilotlari, sugʻurta va qayta sugʻurta kompaniyalari, investitsiya, pay va pensiya jamgʻarmalari, birjalar hamda davlat ulushi 50% dan ortiq boʻlgan tashkilotlar tortiladi. Bundan tashqari, tushum, aktivlar yoki xodimlar soni boʻyicha belgilangan chegaralardan oshadigan yirik kompaniyalar va MHXS boʻyicha konsolidatsiyalangan hisobot eʼlon qiluvchilar ham auditdan oʻtadi. Dolzarb chegaraviy qiymatlarni amaldagi qonunchilikdan tekshirish tavsiya etiladi."
+        },
+        {
+          "question": "Majburiy auditni qachon boshlash kerak va u qancha vaqt oladi?",
+          "answer": "Audit yillik moliyaviy hisobot topshirilgunga qadar yakunlangan boʻlishi kerak — aksariyat kompaniyalar uchun bu hisobot yilidan keyingi yilning aprel oyi oxiridir. Sifatli audit kompaniya hajmiga qarab odatda 3-8 hafta davom etadi. Shu sababli jarayonni yanvar-fevral oylarida boshlash shoshqaloqlik va ortiqcha xarajatlardan qochish imkonini beradi."
+        },
+        {
+          "question": "Auditorlik kompaniyasini tanlashda nimalarga eʼtibor berish kerak?",
+          "answer": "Eng avvalo auditorda OʻzR Moliya vazirligining amaldagi litsenziyasi mavjudligini tekshiring — bu majburiy shart. Shuningdek kasbiy javobgarlik sugʻurtasi, sohangizdagi tajriba, yetakchi auditorlarda CAP, CIPA, DipIFR/ACCA kabi xalqaro sertifikatlar, shaffof narx belgilash va oshkor qilmaslik kelishuvini (NDA) imzolashga tayyorlikka eʼtibor bering. «LEADER AUDIT» MCHJ 2013-yildan beri Moliya vazirligi litsenziyasi asosida faoliyat yuritadi va mutaxassislari xalqaro sertifikatlarga ega."
+        },
+        {
+          "question": "Auditdan oʻz vaqtida oʻtilmasa qanday oqibatlar boʻladi?",
+          "answer": "Oqibatlar kompaniya turiga bogʻliq: OʻzR Maʼmuriy javobgarlik toʻgʻrisidagi kodeksiga muvofiq jarimalar, yillik hisobotni belgilangan muddatda topshirishning imkonsizligi, ayrim operatsiyalarning bloklanishi, banklar va sugʻurta kompaniyalari uchun esa litsenziyaning yoʻqotilishi mumkin. Bundan tashqari auditorlik xulosasisiz kompaniyaning keyingi soliq tekshiruvlaridagi pozitsiyasi zaiflashadi, davlat tenderlarida ishtirok etish va bank krediti olish imkoniyati cheklanadi."
         }
       ]
     },
@@ -1253,6 +1380,24 @@ export const blogPosts: BlogPosts = {
           "type": "p",
           "text": "QQSni qaytarish — bu imtiyoz emas, balki kompaniyaning qonuniy huquqi boʻlib, davlat uni bajarishi shart. Biroq toʻgʻri tayyorgarlik va hamrohliksiz bu jarayon koʻpincha soliq organi bilan oylab davom etadigan yozishmalarga va pirovardida rad etishga aylanib qoladi. Leader Audit 2013-yildan beri QQSni qaytarish boʻyicha ixtisoslashgan va mijozlarga 200 mlrd soʻmdan ortiq mablagʻni qaytarishga yordam bergan. Agar sizda QQS boʻyicha ortiqcha toʻlov boʻlsa yoki siz eksportchi/investor boʻlsangiz — murojaat qiling, qaytarish istiqbollarini bepul hisoblab beramiz."
         }
+      ],
+      "faqs": [
+        {
+          "question": "Kim QQSni byudjetdan qaytarib olish huquqiga ega?",
+          "answer": "OʻzR Soliq kodeksiga koʻra QQSni qaytarish kiruvchi QQS summasi chiquvchi QQSdan oshib ketganda, tovar va xizmatlar eksportida (0% stavka qoʻllanadi), investitsion loyihalar uchun uskuna va materiallar olib kirilganda hamda imtiyozli stavka qoʻllangan realizatsiyada mumkin. Koʻpincha QQSni eksportchilar, katta hajmda kiruvchi QQSga ega importchilar, investitsion bosqichdagi kompaniyalar va norezidentlarga xizmat koʻrsatuvchi IT-kompaniyalar qaytaradi."
+        },
+        {
+          "question": "QQSni qaytarish uchun qanday hujjatlar kerak?",
+          "answer": "Asosiy toʻplamga belgilangan shakldagi ariza, davr uchun QQS boʻyicha soliq deklaratsiyasi, yetkazib beruvchilardan kiruvchi QQS boʻyicha elektron hisob-fakturalar (EHF), shartnomalar hamda bajarilgan ishlar dalolatnomalari va yuk xatlari kiradi. Eksportchilar uchun qoʻshimcha ravishda yuk bojxona deklaratsiyasi (YBD), CMR va valyuta tushumi toʻgʻrisidagi bank koʻchirmalari, investitsion loyihalar uchun esa loyiha maqomini tasdiqlovchi hujjatlar talab qilinadi."
+        },
+        {
+          "question": "QQSni qaytarish jarayoni qancha vaqt oladi?",
+          "answer": "Jarayon bir necha bosqichdan iborat: tahlil va tayyorgarlik odatda 1-2 hafta, arizani Davlat soliq qoʻmitasining shaxsiy kabineti orqali elektron topshirish 1-2 kun oladi. Kameral tekshiruv 60 kungacha davom etishi mumkin, ijobiy qaror qabul qilinganda esa mablagʻ 10 ish kuni ichida kompaniya hisobvarogʻiga tushadi. Tekshiruv davomida qoʻshimcha soʻrovlarga tezkor javob berish umumiy muddatni qisqartiradi."
+        },
+        {
+          "question": "QQSni qaytarishda eng koʻp qanday xatolarga yoʻl qoʻyiladi?",
+          "answer": "Eng koʻp uchraydigan xatolar — deklaratsiya, EHF va birlamchi hujjatlardagi maʼlumotlarning oʻzaro mos kelmasligi, eksport uchun norezident bilan shartnomaning notoʻgʻri rasmiylashtirilishi, valyuta tushumining oʻz vaqtida kelib tushmasligi va notoʻgʻri tovar kodlarining (TIF TN) qoʻllanilishi. Shuningdek daʼvo muddatining (ortiqcha toʻlov yuzaga kelgan paytdan 3 yil) oʻtib ketishi ham rad etishga olib keladi. Arizani topshirishdan oldin hujjatlar auditini oʻtkazish bu xatolarni bartaraf etadi."
+        }
       ]
     },
     "isa-vs-nas-uzbekistan": {
@@ -1397,6 +1542,24 @@ export const blogPosts: BlogPosts = {
           "type": "p",
           "text": "NSBU va MHXS oʻrtasidagi tanlov — bu «yo u, yo bu» masalasi emas, balki biznesingiz uchun toʻgʻri strategiya masalasidir. Oʻzbekistondagi muvaffaqiyatli oʻrta kompaniyalarning aksariyati parallel hisob yuritadi yoki hisobotni muntazam transformatsiya qiladi — bu xorijiy moliyalashtirishga yoʻl ochadi, egalar uchun shaffoflikni oshiradi va auditni soddalashtiradi. Agar siz MHXSga oʻtishni koʻrib chiqayotgan boʻlsangiz yoki transformatsiyaga ehtiyoj sezsangiz, Leader Auditning CAP, CIPA, DipIFR xalqaro sertifikatlariga ega mutaxassislari optimal yechimni ishlab chiqishga yordam beradi."
         }
+      ],
+      "faqs": [
+        {
+          "question": "NSBU va MHXS oʻrtasidagi asosiy farq nimada?",
+          "answer": "NSBU (Milliy buxgalteriya hisobi standartlari) — OʻzR Moliya vazirligi ishlab chiqqan, aniq belgilangan qoidalarga asoslangan va barcha rezident kompaniyalar uchun majburiy standartlardir. MHXS (Moliyaviy hisobotning xalqaro standartlari) esa IASB tomonidan ishlab chiqilgan, prinsiplarga va professional mulohazaga asoslangan global standartlar boʻlib, aktivlarni koʻpincha adolatli qiymat boʻyicha baholaydi va batafsilroq maʼlumot oshkor qilishni talab qiladi. XAS (Xalqaro audit standartlari) esa MHXS boʻyicha tayyorlangan hisobotni tekshirishda qoʻllaniladi."
+        },
+        {
+          "question": "Oʻzbekistonda qaysi kompaniyalar MHXSni qoʻllashi shart?",
+          "answer": "MHXS banklar va kredit tashkilotlari, sugʻurta kompaniyalari, qimmatli qogʻozlar bozorining professional ishtirokchilari hamda aksiyalari birjada savdolanadigan ommaviy kompaniyalar uchun majburiydir. Xorijiy xoldinglarning shoʻba kompaniyalari bosh kompaniya talabiga koʻra, xorijiy investorlarni jalb qiluvchilar esa oʻz ehtiyojidan kelib chiqib MHXSni qoʻllaydi. Qolgan kompaniyalar hisobni NSBU boʻyicha yuritadi, biroq ixtiyoriy ravishda MHXS boʻyicha parallel hisob yuritishi mumkin."
+        },
+        {
+          "question": "Parallel hisob va transformatsiya oʻrtasida qaysi biri afzal?",
+          "answer": "Parallel hisobda har bir operatsiya bir vaqtning oʻzida NSBU va MHXS boʻyicha aks ettiriladi — bu joriy xizmatda qimmatroq, biroq real vaqtda aniq maʼlumot beradi. Transformatsiyada esa hisobot NSBU boʻyicha yuritilib, davr oxirida MHXSga qayta hisoblanadi — bu arzonroq, ammo transformatsiya paytida koʻproq kuch talab qiladi va kamroq aniq. Xorijiy investorga ega kompaniyalarga parallel hisob, sotuvga tayyorlanayotganlarga esa soʻnggi 2-3 yil uchun transformatsiya mos keladi."
+        },
+        {
+          "question": "Kichik biznes MHXSga oʻtishi kerakmi?",
+          "answer": "Kichik va oʻrta mahalliy biznes uchun NSBU boʻyicha hisob yuritish yetarli hisoblanadi. MHXS koʻproq xorijiy investorlarga ega, IPO yoki xalqaro bozorga chiqishni rejalashtirayotgan, xalqaro banklardan kredit oluvchi yoki biznesni xalqaro xaridorga sotishga tayyorlanayotgan kompaniyalar uchun zarur boʻladi. «LEADER AUDIT» MCHJ ning CAP, CIPA va DipIFR sertifikatlariga ega mutaxassislari kompaniyaga optimal yechimni tanlashda yordam beradi."
+        }
       ]
     },
     "transfer-pricing-uzbekistan": {
@@ -1528,6 +1691,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "Transfert narxlash — bu bir martalik tadbir emas, balki doimiy amaliyotdir. TNN boʻyicha sifatli hujjatlar kompaniyani soliq tekshiruvlari vaqtidagi salmoqli qoʻshimcha hisoblashlardan himoya qiladi va guruh ichidagi bitimlarni optimallashtirishning qonuniy imkoniyatlaridan foydalanishga yoʻl ochadi. Agar kompaniyangiz affillangan kontragentlar bilan ishlasa yoki xalqaro tarkibga ega boʻlsa, joriy TNN siyosatining auditini oʻtkazish maqsadga muvofiq — Leader Audit hujjatlarni tayyorlashda va soliq organlari oldida pozitsiyani himoya qilishda yordam beradi."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Qaysi bitimlar nazorat qilinadigan bitim hisoblanadi?",
+          "answer": "OʻzR Soliq kodeksiga koʻra nazorat qilinadigan bitimlar qatoriga oʻzaro bogʻliq (aloqador) shaxslar oʻrtasidagi bitimlar, offshor yurisdiksiyalarning «qora roʻyxat»idagi mamlakatlar rezidentlari bilan bitimlar, birja tovarlari (neft, metallar, qishloq xoʻjaligi mahsulotlari) bilan tashqi savdo bitimlari hamda belgilangan chegaraviy qiymatlardan oshadigan bitimlar kiradi. Aniq chegaraviy qiymatlarni Soliq kodeksining amaldagi tahririda tekshirish lozim."
+        },
+        {
+          "question": "Transfer narxlash boʻyicha qanday usullar qoʻllaniladi?",
+          "answer": "OʻzR Soliq kodeksi bozor narxini aniqlashning besh usulini tan oladi, ular OECD standartlaridagi usullar bilan bir xil: taqqoslanadigan bozor narxlari usuli (CUP), keyingi sotish narxi usuli (RPM), «xarajatlar plyus» usuli (Cost Plus), taqqoslanadigan rentabellik usuli (TNMM) va foydani taqsimlash usuli (Profit Split). Usul tanlovi bitim tomonlarining funksiyalari, aktivlari va risklari tahliliga (FAR-tahlil) asoslangan boʻlishi kerak."
+        },
+        {
+          "question": "TNN boʻyicha hujjatlar boʻlmasa qanday risklar yuzaga keladi?",
+          "answer": "Hujjatlar tayyorlanmagan yoki sifatsiz boʻlsa, soliq tekshiruvi vaqtida kompaniya haqiqiy va bozor narxi oʻrtasidagi farqqa foyda soligʻi hamda hisobga olinmagan summa qismida QQS qoʻshimcha hisoblanishiga duch kelishi mumkin. Bunga TNN qoidalarini buzganlik uchun jarimalar va soliqni oʻz vaqtida toʻlamaganlik uchun penyalar qoʻshiladi. Hujjat bilan asoslangan pozitsiyasiz kompaniya oʻzini samarali himoya qila olmaydi."
+        },
+        {
+          "question": "TNN risklaridan qanday himoyalanish mumkin?",
+          "answer": "Eng samarali yondashuv — kompaniyalar guruhi darajasida yagona TNN siyosatini joriy etish va hujjatlarni soliq deklaratsiyasini topshirishdan avval oldindan tayyorlash. Benchmarkingni kamida yiliga bir marta yangilab turish, ixtisoslashgan maʼlumotlar bazalaridan foydalanish va zarurat boʻlsa soliq organi bilan Narxlash boʻyicha kelishuv (APA) imkoniyatini koʻrib chiqish tavsiya etiladi. Professional maslahatchilarni jalb qilish hujjatlar sifatini oshiradi va potentsial qoʻshimcha hisoblashlardan himoya qiladi."
         }
       ]
     },
@@ -1706,6 +1887,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "Soliq tekshiruvi — bu falokat emas, balki har qanday biznes faoliyatining qonuniy qismidir. Hisobni sifatli yurituvchi va muntazam ravishda soliq auditini oʻtkazuvchi kompaniyalar tekshiruvlardan jiddiy qoʻshimcha hisoblanmalarsiz oʻtadi. Agar siz tekshiruvga tayyorlanayotgan boʻlsangiz yoki allaqachon qoʻshimcha hisoblanmalar bilan dalolatnoma olgan boʻlsangiz — Leader Audit kompaniya pozitsiyasini himoya qilishga yordam beradi. Bizda yuzlab milliard soʻmlik qoʻshimcha hisoblanmalarga eʼtiroz bildirish tajribasi bor."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Soliq tekshiruvi yaqinlashayotganini qanday belgilardan bilish mumkin?",
+          "answer": "Soliq inspeksiyasi odatda «ogohlantirmasdan» kelmaydi — koʻpincha oldindan indikatorlar boʻladi: hujjatlarni taqdim etish soʻrovi, ayrim operatsiyalar boʻyicha izoh soʻrash, rahbar yoki bosh buxgalterni inspeksiyaga chaqirish yoki tekshiruv toʻgʻrisidagi ogohlantiruvchi xabarnoma. Hisobot topshirishda soliq koʻrsatkichlarining keskin oʻzgarishi, muammoli kontragentlar bilan bitimlar va yirik summalarda muntazam QQS qaytarishlari ham xavf indikatori sifatida qaraladi."
+        },
+        {
+          "question": "Soliq tekshiruviga qanday hujjatlarni tayyorlash kerak?",
+          "answer": "Tayyorgarlik chek-listiga taʼsis hujjatlari (ustav, roʻyxatdan oʻtish guvohnomasi, litsenziyalar), buxgalteriya hujjatlari (hisob siyosati toʻgʻrisidagi buyruq, bosh kitob, aylanma-saldo qaydnomalari, birlamchi hujjatlar va shartnomalar), soliq hujjatlari (deklaratsiyalar, toʻlov topshiriqnomalari, barcha kiruvchi va chiquvchi EHFlar) hamda kadrlar hujjatlari (shtat jadvali, mehnat shartnomalari, ish haqi qaydnomalari) kiradi. Debitor va kreditorlar bilan solishtiruv dalolatnomalari va inventarizatsiya roʻyxatlari ham tayyor boʻlishi kerak."
+        },
+        {
+          "question": "Tekshiruv kunida qanday yoʻl tutish toʻgʻri?",
+          "answer": "Avvalo tekshiruvchilarning vakolatlarini (topshiriqnoma, guvohnomalar) aniqlang va inspeksiya bilan muloqot uchun masʼul shaxsni tayinlang. Ogʻzaki izoh bermang — barcha javoblar faqat yozma shaklda boʻlsin, topshirilayotgan hujjatlarning nusxalarini oling va inspektorlar soʻrovlari hamda javob muddatlarini qayd etib boring. Hujjatlarni yuridik tekshiruvsiz imzolamaslik va murakkab masalalarga soliq maslahatchisini jalb qilish tavsiya etiladi."
+        },
+        {
+          "question": "Tekshiruv dalolatnomasini olgandan keyin nima qilish mumkin?",
+          "answer": "Soliq tekshiruvi dalolatnomasi hukm emas — uni bir necha bosqichda ustidan shikoyat qilish mumkin. Birinchi va eng muhim bosqich — dalolatnomani olgan kundan boshlab belgilangan muddatda inspeksiyaga eʼtiroz topshirish, keyin yuqori turuvchi soliq organiga shikoyat qilish, oxirida esa Iqtisodiy sudda daʼvo koʻrsatish mumkin. Har bir bosqich muddat bilan cheklangani sababli dalolatnoma ustida ish uni olgan kunning oʻzidayoq boshlanishi zarur."
         }
       ]
     },
@@ -1894,6 +2093,24 @@ export const blogPosts: BlogPosts = {
           "type": "quote",
           "text": "Soliq rejalashtirish — bu dekabrdagi bir martalik tadbir emas, balki operatsion faoliyat bilan parallel ravishda boradigan muntazam jarayon. Shunda Soliq kodeksiga kiritilgan tuzatishlar tahdidga emas, balki imkoniyatlarga aylanadi."
         }
+      ],
+      "faqs": [
+        {
+          "question": "2026-yilda QQS stavkasi qancha?",
+          "answer": "2026-yilda standart QQS stavkasi 12% darajasida saqlanib qolmoqda, eksport operatsiyalari (tovar va xizmatlar) uchun esa 0% stavka qoʻllaniladi. Ayrim ijtimoiy ahamiyatga ega operatsiyalar (tibbiyot, taʼlim, madaniyat) belgilangan roʻyxat asosida QQSdan ozod qilinadi. QQS toʻlovchisi sifatida majburiy roʻyxatdan oʻtish chegarasi inflyatsiyani hisobga olib qayta koʻrib chiqiladi."
+        },
+        {
+          "question": "IT-Park rezidentlari uchun 2026-yilda qanday soliq imtiyozlari amal qiladi?",
+          "answer": "IT-Park rezidentligi Respublikadagi eng foydali soliq rejimlaridan biri boʻlib qolmoqda: profil faoliyatdan olingan daromadga foyda soligʻi 0%, IT-xizmatlar eksportiga QQS 0%, IT-mutaxassislar uchun imtiyozli INPS stavkasi hamda xorijiy IT-mutaxassislarni soddalashtirilgan rasmiylashtirish saqlanadi. Muhimi, imtiyozlarni qoʻllash uchun kompaniya profil tushumi ulushi va faoliyat turlari boʻyicha rezidentlik mezonlariga muvofiq boʻlishi kerak, aks holda jarima va penyalar bilan soliq qoʻshimcha hisoblanishi mumkin."
+        },
+        {
+          "question": "2026-yilda transfer narxlash boʻyicha nazorat qanday oʻzgardi?",
+          "answer": "OʻzR Soliq kodeksiga muvofiq transfer narxlash ustidan nazorat yildan-yilga kuchaymoqda: nazorat qilinadigan bitimlar roʻyxati kengaytirilib, muayyan shartlarda oʻzaro bogʻliq shaxslar oʻrtasidagi ichki bitimlarni ham qamrab olmoqda, hujjatlarni majburiy taqdim etish chegaralari pasaytirildi va Master File / Local File tarkibiga qoʻyiladigan talablar kuchaytirildi. Hujjatlarni oʻz vaqtida taqdim etmaslik uchun alohida jarimalar joriy etilgani sababli, xorijiy aloqador shaxslar bilan ishlovchi kompaniyalar uchun TNN hujjatlarini tayyorlash majburiy vazifaga aylandi."
+        },
+        {
+          "question": "2026-yilda soliq maʼmuriyatchiligida nima oʻzgaradi?",
+          "answer": "2026-yilda soliq maʼmuriyatchiligini raqamlashtirish davom etmoqda: e-faktura tizimi tobora kengroq soliq toʻlovchilar doirasi uchun majburiy boʻlmoqda, tekshiruv obyektlarini tanlashda risk-yoʻnaltirilgan yondashuv rivojlanmoqda (past xavfli kompaniyalar kamroq tekshiriladi) va QQS boʻyicha avtomatlashtirilgan nazorat orqali xarid va sotish kitoblari oʻrtasidagi nomuvofiqliklar tizim tomonidan avtomatik aniqlanadi. Egalar va moliya direktorlariga 2025-yil boʻyicha soliq auditini oʻtkazish, hisob siyosatini yangilash va TNN hujjatlarini tayyorlash tavsiya etiladi."
+        }
       ]
     }
   },
@@ -2034,6 +2251,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "A statutory audit is not a \"box-ticking\" exercise for the government, but a tool for protecting your business from tax, financial and reputational risks. A quality audit conducted in a timely manner makes it possible to identify and eliminate problems before they become costly. If you still have questions or need a consultation on preparing for an audit, the specialists at Leader Audit are ready to help — the first consultation is free."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Which companies are required to undergo a statutory audit in Uzbekistan in 2026?",
+          "answer": "Under the Law of the Republic of Uzbekistan \"On Auditing Activities\" and its implementing regulations, a statutory audit is mandatory for all joint-stock companies (public and private, regardless of size), banks, credit and microfinance institutions, insurance and reinsurance companies, investment, mutual and pension funds, exchanges and professional participants of the securities market, organizations with a state share of more than 50%, and companies required to publish consolidated financial statements under IFRS. Large companies that exceed the thresholds for revenue, assets or headcount are also subject to audit. For current threshold values, always refer to the applicable legislation."
+        },
+        {
+          "question": "When must the annual audit be completed in Uzbekistan?",
+          "answer": "The audit must be completed before the annual financial statements are filed, which for most companies is the end of April of the year following the reporting year. Because a quality audit typically takes 3-8 weeks depending on the size of the company, it is best to begin the process in January or February. Starting early avoids the panic, overpayment and errors that come from leaving it until the last weeks before filing."
+        },
+        {
+          "question": "What happens if a company fails to undergo a mandatory audit on time?",
+          "answer": "Consequences depend on the type of company and may include fines under the Code of the Republic of Uzbekistan on Administrative Liability, an inability to file annual statements within the established deadlines, and the blocking of certain operations for financial institutions. Banks, insurance companies and investment funds can even lose their license. Without an audit report a company's position in tax disputes is also weakened, and it may be unable to take part in government tenders or obtain bank loans."
+        },
+        {
+          "question": "How do I choose a reliable audit firm in Uzbekistan?",
+          "answer": "Check that the firm holds a valid license from the Ministry of Finance of the Republic of Uzbekistan, which is mandatory, and that it carries professional liability insurance to cover losses from any auditor error. Look for relevant industry experience, lead auditors with international certifications such as CAP, CIPA and DipIFR/ACCA, transparent fixed pricing in the contract, and willingness to sign a non-disclosure agreement. Leader Audit LLC has held a Ministry of Finance license and worked in the market since 2013; its first consultation is free at +998 97 410 04 47."
         }
       ]
     },
@@ -2193,6 +2428,24 @@ export const blogPosts: BlogPosts = {
           "type": "p",
           "text": "A VAT refund is not a privilege but a company's lawful right, which the state is obliged to honour. However, without proper preparation and support, the process often turns into long months of correspondence with the tax authority and an ultimate rejection. Leader Audit has specialised in VAT refunds since 2013 and has helped clients reclaim more than 200 billion UZS. If you have a VAT overpayment, or you are an exporter or investor, get in touch — we will assess your refund prospects free of charge."
         }
+      ],
+      "faqs": [
+        {
+          "question": "Who is eligible for a VAT refund in Uzbekistan?",
+          "answer": "Under the Tax Code of the Republic of Uzbekistan, a VAT refund from the budget is available when input VAT exceeds output VAT, when goods and services are exported (the 0% VAT rate applies and input VAT becomes recoverable), during investment activity involving the import of equipment and materials for investment projects, and on sales made at a reduced (preferential) rate. Exporters, importers with large input VAT, companies in the investment phase, and IT companies serving non-residents are the most frequent claimants."
+        },
+        {
+          "question": "How long does a VAT refund take in Uzbekistan?",
+          "answer": "After the application and documents are submitted electronically through the taxpayer's personal account on the State Tax Committee (STC) website, the claim is registered the same day. The STC then conducts a desk audit that can take up to 60 days, during which the inspector may request additional documents. If the decision is positive, the funds are credited to the company's settlement account within 10 business days. Responding promptly to inspector requests helps avoid extending the review."
+        },
+        {
+          "question": "What documents are required for a VAT refund?",
+          "answer": "The basic set includes an application for a VAT refund in the prescribed form, the VAT return for the period, electronic invoices (ESF) from suppliers for input VAT, contracts with suppliers and customers, and work completion acts or waybill notes. Exporters must additionally provide the customs cargo declaration (GTD), the CMR, and bank statements confirming receipt of foreign-currency proceeds, while investment projects require documents confirming the project's status. Reviewing these documents before filing helps eliminate errors that could lead to rejection."
+        },
+        {
+          "question": "What are the most common reasons a VAT refund is denied?",
+          "answer": "The most common causes are discrepancies between the data in the return, the electronic invoices and the primary documents; a missing or incorrectly drawn-up contract with a non-resident for exports; late receipt of foreign-currency proceeds; incorrect commodity codes; unrecorded adjustment invoices; and no confirmation that the supplier is registered as a VAT payer. Exceeding the statute of limitations of three years from the date the overpayment arose is another frequent reason. If a refund is denied, it can be challenged through objections, a complaint to a higher tax authority, or an appeal to the Economic Court."
+        }
       ]
     },
     "isa-vs-nas-uzbekistan": {
@@ -2337,6 +2590,24 @@ export const blogPosts: BlogPosts = {
           "type": "p",
           "text": "The choice between NAS and IFRS is not an \"either/or\", but a question of the right strategy for your business. Most successful medium-sized companies in Uzbekistan maintain parallel accounting or regularly transform their financial statements — this opens access to foreign financing, increases transparency for owners and simplifies the audit. If you are considering a transition to IFRS or need a transformation, Leader Audit specialists holding the international CAP, CIPA, DipIFR certifications will help develop the optimal solution."
         }
+      ],
+      "faqs": [
+        {
+          "question": "What is the difference between NAS and IFRS in Uzbekistan?",
+          "answer": "NAS (National Accounting Standards) are the standards of the Republic of Uzbekistan developed by the Ministry of Finance and are mandatory for all resident companies. IFRS (International Financial Reporting Standards) are global standards developed by the IASB and used in more than 140 countries as the common language of business for international investors, banks and regulators. NAS is closer to a rules-based system with prescribed procedures, while IFRS is principles-based and requires professional judgement, more detailed disclosures, and often fair-value measurement of assets."
+        },
+        {
+          "question": "Which companies are required to apply IFRS in Uzbekistan?",
+          "answer": "Banks and credit institutions, insurance companies, professional participants of the securities market, and public companies whose shares are traded on an exchange are required to apply IFRS. Subsidiaries of foreign holdings may also need to report under IFRS at the request of the parent company, as may companies attracting foreign investors. All other companies keep their records under NAS but may voluntarily maintain parallel IFRS records."
+        },
+        {
+          "question": "What is the difference between ISA and IFRS?",
+          "answer": "IFRS (International Financial Reporting Standards) govern how financial statements are prepared, while ISA (International Standards on Auditing) govern how those statements are audited. If a company prepares its financial statements under IFRS, the audit is performed in accordance with ISA. In Uzbekistan, financial statements prepared under national standards (NAS) are audited accordingly, so the reporting framework and the audit framework are chosen together."
+        },
+        {
+          "question": "Should my company use parallel accounting or transformation to obtain IFRS statements?",
+          "answer": "There are two approaches. Parallel accounting records every transaction simultaneously under NAS and IFRS, which is more expensive to maintain but provides accurate data in real time. Transformation keeps records under NAS and restates them into IFRS at the end of each period, which is cheaper but requires considerable effort at the moment of transformation and is less precise. Companies attracting foreign investment or planning an IPO often choose parallel accounting, while those preparing for sale typically transform the last 2-3 years. Leader Audit specialists holding CAP, CIPA and DipIFR certifications can help select the optimal solution."
+        }
       ]
     },
     "transfer-pricing-uzbekistan": {
@@ -2468,6 +2739,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "Transfer pricing is not a one-off exercise but an ongoing practice. High-quality transfer pricing documentation protects the company from substantial additional assessments during tax audits and makes it possible to use lawful opportunities to optimize intra-group transactions. If your company works with affiliated counterparties or has an international structure, it is worth conducting an audit of your current transfer pricing policy — Leader Audit will help with preparing the documentation and defending your position before the tax authorities."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What qualifies as a controlled transaction in Uzbekistan?",
+          "answer": "Under the Tax Code of the Republic of Uzbekistan, controlled transactions include those between interdependent parties such as companies within the same group and affiliated parties, transactions with residents of countries on the blacklist of offshore jurisdictions, foreign-trade transactions in exchange-traded commodities such as oil, metals and agricultural products, and transactions exceeding the established turnover thresholds. Because the specific thresholds change over time, always check the version of the Tax Code currently in force."
+        },
+        {
+          "question": "What methods are used to determine the market price for transfer pricing?",
+          "answer": "The Tax Code of the Republic of Uzbekistan recognizes five methods, the same as those in the OECD standards: the comparable uncontrolled price method (CUP), the resale price method (RPM), the cost plus method, the transactional net margin method (TNMM), and the profit split method. The choice of method must be justified based on the functions, assets and risks of the parties, and applying a single method to all transactions without justification is a common mistake."
+        },
+        {
+          "question": "What are the risks of not preparing transfer pricing documentation?",
+          "answer": "If transfer pricing documentation is missing or poorly prepared, during a tax audit a company may face an additional assessment of profit tax on the difference between the actual and the market price, an additional VAT assessment on the unaccounted portion, penalties for violating transfer pricing rules, and late-payment interest. Without a documented, substantiated position, the company is largely unable to defend itself before the tax authorities."
+        },
+        {
+          "question": "When is transfer pricing documentation required in Uzbekistan?",
+          "answer": "Preparing transfer pricing documentation is mandatory for controlled transactions when the thresholds for the transaction amount and/or the company's overall turnover are exceeded. The specific thresholds change over time, so you should check the current values in the version of the Tax Code of the Republic of Uzbekistan now in force. Documentation should be prepared in advance, before filing the tax return, rather than after a notice of audit is received."
         }
       ]
     },
@@ -2646,6 +2935,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "p",
           "text": "A tax audit is not a catastrophe but a natural part of running any business. Companies that keep their accounts to a high standard and conduct regular tax audits pass inspections without material additional assessments. If you are preparing for an audit or have already received a report with additional assessments, Leader Audit will help defend your company's position. We have experience in challenging additional assessments amounting to hundreds of billions of UZS."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What are the warning signs of an upcoming tax audit in Uzbekistan?",
+          "answer": "The tax authority rarely shows up without warning, and there are usually indicators. These include a request to provide documents, a request for explanations regarding specific transactions, the summoning of the director or chief accountant to the inspectorate, and a preliminary notice of an upcoming audit. Sharp changes in tax indicators when filing reports, transactions with problematic counterparties or offshore jurisdictions, and regular large VAT refunds are also common risk indicators."
+        },
+        {
+          "question": "How can I challenge a tax audit report in Uzbekistan?",
+          "answer": "A tax audit report is not a verdict and can be challenged at several levels. The first and most important stage is filing objections to the report with the inspectorate within 10 working days of receiving it. You can then file a complaint against the inspectorate's decision with a higher tax authority, and finally pursue a judicial appeal in the Economic Court. Each stage is limited by deadlines, and missing a deadline means losing the right to a defense, so work on the report should begin the day it is received."
+        },
+        {
+          "question": "What documents should be prepared for a tax audit?",
+          "answer": "Prepare constituent documents such as the charter, founding agreement and registration certificate; accounting documents including the accounting policy order, general ledger, trial balances, registers, source documents and contracts with counterparties; and tax documents such as VAT, profit tax, turnover tax, personal income tax and social tax returns, payment orders, and all received and issued electronic invoices. HR documents, including the staffing table, employment contracts, payroll registers and time sheets, should also be ready. A prior review helps eliminate discrepancies before the inspectors arrive."
+        },
+        {
+          "question": "What should a company do on the day tax inspectors arrive?",
+          "answer": "Verify the powers of the inspectors by checking the audit order and identification cards, and appoint one person, usually the accountant or an external consultant, to communicate with the inspectorate. Give all answers in written form rather than orally, make copies of every document handed over, and record all inspector requests and response deadlines. Do not sign any documents without legal review, and engage a tax consultant for complex matters. Leader Audit supports clients through tax audits and can be reached at +998 97 410 04 47."
         }
       ]
     },
@@ -2833,6 +3140,24 @@ export const blogPosts: BlogPosts = {
         {
           "type": "quote",
           "text": "Tax planning is not a one-off December exercise but a continuous process running in parallel with operations. Then Tax Code amendments become opportunities, not threats."
+        }
+      ],
+      "faqs": [
+        {
+          "question": "What is the VAT rate in Uzbekistan in 2026?",
+          "answer": "In 2026 the standard VAT rate remains 12%, unchanged from previous years. A 0% rate applies to export operations for both goods and services, and select socially significant operations such as medicine, education and culture are exempt per the official list. The mandatory VAT registration threshold is revised to reflect inflation, so businesses near the threshold should check the current value."
+        },
+        {
+          "question": "What are the main profit tax rates in Uzbekistan for 2026?",
+          "answer": "Under the Tax Code of the Republic of Uzbekistan, the standard profit tax rate for 2026 is 15%. A higher 20% rate applies to banks and to producers of cement and polyethylene, mobile operators and the mining sector. Dividends paid to non-residents are taxed at 10%, subject to any applicable double tax treaties. Base rates are largely preserved for 2026, but the application of benefits and special regimes should be tracked carefully."
+        },
+        {
+          "question": "What tax benefits does the Uzbekistan IT Park offer in 2026?",
+          "answer": "IT Park residency remains one of the most attractive tax regimes in the country. Key benefits preserved for residents include 0% profit tax on income from core activities, 0% VAT on IT services exports, a reduced pension fund rate for IT specialists, simplified work permits for foreign IT specialists, and exemption from a number of mandatory payments. To apply these benefits a company must meet the IT Park residency criteria for share of core revenue and types of activity; misapplying them can lead to back taxes with penalties and interest."
+        },
+        {
+          "question": "How is transfer pricing oversight changing in Uzbekistan in 2026?",
+          "answer": "Transfer pricing oversight continues to strengthen in 2026. Changes include an expanded list of controlled transactions covering certain domestic transactions between related parties, lower thresholds for mandatory transfer pricing documentation, and stronger content requirements for documentation such as the Master File and Local File. Penalties have been introduced for failing to submit documentation in the prescribed timeframe, separate from substantive assessments, and methods such as CUP, net margin and profit split are being applied more actively. Companies transacting with foreign related parties should treat documentation as mandatory rather than optional."
         }
       ]
     }

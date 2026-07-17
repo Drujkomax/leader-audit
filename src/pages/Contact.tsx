@@ -5,7 +5,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/language-context";
-import { Phone, Mail, MapPin, Clock, Instagram, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Instagram, Send, ArrowRight } from "lucide-react";
+import { branches, PHONE } from "@/data/branches";
 
 const Contact = () => {
   const { language } = useLanguage();
@@ -67,54 +68,60 @@ const Contact = () => {
             </div>
           </section>
 
-          <section className="py-12 sm:py-16">
-            <div className="container-wide max-w-5xl grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {/* Quick contacts */}
+          <section className="py-10 sm:py-14">
+            <div className="container-wide max-w-5xl grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <a href="tel:+998974100447" className="bg-card border border-border rounded-xl p-5 sm:p-6 hover:shadow-lg transition-all">
                 <Phone className="w-8 h-8 text-primary mb-3" />
-                <h2 className="font-bold text-foreground mb-1">Telefon</h2>
-                <p className="text-muted-foreground text-sm">+998 97 410 04 47</p>
+                <h2 className="font-bold text-foreground mb-1">{language === "ru" ? "Телефон" : language === "uz" ? "Telefon" : "Phone"}</h2>
+                <p className="text-muted-foreground text-sm">{PHONE}</p>
               </a>
               <a href="mailto:info@leaderaudit.uz" className="bg-card border border-border rounded-xl p-5 sm:p-6 hover:shadow-lg transition-all">
                 <Mail className="w-8 h-8 text-primary mb-3" />
                 <h2 className="font-bold text-foreground mb-1">Email</h2>
                 <p className="text-muted-foreground text-sm">info@leaderaudit.uz</p>
               </a>
-              <div className="bg-card border border-border rounded-xl p-5 sm:p-6">
-                <MapPin className="w-8 h-8 text-primary mb-3" />
-                <h2 className="font-bold text-foreground mb-1">{c.addressLabel}</h2>
-                <p className="text-muted-foreground text-sm">
-                  {language === "ru"
-                    ? "г. Ташкент, ул. Мустакиллик, 12"
-                    : language === "uz"
-                    ? "Toshkent shahri, Mustaqillik ko'chasi, 12"
-                    : "12 Mustaqillik St, Tashkent, Uzbekistan"}
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-xl p-5 sm:p-6">
-                <Clock className="w-8 h-8 text-primary mb-3" />
-                <h2 className="font-bold text-foreground mb-1">{c.hoursLabel}</h2>
-                <p className="text-muted-foreground text-sm">{c.hours}</p>
-              </div>
-              <a
-                href="https://www.instagram.com/leader_audit_uz/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-card border border-border rounded-xl p-5 sm:p-6 hover:shadow-lg transition-all"
-              >
+              <a href="https://www.instagram.com/leader_audit_uz/" target="_blank" rel="noopener noreferrer" className="bg-card border border-border rounded-xl p-5 sm:p-6 hover:shadow-lg transition-all">
                 <Instagram className="w-8 h-8 text-primary mb-3" />
                 <h2 className="font-bold text-foreground mb-1">Instagram</h2>
                 <p className="text-muted-foreground text-sm">@leader_audit_uz</p>
               </a>
-              <a
-                href="https://t.me/LeaderAudit_uz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-card border border-border rounded-xl p-5 sm:p-6 hover:shadow-lg transition-all"
-              >
+              <a href="https://t.me/LeaderAudit_uz" target="_blank" rel="noopener noreferrer" className="bg-card border border-border rounded-xl p-5 sm:p-6 hover:shadow-lg transition-all">
                 <Send className="w-8 h-8 text-primary mb-3" />
                 <h2 className="font-bold text-foreground mb-1">Telegram</h2>
                 <p className="text-muted-foreground text-sm">@LeaderAudit_uz</p>
               </a>
+            </div>
+          </section>
+
+          {/* Offices — 3 branches */}
+          <section className="py-10 sm:py-14 bg-secondary/30">
+            <div className="container-wide max-w-5xl">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground text-center mb-8">
+                {language === "ru" ? "Наши офисы в Ташкенте" : language === "uz" ? "Toshkentdagi ofislarimiz" : "Our offices in Tashkent"}
+              </h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                {branches.map((b) => (
+                  <div key={b.id} className="bg-card border border-border rounded-xl p-5 sm:p-6 flex flex-col">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin className="w-6 h-6 text-primary flex-shrink-0" />
+                      <h3 className="font-bold text-foreground">{b.label[language]}</h3>
+                    </div>
+                    <p className="text-foreground text-sm font-medium">{b.street[language]}</p>
+                    <p className="text-muted-foreground text-sm mb-3">{b.district[language]}</p>
+                    <p className="text-muted-foreground text-sm flex items-center gap-2">
+                      <Phone className="w-4 h-4 flex-shrink-0" /> {PHONE}
+                    </p>
+                    <p className="text-muted-foreground text-sm mb-4 flex items-center gap-2">
+                      <Clock className="w-4 h-4 flex-shrink-0" /> {c.hours}
+                    </p>
+                    <a href={b.mapUrl} target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all">
+                      {language === "ru" ? "Показать на карте" : language === "uz" ? "Xaritada koʻrsatish" : "View on map"}
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 

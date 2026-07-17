@@ -21,6 +21,13 @@ const Cases = lazy(() => import("./pages/Cases"));
 const BlogIndex = lazy(() => import("./pages/blog/BlogIndex"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
 
+// Admin (not linked from the public site, noindex)
+const AdminLogin = lazy(() => import("./admin/AdminLogin"));
+const AdminLayout = lazy(() => import("./admin/AdminLayout"));
+const PostsList = lazy(() => import("./admin/PostsList"));
+const PostEditor = lazy(() => import("./admin/PostEditor"));
+const LeadsList = lazy(() => import("./admin/LeadsList"));
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -76,6 +83,15 @@ const App = () => (
               <Route path="/en/cases" element={<Cases />} />
               <Route path="/en/blog" element={<BlogIndex />} />
               <Route path="/en/blog/:slug" element={<BlogPost />} />
+
+              {/* Admin */}
+              <Route path="/admin" element={<AdminLogin />} />
+              <Route element={<AdminLayout />}>
+                <Route path="/admin/posts" element={<PostsList />} />
+                <Route path="/admin/posts/new" element={<PostEditor />} />
+                <Route path="/admin/posts/:slug" element={<PostEditor />} />
+                <Route path="/admin/leads" element={<LeadsList />} />
+              </Route>
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

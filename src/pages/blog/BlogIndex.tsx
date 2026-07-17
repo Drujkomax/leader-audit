@@ -7,7 +7,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/language-context";
-import { blogPosts } from "@/data/blog-posts";
+import { useBlogPosts } from "@/hooks/use-blog-posts";
 
 const BlogIndex = () => {
   const { language } = useLanguage();
@@ -42,7 +42,10 @@ const BlogIndex = () => {
   } as const;
 
   const c = labels[language];
-  const posts = Object.values(blogPosts[language]);
+  const { posts: mergedPosts } = useBlogPosts(language);
+  const posts = Object.values(mergedPosts).sort((a, b) =>
+    b.publishedDate.localeCompare(a.publishedDate)
+  );
 
   // JSON-LD (CollectionPage + Blog + Breadcrumb) is emitted by the static prerender.
 

@@ -1,0 +1,48 @@
+- generic [ref=f3e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=f3e3]:
+    - banner [ref=f3e4]:
+      - generic [ref=f3e5]:
+        - generic [ref=f3e6]: Leader Audit — Админка
+        - navigation [ref=f3e8]:
+          - link "Статьи" [ref=f3e9] [cursor=pointer]:
+            - /url: /admin/posts
+          - link "Заявки" [ref=f3e13] [cursor=pointer]:
+            - /url: /admin/leads
+          - button "Опубликовать сайт" [ref=f3e17] [cursor=pointer]
+          - button "Выйти" [ref=f3e23] [cursor=pointer]
+    - main [ref=f3e27]:
+      - generic [ref=f3e28]:
+        - heading "Заявки" [level=1] [ref=f3e29]
+        - table [ref=f3e31]:
+          - rowgroup [ref=f3e32]:
+            - row [ref=f3e33]:
+              - columnheader "Дата" [ref=f3e34]
+              - columnheader "Имя" [ref=f3e35]
+              - columnheader "Телефон" [ref=f3e36]
+              - columnheader "Компания" [ref=f3e37]
+              - columnheader "Страница" [ref=f3e38]
+              - columnheader "Статус" [ref=f3e39]
+          - rowgroup [ref=f3e40]:
+            - row [ref=f3e41]:
+              - cell "2026-07-17 07:52" [ref=f3e42]
+              - cell "ауцзщалоуцзщлазщулц" [ref=f3e43]
+              - cell [ref=f3e44]:
+                - link "+998907141818" [ref=f3e45] [cursor=pointer]:
+                  - /url: tel:+998907141818
+              - cell "алцущзлазущцлазщцулазщцулазщл" [ref=f3e46]
+              - cell / [ref=f3e47]
+              - cell [ref=f3e48]:
+                - button "Новая" [ref=f3e49] [cursor=pointer]
+            - row [ref=f3e65]:
+              - cell "2026-07-17 07:34" [ref=f3e54]
+              - cell "Тест Тестов" [ref=f3e55]
+              - cell [ref=f3e56]:
+                - link "+998901234567" [ref=f3e57] [cursor=pointer]:
+                  - /url: tel:+998901234567
+              - cell "ООО Тест" [ref=f3e58]
+              - cell "/contact" [ref=f3e59]
+              - cell [ref=f3e66]:
+                - button "Обработана" [active] [ref=f3e67] [cursor=pointer]

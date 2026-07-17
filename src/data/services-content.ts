@@ -35,8 +35,8 @@ export const servicesContent: ServicesContent = {
   ru: {
     "obligatory-audit": {
       slug: "obligatory-audit",
-      title: "Обязательный аудит",
-      metaTitle: "Обязательный аудит в Ташкенте и Узбекистане | Leader Audit",
+      title: "Обязательный аудит в Ташкенте",
+      metaTitle: "Обязательный аудит в Ташкенте — Leader Audit",
       metaDescription: "Обязательный аудит финансовой отчётности по МСА и НСБУ в Ташкенте. Лицензированная аудиторская компания, 220+ проверок, налоговый аудит и сопровождение.",
       keywords: "обязательный аудит, обязательный аудит узбекистан, обязательный аудит ташкент, аудит финансовой отчётности, бизнес аудит в ташкенте, налоговый аудит в узбекистане",
       heroSubtitle: "Лицензия Министерства финансов РУз · 13 лет опыта · 220+ проведённых проверок",
@@ -140,8 +140,8 @@ export const servicesContent: ServicesContent = {
     },
     "initiative-audit": {
       slug: "initiative-audit",
-      title: "Инициативный аудит",
-      metaTitle: "Инициативный аудит в Ташкенте и Узбекистане | Leader Audit",
+      title: "Инициативный аудит в Ташкенте",
+      metaTitle: "Инициативный аудит в Ташкенте — Leader Audit",
       metaDescription: "Инициативный аудит для собственников и инвесторов в Ташкенте: проверка финансовой отчётности, налоговых рисков и готовности бизнеса к сделкам.",
       keywords: "инициативный аудит, добровольный аудит, бизнес аудит в ташкенте, аудит перед продажей бизнеса, проверка перед инвестициями, аудит узбекистан",
       heroSubtitle: "Добровольная проверка финансового состояния — для собственников, инвесторов и руководителей",
@@ -220,8 +220,8 @@ export const servicesContent: ServicesContent = {
     },
     "tax-consulting": {
       slug: "tax-consulting",
-      title: "Налоговый консалтинг",
-      metaTitle: "Налоговый консалтинг в Узбекистане — Leader Audit",
+      title: "Налоговый консалтинг в Ташкенте",
+      metaTitle: "Налоговый консалтинг в Ташкенте — Leader Audit",
       metaDescription: "Налоговый консалтинг и сопровождение бизнеса в Узбекистане: оптимизация, ТЦО, международное налогообложение, поддержка при налоговых проверках.",
       keywords: "налоговый консалтинг, налоговое сопровождение, налоговый аудит в узбекистане, налоговый консультант ташкент, сопровождение налоговых проверок, международное налогообложение",
       heroSubtitle: "Снизьте налоговую нагрузку и риски — законно и стратегически",
@@ -300,8 +300,8 @@ export const servicesContent: ServicesContent = {
     },
     "vat-refund": {
       slug: "vat-refund",
-      title: "Возврат НДС",
-      metaTitle: "Возврат НДС в Узбекистане под ключ — Leader Audit",
+      title: "Возврат НДС в Ташкенте",
+      metaTitle: "Возврат НДС в Ташкенте — Leader Audit",
       metaDescription: "Возврат НДС в Узбекистане: аудит документов, подача заявления, налоговое сопровождение и защита при камеральной проверке. Помогли вернуть 200+ млрд сумов.",
       keywords: "возврат ндс, возврат ндс узбекистан, возврат ндс ташкент, возврат ндс из бюджета, налоговое сопровождение ндс, возврат входящего ндс",
       heroSubtitle: "Помогли клиентам вернуть более 200 млрд сумов НДС из бюджета РУз",
@@ -379,8 +379,8 @@ export const servicesContent: ServicesContent = {
     },
     accounting: {
       slug: "accounting",
-      title: "Бухгалтерский аутсорсинг",
-      metaTitle: "Бухгалтерские услуги и аутсорсинг в Ташкенте — Leader Audit",
+      title: "Бухгалтерский аутсорсинг в Ташкенте",
+      metaTitle: "Бухгалтерский аутсорсинг в Ташкенте — Leader Audit",
       metaDescription: "Бухгалтерские услуги в Ташкенте: аутсорсинг, ведение и восстановление учёта, отчётность по НСБУ и МСФО, расчёт зарплаты и кадровое сопровождение.",
       keywords: "бухгалтерские услуги в ташкенте, бухгалтерские услуги и аудит в ташкенте, бухгалтерский аутсорсинг, ведение бухгалтерии узбекистан, восстановление учета, расчет зарплаты",
       heroSubtitle: "Полное ведение бухгалтерии профессионалами — без штатной службы",
@@ -465,8 +465,8 @@ export const servicesContent: ServicesContent = {
   uz: {
     "obligatory-audit": {
       slug: "obligatory-audit",
-      title: "Majburiy audit",
-      metaTitle: "O'zbekistonda majburiy audit 2026 | Leader Audit Toshkent",
+      title: "Toshkentda majburiy audit",
+      metaTitle: "Toshkentda majburiy audit — Leader Audit",
       metaDescription: "Toshkentda XAS va MHXS bo'yicha moliyaviy hisobotning majburiy auditi. Moliya vazirligi litsenziyasi, javobgarlik sug'urtasi, 220+ tekshiruv.",
       keywords: "majburiy audit O'zbekiston, AJ auditi, banklar majburiy auditi, moliyaviy hisobot auditi, audit Toshkent, litsenziyalangan auditor",
       heroSubtitle: "O'zbekiston Moliya vazirligi litsenziyasi · 13 yil tajriba · 220+ tekshiruv",
@@ -552,8 +552,8 @@ export const servicesContent: ServicesContent = {
     },
     "initiative-audit": {
       slug: "initiative-audit",
-      title: "Tashabbuskor audit",
-      metaTitle: "O'zbekistonda tashabbuskor audit — Leader Audit",
+      title: "Toshkentda tashabbuskor audit",
+      metaTitle: "Toshkentda tashabbuskor audit — Leader Audit",
       metaDescription: "Moliyaviy hisobotni tekshirish, soliq xavflarini aniqlash va biznesni bitimga tayyorlash uchun ixtiyoriy (tashabbuskor) audit. Litsenziyalangan auditor.",
       keywords: "tashabbuskor audit, ixtiyoriy audit, due diligence O'zbekiston, biznesni sotishdan oldin audit, investitsiyadan oldin tekshirish",
       heroSubtitle: "Moliyaviy holatning ixtiyoriy tekshiruvi — egalar, investorlar va rahbarlar uchun",
@@ -632,8 +632,8 @@ export const servicesContent: ServicesContent = {
     },
     "tax-consulting": {
       slug: "tax-consulting",
-      title: "Soliq konsalting",
-      metaTitle: "O'zbekistonda soliq konsalting — Leader Audit",
+      title: "Toshkentda soliq konsalting",
+      metaTitle: "Toshkentda soliq konsalting — Leader Audit",
       metaDescription: "Toshkentda professional soliq konsalting: soliq optimallashtirish, xalqaro soliqqa tortish, transfer narxlash va tekshiruvlarni qo'llab-quvvatlash.",
       keywords: "soliq konsalting O'zbekiston, soliq maslahatchisi Toshkent, soliq optimallashtirish, transfer narxlash, xalqaro soliqqa tortish",
       heroSubtitle: "Soliq yukini va xavflarini kamaytiring — qonuniy va strategik",
@@ -712,8 +712,8 @@ export const servicesContent: ServicesContent = {
     },
     "vat-refund": {
       slug: "vat-refund",
-      title: "QQS qaytarish",
-      metaTitle: "O'zbekistonda QQS qaytarish — Leader Audit",
+      title: "Toshkentda QQS qaytarish",
+      metaTitle: "Toshkentda QQS qaytarish — Leader Audit",
       metaDescription: "RUz byudjetidan QQS qaytarish: hujjatlar, ariza, tekshiruvni qo'llab-quvvatlash va qaytarishni olish. Mijozlarga 200+ mlrd so'm qaytarishda yordam berdik.",
       keywords: "QQS qaytarish O'zbekiston, byudjetdan QQS qaytarish, eksportchilarga QQS qaytarish, investorlarga QQS qaytarish",
       heroSubtitle: "Mijozlarga RUz byudjetidan 200 mlrd so'mdan ortiq QQSni qaytarishda yordam berdik",
@@ -791,8 +791,8 @@ export const servicesContent: ServicesContent = {
     },
     accounting: {
       slug: "accounting",
-      title: "Buxgalteriya autsorsing",
-      metaTitle: "Toshkentda buxgalteriya xizmatlari — Leader Audit",
+      title: "Toshkentda buxgalteriya autsorsingi",
+      metaTitle: "Toshkentda buxgalteriya autsorsingi — Leader Audit",
       metaDescription: "Toshkentda buxgalteriya autsorsingi: hisob yuritish va tiklash, MHXS va XHXS hisoboti, ish haqi va kadr hisobi. Litsenziyalangan kompaniya.",
       keywords: "buxgalteriya xizmatlari Toshkent, buxgalteriya autsorsingi O'zbekiston, buxgalteriya yuritish, hisobni tiklash, ish haqi hisobi",
       heroSubtitle: "Buxgalteriyani professionallar tomonidan to'liq yuritish — shtatlilarsiz",
@@ -877,8 +877,8 @@ export const servicesContent: ServicesContent = {
   en: {
     "obligatory-audit": {
       slug: "obligatory-audit",
-      title: "Statutory audit",
-      metaTitle: "Statutory Audit in Uzbekistan 2026 | Leader Audit Tashkent",
+      title: "Statutory audit in Tashkent",
+      metaTitle: "Statutory Audit in Tashkent — Leader Audit",
       metaDescription: "Statutory audit of financial statements in Tashkent under ISA and NAS. Licensed by the Ministry of Finance, insured, with 220+ completed engagements.",
       keywords: "statutory audit Uzbekistan, JSC audit, bank statutory audit, financial statement audit, audit Tashkent, licensed auditor",
       heroSubtitle: "Licensed by the Ministry of Finance · 13 years of experience · 220+ engagements",
@@ -964,8 +964,8 @@ export const servicesContent: ServicesContent = {
     },
     "initiative-audit": {
       slug: "initiative-audit",
-      title: "Initiative audit",
-      metaTitle: "Initiative Audit in Uzbekistan — Leader Audit",
+      title: "Initiative audit in Tashkent",
+      metaTitle: "Initiative Audit in Tashkent — Leader Audit",
       metaDescription: "Voluntary (initiative) audit to verify financial statements, identify tax risks, prepare for business sale. Licensed auditor in Tashkent. +998 97 410 04 47",
       keywords: "initiative audit, voluntary audit, due diligence Uzbekistan, audit before business sale, pre-investment audit",
       heroSubtitle: "Voluntary financial review — for owners, investors and executives",
@@ -1044,8 +1044,8 @@ export const servicesContent: ServicesContent = {
     },
     "tax-consulting": {
       slug: "tax-consulting",
-      title: "Tax consulting",
-      metaTitle: "Tax Consulting in Uzbekistan — Leader Audit",
+      title: "Tax consulting in Tashkent",
+      metaTitle: "Tax Consulting in Tashkent — Leader Audit",
       metaDescription: "Professional tax consulting in Tashkent: tax optimization, international taxation, transfer pricing, audit support. Call: +998 97 410 04 47",
       keywords: "tax consulting Uzbekistan, tax consultant Tashkent, tax optimization, transfer pricing, international taxation",
       heroSubtitle: "Reduce tax burden and risks — legally and strategically",
@@ -1124,8 +1124,8 @@ export const servicesContent: ServicesContent = {
     },
     "vat-refund": {
       slug: "vat-refund",
-      title: "VAT refund",
-      metaTitle: "VAT Refund in Uzbekistan — Leader Audit",
+      title: "VAT refund in Tashkent",
+      metaTitle: "VAT Refund in Tashkent — Leader Audit",
       metaDescription: "VAT refund from the Uzbek budget: document preparation, filing, audit support, and collection. We've helped clients refund 200+ billion UZS.",
       keywords: "VAT refund Uzbekistan, VAT refund from budget, exporter VAT refund, investor VAT refund",
       heroSubtitle: "Helped clients refund over 200 billion UZS in VAT from the Uzbek budget",
@@ -1203,8 +1203,8 @@ export const servicesContent: ServicesContent = {
     },
     accounting: {
       slug: "accounting",
-      title: "Accounting outsourcing",
-      metaTitle: "Accounting Services in Tashkent — Leader Audit",
+      title: "Accounting outsourcing in Tashkent",
+      metaTitle: "Accounting Outsourcing in Tashkent — Leader Audit",
       metaDescription: "Accounting outsourcing in Tashkent: bookkeeping, restoration, NAS and IFRS reporting, payroll, HR records. Licensed firm. +998 97 410 04 47",
       keywords: "accounting services Tashkent, accounting outsourcing Uzbekistan, bookkeeping, accounting restoration, payroll, HR outsourcing",
       heroSubtitle: "Full accounting handled by professionals — without an in-house team",

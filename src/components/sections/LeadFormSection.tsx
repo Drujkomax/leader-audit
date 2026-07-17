@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useLanguage } from "@/contexts/language-context";
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/xqegblwl";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8787";
 type FormData = {
   name: string;
   phone: string;
@@ -13,7 +14,7 @@ type FormData = {
 };
 
 const LeadFormSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const formSchema = z.object({
     name: z.string().trim().min(2, t.leadForm.validation.nameMin).max(100, t.leadForm.validation.nameMax),
     phone: z.string().trim().min(9, t.leadForm.validation.phoneMin).max(20, t.leadForm.validation.phoneMax),
@@ -43,6 +44,18 @@ const LeadFormSection = () => {
 
     try {
       const validated = formSchema.parse(formData);
+
+      // Duplicate the lead into our own CRM backend; Formspree stays the
+      // delivery channel the submission result depends on.
+      fetch(`${API_URL}/api/leads`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...validated,
+          lang: language,
+          page: window.location.pathname,
+        }),
+      }).catch(() => {});
 
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",

@@ -1,0 +1,30 @@
+# Деплой на Contabo VPS: /opt/leaderaudit/server
+# API и бот делят одну SQLite-базу через общий volume; наружу смотрит только
+# Caddy (блок api.leaderaudit.uz в /opt/proxy/Caddyfile).
+services:
+  api:
+    build: .
+    container_name: leaderaudit-api
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - leader-data:/app/data
+    networks:
+      - leaderaudit-net
+
+  bot:
+    build: ./telegram-bot
+    container_name: leaderaudit-bot
+    restart: unless-stopped
+    env_file: ./telegram-bot/.env
+    volumes:
+      - leader-data:/app/data
+    networks:
+      - leaderaudit-net
+
+volumes:
+  leader-data:
+
+networks:
+  leaderaudit-net:
+    name: leaderaudit-net

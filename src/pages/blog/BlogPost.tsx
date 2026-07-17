@@ -7,12 +7,12 @@ import FloatingContact from "@/components/FloatingContact";
 import LeadFormSection from "@/components/sections/LeadFormSection";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/language-context";
-import { blogPosts } from "@/data/blog-posts";
+import { useBlogPosts } from "@/hooks/use-blog-posts";
 import { servicesContent } from "@/data/services-content";
 
 const SITE_URL = "https://leaderaudit.uz";
 
-// Each guide links to its most relevant service pages (contextual internal linking).
+// Each guide links UP to its most relevant service pages (topic-cluster cocoon).
 const RELATED_SERVICES: Record<string, string[]> = {
   "obligatory-audit-guide-2026": ["obligatory-audit", "initiative-audit"],
   "vat-refund-uzbekistan": ["vat-refund", "tax-consulting"],
@@ -22,16 +22,33 @@ const RELATED_SERVICES: Record<string, string[]> = {
   "tax-code-2026-changes": ["tax-consulting", "accounting"],
 };
 
+// Sideways links to sibling articles in the same cluster ("Читайте также").
+const RELATED_ARTICLES: Record<string, string[]> = {
+  "obligatory-audit-guide-2026": ["isa-vs-nas-uzbekistan", "tax-audit-checklist"],
+  "isa-vs-nas-uzbekistan": ["obligatory-audit-guide-2026", "tax-code-2026-changes"],
+  "vat-refund-uzbekistan": ["tax-code-2026-changes", "tax-audit-checklist"],
+  "transfer-pricing-uzbekistan": ["tax-code-2026-changes", "tax-audit-checklist"],
+  "tax-audit-checklist": ["tax-code-2026-changes", "transfer-pricing-uzbekistan"],
+  "tax-code-2026-changes": ["tax-audit-checklist", "transfer-pricing-uzbekistan"],
+};
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const { language } = useLanguage();
   const langPrefix = language === "ru" ? "" : `/${language}`;
 
-  if (!slug || !blogPosts[language][slug]) {
+  const { posts, isLoading } = useBlogPosts(language);
+
+  if (!slug || (!posts[slug] && isLoading)) {
+    // A CMS-only post may still be loading — don't redirect prematurely.
+    if (isLoading) return <div className="min-h-screen bg-background" />;
+    return <Navigate to={`${langPrefix}/blog`} replace />;
+  }
+  if (!posts[slug]) {
     return <Navigate to={`${langPrefix}/blog`} replace />;
   }
 
-  const post = blogPosts[language][slug];
+  const post = posts[slug];
   const canonical = `${SITE_URL}${langPrefix}/blog/${slug}`;
 
   // JSON-LD (BlogPosting + Breadcrumb) is emitted by the static prerender as one @graph,
@@ -131,12 +148,40 @@ const BlogPost = () => {
                 {post.title}
               </h1>
               <p className="text-base sm:text-lg text-primary-foreground/80 leading-relaxed">{post.excerpt}</p>
+              <p className="mt-5 text-xs sm:text-sm text-primary-foreground/60 border-t border-primary-foreground/15 pt-4">
+                {language === "ru"
+                  ? "Материал подготовлен аудиторами Leader Audit (CAP, CIPA, DipIFR). Источники: Налоговый кодекс РУз, Министерство финансов Республики Узбекистан."
+                  : language === "uz"
+                  ? "Material Leader Audit auditorlari (CAP, CIPA, DipIFR) tomonidan tayyorlangan. Manbalar: OʻzR Soliq kodeksi, OʻzR Moliya vazirligi."
+                  : "Prepared by the auditors of Leader Audit (CAP, CIPA, DipIFR). Sources: Tax Code of Uzbekistan, Ministry of Finance of the Republic of Uzbekistan."}
+              </p>
             </div>
           </section>
 
           <article className="py-10 sm:py-14">
             <div className="container-wide max-w-3xl">
               <div className="prose prose-lg max-w-none">{renderContent()}</div>
+
+              {post.faqs && post.faqs.length > 0 && (
+                <section className="mt-12 border-t border-border pt-8">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+                    {language === "ru" ? "Частые вопросы" : language === "uz" ? "Tez-tez soʻraladigan savollar" : "Frequently asked questions"}
+                  </h2>
+                  <div className="space-y-4">
+                    {post.faqs.map((f, i) => (
+                      <details key={i} className="group bg-card border border-border rounded-xl overflow-hidden" open={i === 0}>
+                        <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer hover:bg-muted/30 transition-colors list-none">
+                          <h3 className="text-base sm:text-lg font-semibold text-foreground">{f.question}</h3>
+                          <ArrowLeft className="w-5 h-5 text-muted-foreground flex-shrink-0 -rotate-90 group-open:rotate-90 transition-transform" />
+                        </summary>
+                        <div className="px-5 pb-5">
+                          <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">{f.answer}</p>
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {(RELATED_SERVICES[slug] ?? []).length > 0 && (
                 <aside className="mt-12 border-t border-border pt-8">
@@ -155,6 +200,25 @@ const BlogPost = () => {
                         </Link>
                       </li>
                     ))}
+                  </ul>
+                </aside>
+              )}
+
+              {(RELATED_ARTICLES[slug] ?? []).filter((s) => posts[s]).length > 0 && (
+                <aside className="mt-10 border-t border-border pt-8">
+                  <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
+                    {language === "ru" ? "Читайте также" : language === "uz" ? "Shuningdek oʻqing" : "Read also"}
+                  </h2>
+                  <ul className="space-y-2">
+                    {(RELATED_ARTICLES[slug] ?? [])
+                      .filter((s) => posts[s])
+                      .map((s) => (
+                        <li key={s}>
+                          <Link to={`${langPrefix}/blog/${s}`} className="text-primary font-medium hover:underline">
+                            {posts[s].title}
+                          </Link>
+                        </li>
+                      ))}
                   </ul>
                 </aside>
               )}

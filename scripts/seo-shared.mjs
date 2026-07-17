@@ -181,6 +181,23 @@ const HOME = {
   },
 };
 
+// Sideways article↔article and service↔article cluster links (mirror the React maps).
+const BLOG_SIBLINGS = {
+  "obligatory-audit-guide-2026": ["isa-vs-nas-uzbekistan", "tax-audit-checklist"],
+  "isa-vs-nas-uzbekistan": ["obligatory-audit-guide-2026", "tax-code-2026-changes"],
+  "vat-refund-uzbekistan": ["tax-code-2026-changes", "tax-audit-checklist"],
+  "transfer-pricing-uzbekistan": ["tax-code-2026-changes", "tax-audit-checklist"],
+  "tax-audit-checklist": ["tax-code-2026-changes", "transfer-pricing-uzbekistan"],
+  "tax-code-2026-changes": ["tax-audit-checklist", "transfer-pricing-uzbekistan"],
+};
+const SERVICE_ARTICLES = {
+  "obligatory-audit": ["obligatory-audit-guide-2026", "isa-vs-nas-uzbekistan"],
+  "initiative-audit": ["obligatory-audit-guide-2026"],
+  "tax-consulting": ["tax-code-2026-changes", "tax-audit-checklist", "transfer-pricing-uzbekistan"],
+  "vat-refund": ["vat-refund-uzbekistan"],
+  accounting: ["isa-vs-nas-uzbekistan"],
+};
+
 // Map a blog slug to the most relevant service slug (for contextual internal links)
 const BLOG_TO_SERVICE = {
   "obligatory-audit-guide-2026": ["obligatory-audit", "initiative-audit"],
@@ -257,7 +274,6 @@ export function buildRoutes(content) {
   const { servicesContent, blogPosts, casesContent } = content;
   const routes = [];
   const serviceSlugs = Object.keys(servicesContent.ru);
-  const blogSlugs = Object.keys(blogPosts.ru);
 
   for (const lang of LANGS) {
     const pfx = prefix(lang);
@@ -283,7 +299,8 @@ export function buildRoutes(content) {
 
     routes.push({ type: "blog", lang, path: `${pfx}/blog`, title: BLOGIDX_META[lang].title, description: BLOGIDX_META[lang].description, keywords: BLOGIDX_META[lang].keywords });
 
-    for (const slug of blogSlugs) {
+    // CMS posts may exist in fewer than 3 languages — iterate per-language keys.
+    for (const slug of Object.keys(blogPosts[lang])) {
       const p = blogPosts[lang][slug];
       routes.push({
         type: "blogpost", lang, slug, path: `${pfx}/blog/${slug}`,
@@ -445,7 +462,20 @@ export function buildGraph(route, content, orgNode, websiteNode, homeFaqRu) {
       wordCount: bodyText.split(/\s+/).filter(Boolean).length,
       articleBody: bodyText,
     };
-    return [...base, webPageNode(route), breadcrumbNode(route, trailFor(route, p.title)), article];
+    const nodes = [...base, webPageNode(route), breadcrumbNode(route, trailFor(route, p.title)), article];
+    if (Array.isArray(p.faqs) && p.faqs.length) {
+      nodes.push({
+        "@type": "FAQPage",
+        "@id": `${canonical}#faq`,
+        inLanguage: locale(route.lang),
+        mainEntity: p.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      });
+    }
+    return nodes;
   }
 
   if (route.type === "cases") {
@@ -492,8 +522,41 @@ export function buildGraph(route, content, orgNode, websiteNode, homeFaqRu) {
   if (route.type === "about")
     return [...base, webPageNode(route, "AboutPage"), breadcrumbNode(route, trailFor(route, t("about", route.lang)))];
 
-  if (route.type === "contact")
-    return [...base, webPageNode(route, "ContactPage"), breadcrumbNode(route, trailFor(route, t("contact", route.lang)))];
+  if (route.type === "contact") {
+    const city = AREA[route.lang][1];
+    // The head office (Mustaqillik) is already the Organization/LocalBusiness node; emit the
+    // OTHER two offices as branch LocalBusiness so there are exactly 3 offices, no duplicate.
+    const branchNodes = (content.branches || []).filter((b) => b.id !== "mustaqillik").map((b) => {
+      const node = {
+        "@type": ["LocalBusiness", "AccountingService"],
+        "@id": `${SITE_URL}/#branch-${b.id}`,
+        name: `Leader Audit — ${b.label[route.lang]}`,
+        branchOf: { "@id": ORG_ID },
+        parentOrganization: { "@id": ORG_ID },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: b.street[route.lang],
+          addressLocality: city,
+          addressCountry: "UZ",
+        },
+        telephone: "+998974100447",
+        email: "info@leaderaudit.uz",
+        url: canonical,
+        priceRange: "$$$",
+        areaServed: { "@type": "City", name: city },
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "09:00",
+          closes: "18:00",
+        },
+        hasMap: b.mapUrl,
+      };
+      if (b.geo) node.geo = { "@type": "GeoCoordinates", latitude: b.geo.lat, longitude: b.geo.lng };
+      return node;
+    });
+    return [...base, webPageNode(route, "ContactPage"), breadcrumbNode(route, trailFor(route, t("contact", route.lang))), ...branchNodes];
+  }
 
   return [...base, webPageNode(route), breadcrumbNode(route, trailFor(route, route.title))];
 }
@@ -579,6 +642,8 @@ export function buildNoscriptInner(route, content, homeFaqRu) {
     parts.push(h(2, c.faqHeading));
     c.faqs.forEach((f) => parts.push(h(3, f.question), p(f.answer)));
     parts.push(serviceLinks(lang, route.slug));
+    const arts = (SERVICE_ARTICLES[route.slug] || []).filter((s) => blogPosts[lang][s]).map((s) => `<a href="${pfx}/blog/${s}">${escapeHtml(blogPosts[lang][s].title)}</a>`);
+    if (arts.length) parts.push(`<p>${lang === "ru" ? "Полезные статьи" : lang === "uz" ? "Foydali maqolalar" : "Useful articles"}: ${arts.join(" · ")}</p>`);
     parts.push(navLinks(lang)); // links to blog, cases, about, contact (service→proof cross-silo)
     parts.push(p(t("contactCta", lang)));
     return parts.join("\n");
@@ -591,9 +656,20 @@ export function buildNoscriptInner(route, content, homeFaqRu) {
     parts.push(h(1, post.title));
     parts.push(p(`${post.category} · ${t("published", lang)}: ${post.publishedDate} · ${t("updated", lang)}: ${post.modifiedDate} · ${t("readingTime", lang)}: ${post.readingTime}`));
     parts.push(p(post.excerpt));
+    parts.push(p(lang === "ru"
+      ? "Материал подготовлен аудиторами Leader Audit (CAP, CIPA, DipIFR). Источники: Налоговый кодекс РУз, Министерство финансов Республики Узбекистан."
+      : lang === "uz"
+      ? "Material Leader Audit auditorlari (CAP, CIPA, DipIFR) tomonidan tayyorlangan. Manbalar: OʻzR Soliq kodeksi, OʻzR Moliya vazirligi."
+      : "Prepared by the auditors of Leader Audit (CAP, CIPA, DipIFR). Sources: Tax Code of Uzbekistan, Ministry of Finance of the Republic of Uzbekistan."));
     parts.push(blogContentToHtml(post.content));
+    if (Array.isArray(post.faqs) && post.faqs.length) {
+      parts.push(h(2, lang === "ru" ? "Частые вопросы" : lang === "uz" ? "Tez-tez soʻraladigan savollar" : "Frequently asked questions"));
+      post.faqs.forEach((f) => parts.push(h(3, f.question), p(f.answer)));
+    }
     const rel = (BLOG_TO_SERVICE[route.slug] || []).map((s) => `<a href="${pfx}/services/${s}">${escapeHtml(SERVICE_NAMES[s][lang])}</a>`);
     if (rel.length) parts.push(`<p>${t("relatedServices", lang)}: ${rel.join(" · ")}</p>`);
+    const sib = (BLOG_SIBLINGS[route.slug] || []).filter((s) => blogPosts[lang][s]).map((s) => `<a href="${pfx}/blog/${s}">${escapeHtml(blogPosts[lang][s].title)}</a>`);
+    if (sib.length) parts.push(`<p>${lang === "ru" ? "Читайте также" : lang === "uz" ? "Shuningdek oʻqing" : "Read also"}: ${sib.join(" · ")}</p>`);
     parts.push(p(t("contactCta", lang)));
     return parts.join("\n");
   }
@@ -644,19 +720,23 @@ export function buildNoscriptInner(route, content, homeFaqRu) {
   }
 
   if (route.type === "contact") {
-    const addr = lang === "ru" ? "г. Ташкент, ул. Мустакиллик, 12" : lang === "uz" ? "Toshkent shahri, Mustaqillik ko'chasi, 12" : "12 Mustaqillik St, Tashkent, Uzbekistan";
-    const hours = lang === "ru" ? "Пн–Пт: 9:00–18:00 (UTC+5)" : lang === "uz" ? "Du–Ju: 9:00–18:00 (UTC+5)" : "Mon–Fri: 9:00–18:00 (UTC+5)";
+    const hours = lang === "ru" ? "Пн–Пт: 09:00–18:00 (UTC+5)" : lang === "uz" ? "Du–Ju: 09:00–18:00 (UTC+5)" : "Mon–Fri: 09:00–18:00 (UTC+5)";
+    const lbl = { addr: { ru: "Адрес", uz: "Manzil", en: "Address" }, phone: { ru: "Телефон", uz: "Telefon", en: "Phone" }, map: { ru: "Показать на карте", uz: "Xaritada koʻrsatish", en: "View on map" }, offices: { ru: "Наши офисы в Ташкенте", uz: "Toshkentdagi ofislarimiz", en: "Our offices in Tashkent" } };
     const parts = [];
     parts.push(h(1, CONTACT_META[lang].title.split("|")[0].trim()));
     parts.push(p(CONTACT_META[lang].description));
-    parts.push(ul([
-      `Тел / Tel / Phone: +998 97 410 04 47`,
-      `Email: info@leaderaudit.uz`,
-      `${L.about[lang] === "About" ? "Address" : "Адрес / Manzil"}: ${addr}`,
-      hours,
-      `Instagram: @leader_audit_uz`,
-      `Telegram: @LeaderAudit_uz`,
-    ]));
+    parts.push(h(2, lbl.offices[lang]));
+    (content.branches || []).forEach((b) => {
+      parts.push(h(3, `Leader Audit — ${b.label[lang]}`));
+      parts.push(ul([
+        `${lbl.addr[lang]}: ${b.street[lang]}, ${b.district[lang]}`,
+        `${lbl.phone[lang]}: +998 97 410 04 47`,
+        `Email: info@leaderaudit.uz`,
+        hours,
+      ]));
+      parts.push(`<p><a href="${escapeHtml(b.mapUrl)}">${escapeHtml(lbl.map[lang])}</a></p>`);
+    });
+    parts.push(p("Instagram: @leader_audit_uz · Telegram: @LeaderAudit_uz"));
     parts.push(serviceLinks(lang, null));
     return parts.join("\n");
   }

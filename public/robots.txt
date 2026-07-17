@@ -122,6 +122,7 @@ Allow: /
 # === Default for all other agents ===
 User-agent: *
 Allow: /
+Disallow: /admin
 
 # === Sitemap ===
 Sitemap: https://leaderaudit.uz/sitemap.xml

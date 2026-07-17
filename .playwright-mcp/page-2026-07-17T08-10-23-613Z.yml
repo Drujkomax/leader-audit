@@ -1,0 +1,88 @@
+- generic [ref=f5e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=f5e142]:
+    - banner [ref=f5e143]:
+      - generic [ref=f5e144]:
+        - generic [ref=f5e145]: Админ панель
+        - navigation [ref=f5e147]:
+          - link "Статьи" [ref=f5e148] [cursor=pointer]:
+            - /url: /admin/posts
+          - link "Заявки" [ref=f5e152] [cursor=pointer]:
+            - /url: /admin/leads
+          - button "Выйти" [ref=f5e156] [cursor=pointer]
+    - main [ref=f5e160]:
+      - generic [ref=f5e161]:
+        - generic [ref=f5e162]:
+          - heading "Статьи блога" [level=1] [ref=f5e163]
+          - link "Новая статья" [ref=f5e164] [cursor=pointer]:
+            - /url: /admin/posts/new
+        - generic [ref=f5e166]:
+          - link "eforif /diyor · 2026-07-17 · erferferf EN" [ref=f5e167] [cursor=pointer]:
+            - /url: /admin/posts/diyor
+            - generic [ref=f5e168]:
+              - generic [ref=f5e169]:
+                - generic [ref=f5e170]: eforif
+                - generic [ref=f5e171]: /diyor · 2026-07-17 · erferferf
+              - generic "Опубликовано" [ref=f5e173]: EN
+          - 'link "МСА vs НСБУ в Узбекистане: что выбрать вашей компании /isa-vs-nas-uzbekistan · 2026-04-05 · Бухгалтерия EN RU UZ" [ref=f5e174] [cursor=pointer]':
+            - /url: /admin/posts/isa-vs-nas-uzbekistan
+            - generic [ref=f5e175]:
+              - generic [ref=f5e176]:
+                - generic [ref=f5e177]: "МСА vs НСБУ в Узбекистане: что выбрать вашей компании"
+                - generic [ref=f5e178]: /isa-vs-nas-uzbekistan · 2026-04-05 · Бухгалтерия
+              - generic [ref=f5e179]:
+                - generic "Опубликовано" [ref=f5e180]: EN
+                - generic "Опубликовано" [ref=f5e181]: RU
+                - generic "Опубликовано" [ref=f5e182]: UZ
+          - link "Обязательный аудит финансовой отчетности предприятия 2026 /obligatory-audit-guide-2026 · 2026-04-15 · Аудит EN RU UZ" [ref=f5e183] [cursor=pointer]:
+            - /url: /admin/posts/obligatory-audit-guide-2026
+            - generic [ref=f5e184]:
+              - generic [ref=f5e185]:
+                - generic [ref=f5e186]: Обязательный аудит финансовой отчетности предприятия 2026
+                - generic [ref=f5e187]: /obligatory-audit-guide-2026 · 2026-04-15 · Аудит
+              - generic [ref=f5e188]:
+                - generic "Опубликовано" [ref=f5e189]: EN
+                - generic "Опубликовано" [ref=f5e190]: RU
+                - generic "Опубликовано" [ref=f5e191]: UZ
+          - 'link "Налоговая проверка в Узбекистане: чек-лист готовности /tax-audit-checklist · 2026-03-20 · Налоги EN RU UZ" [ref=f5e192] [cursor=pointer]':
+            - /url: /admin/posts/tax-audit-checklist
+            - generic [ref=f5e193]:
+              - generic [ref=f5e194]:
+                - generic [ref=f5e195]: "Налоговая проверка в Узбекистане: чек-лист готовности"
+                - generic [ref=f5e196]: /tax-audit-checklist · 2026-03-20 · Налоги
+              - generic [ref=f5e197]:
+                - generic "Опубликовано" [ref=f5e198]: EN
+                - generic "Опубликовано" [ref=f5e199]: RU
+                - generic "Опубликовано" [ref=f5e200]: UZ
+          - 'link "Изменения в Налоговом кодексе РУз 2026: что важно бухгалтеру и собственнику бизнеса /tax-code-2026-changes · 2026-04-30 · Налоги EN RU UZ" [ref=f5e201] [cursor=pointer]':
+            - /url: /admin/posts/tax-code-2026-changes
+            - generic [ref=f5e202]:
+              - generic [ref=f5e203]:
+                - generic [ref=f5e204]: "Изменения в Налоговом кодексе РУз 2026: что важно бухгалтеру и собственнику бизнеса"
+                - generic [ref=f5e205]: /tax-code-2026-changes · 2026-04-30 · Налоги
+              - generic [ref=f5e206]:
+                - generic "Опубликовано" [ref=f5e207]: EN
+                - generic "Опубликовано" [ref=f5e208]: RU
+                - generic "Опубликовано" [ref=f5e209]: UZ
+          - 'link "Трансфертное ценообразование в Узбекистане: что нужно знать /transfer-pricing-uzbekistan · 2026-03-28 · Налоги EN RU UZ" [ref=f5e210] [cursor=pointer]':
+            - /url: /admin/posts/transfer-pricing-uzbekistan
+            - generic [ref=f5e211]:
+              - generic [ref=f5e212]:
+                - generic [ref=f5e213]: "Трансфертное ценообразование в Узбекистане: что нужно знать"
+                - generic [ref=f5e214]: /transfer-pricing-uzbekistan · 2026-03-28 · Налоги
+              - generic [ref=f5e215]:
+                - generic "Опубликовано" [ref=f5e216]: EN
+                - generic "Опубликовано" [ref=f5e217]: RU
+                - generic "Опубликовано" [ref=f5e218]: UZ
+          - 'link "Возврат НДС в Узбекистане: пошаговая инструкция /vat-refund-uzbekistan · 2026-04-10 · Налоги EN RU UZ" [ref=f5e219] [cursor=pointer]':
+            - /url: /admin/posts/vat-refund-uzbekistan
+            - generic [ref=f5e220]:
+              - generic [ref=f5e221]:
+                - generic [ref=f5e222]: "Возврат НДС в Узбекистане: пошаговая инструкция"
+                - generic [ref=f5e223]: /vat-refund-uzbekistan · 2026-04-10 · Налоги
+              - generic [ref=f5e224]:
+                - generic "Опубликовано" [ref=f5e225]: EN
+                - generic "Опубликовано" [ref=f5e226]: RU
+                - generic "Опубликовано" [ref=f5e227]: UZ

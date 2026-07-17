@@ -1,0 +1,13 @@
+- generic [ref=f5e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=f5e125]:
+        - generic [ref=f5e129]: Сессия истекла — войдите заново, текст статьи сохранён локально
+  - generic [ref=f5e132]:
+    - heading "Вход в админку" [level=1] [ref=f5e137]
+    - generic [ref=f5e138]:
+      - textbox "Email" [ref=f5e139]
+      - textbox "Пароль" [ref=f5e140]
+      - button "Войти" [ref=f5e141] [cursor=pointer]

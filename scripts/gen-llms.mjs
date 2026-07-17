@@ -13,9 +13,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.resolve(__dirname, "../public");
 
 const BUILD_DATE_RAW = new Date().toISOString().slice(0, 10);
-const { servicesContent, blogPosts, casesContent } = await loadContent();
+const { servicesContent, blogPosts, casesContent, branches } = await loadContent();
 const serviceSlugs = Object.keys(servicesContent.ru);
 const blogSlugs = Object.keys(blogPosts.ru);
+
+const officesRu = (branches || []).map((b) => `  - ${b.label.ru} — ${b.street.ru}, ${b.district.ru}`).join("\n");
 
 // Freshness stamp must never lag the freshest content it indexes (blog dateModified).
 const allModified = ["ru", "uz", "en"].flatMap((l) => Object.values(blogPosts[l]).map((p) => p.modifiedDate));
@@ -117,7 +119,8 @@ const llms = `# Leader Audit
 
 - **Телефон:** +998 97 410 04 47
 - **Email:** info@leaderaudit.uz
-- **Адрес:** г. Ташкент, ул. Мустакиллик, 12, 100000, Узбекистан
+- **Офисы в Ташкенте (3):**
+${officesRu}
 - **Часы работы:** Пн–Пт, 09:00–18:00 (UTC+5)
 - **Языки обслуживания:** русский, узбекский, английский
 - **Соцсети:** Instagram @leader_audit_uz, Telegram @LeaderAudit_uz

@@ -1,0 +1,28 @@
+- generic [ref=f7e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=f7e4]:
+    - banner [ref=f7e5]:
+      - generic [ref=f7e6]:
+        - generic [ref=f7e7]: Админ панель
+        - navigation [ref=f7e9]:
+          - link "Статьи" [ref=f7e10] [cursor=pointer]:
+            - /url: /admin/posts
+          - link "Заявки" [ref=f7e14] [cursor=pointer]:
+            - /url: /admin/leads
+          - button "Выйти" [ref=f7e18] [cursor=pointer]
+    - main [ref=f7e22]:
+      - generic [ref=f7e23]:
+        - button "К списку статей" [ref=f7e24] [cursor=pointer]
+        - heading "Новая статья" [level=1] [ref=f7e28]
+        - generic [ref=f7e29]:
+          - generic [ref=f7e30]: Slug (URL статьи)
+          - textbox "naprimer-nalogovyy-audit-2026" [ref=f7e31]: proverka-multi-lang
+        - generic [ref=f7e32]:
+          - button "Русский" [ref=f7e33] [cursor=pointer]
+          - button "O'zbekcha (нет)" [ref=f7e34] [cursor=pointer]
+          - button "English (нет)" [active] [ref=f7e35] [cursor=pointer]
+        - generic [ref=f7e36]:
+          - paragraph [ref=f7e80]: Версии на этом языке ещё нет.
+          - button "Создать (скопировать из другого языка)" [ref=f7e81] [cursor=pointer]

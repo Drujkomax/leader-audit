@@ -25,15 +25,42 @@ async function loadModule(file) {
   return import(url);
 }
 
+// When CONTENT_API_URL is set (CI build), published CMS posts overlay the static
+// snapshot so sitemap/llms.txt/prerender pick up articles created in the admin.
+// Any failure falls back to the baked-in data — the build never breaks on it.
+async function loadCmsPosts() {
+  const api = process.env.CONTENT_API_URL;
+  if (!api) return null;
+  try {
+    const res = await fetch(`${api.replace(/\/$/, "")}/api/public/posts`, {
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (e) {
+    console.warn(`CONTENT_API_URL unreachable (${e.message}) — using static blog data`);
+    return null;
+  }
+}
+
 export async function loadContent() {
-  const [services, blog, cases] = await Promise.all([
+  const [services, blog, cases, branchesMod, cmsPosts] = await Promise.all([
     loadModule("services-content.ts"),
     loadModule("blog-posts.ts"),
     loadModule("cases-content.ts"),
+    loadModule("branches.ts"),
+    loadCmsPosts(),
   ]);
+  const blogPosts = { ...blog.blogPosts };
+  if (cmsPosts) {
+    for (const lang of Object.keys(blogPosts)) {
+      blogPosts[lang] = { ...blogPosts[lang], ...(cmsPosts[lang] || {}) };
+    }
+  }
   return {
     servicesContent: services.servicesContent,
-    blogPosts: blog.blogPosts,
+    blogPosts,
     casesContent: cases.casesContent,
+    branches: branchesMod.branches,
   };
 }

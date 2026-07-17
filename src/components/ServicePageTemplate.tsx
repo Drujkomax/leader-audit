@@ -9,12 +9,22 @@ import LeadFormSection from "@/components/sections/LeadFormSection";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/contexts/language-context";
 import { servicesContent } from "@/data/services-content";
+import { blogPosts } from "@/data/blog-posts";
 
 type ServicePageTemplateProps = {
   slug: keyof (typeof servicesContent)["ru"];
 };
 
 const SITE_URL = "https://leaderaudit.uz";
+
+// Cocoon: each service links DOWN to its cluster articles ("Полезные статьи").
+const SERVICE_ARTICLES: Record<string, string[]> = {
+  "obligatory-audit": ["obligatory-audit-guide-2026", "isa-vs-nas-uzbekistan"],
+  "initiative-audit": ["obligatory-audit-guide-2026"],
+  "tax-consulting": ["tax-code-2026-changes", "tax-audit-checklist", "transfer-pricing-uzbekistan"],
+  "vat-refund": ["vat-refund-uzbekistan"],
+  accounting: ["isa-vs-nas-uzbekistan"],
+};
 
 const ServicePageTemplate = ({ slug }: ServicePageTemplateProps) => {
   const { language } = useLanguage();
@@ -244,6 +254,30 @@ const ServicePageTemplate = ({ slug }: ServicePageTemplateProps) => {
               </a>
             </div>
           </section>
+
+          {(SERVICE_ARTICLES[slug] ?? []).filter((a) => blogPosts[language][a]).length > 0 && (
+            <section className="py-12 sm:py-16 bg-secondary/30">
+              <div className="container-wide max-w-4xl">
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 text-center">
+                  {language === "ru" ? "Полезные статьи" : language === "uz" ? "Foydali maqolalar" : "Useful articles"}
+                </h2>
+                <ul className="grid sm:grid-cols-2 gap-3">
+                  {(SERVICE_ARTICLES[slug] ?? [])
+                    .filter((a) => blogPosts[language][a])
+                    .map((a) => (
+                      <li key={a}>
+                        <Link
+                          to={`${langPrefix}/blog/${a}`}
+                          className="block bg-card border border-border rounded-xl p-4 hover:border-primary/40 hover:shadow-md transition-all text-foreground font-medium"
+                        >
+                          {blogPosts[language][a].title}
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </section>
+          )}
 
           <LeadFormSection />
         </main>
