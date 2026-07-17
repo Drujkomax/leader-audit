@@ -10,7 +10,7 @@ const PostsList = () => {
   const { data, isLoading, error } = useQuery({ queryKey: ["admin-posts"], queryFn: api.posts, retry: false });
 
   if (error && (error as Error).message === "unauthorized") {
-    navigate("/admin");
+    navigate("/");
     return null;
   }
 
@@ -25,7 +25,7 @@ const PostsList = () => {
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-foreground">Статьи блога</h1>
         <Link
-          to="/admin/posts/new"
+          to="/posts/new"
           className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90"
         >
           <Plus className="w-4 h-4" /> Новая статья
@@ -40,7 +40,7 @@ const PostsList = () => {
           return (
             <Link
               key={slug}
-              to={`/admin/posts/${slug}`}
+              to={`/posts/${slug}`}
               className="block bg-card border border-border rounded-xl px-5 py-4 hover:border-primary transition-colors"
             >
               <div className="flex items-center justify-between gap-4">

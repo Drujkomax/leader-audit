@@ -9,12 +9,12 @@ const AdminLayout = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (!getToken()) navigate("/admin", { replace: true });
+    if (!getToken()) navigate("/", { replace: true });
   }, [navigate, location.pathname]);
 
   const handleLogout = () => {
     clearToken();
-    navigate("/admin");
+    navigate("/");
   };
 
   const linkCls = (path: string) =>
@@ -36,10 +36,10 @@ const AdminLayout = () => {
             <span className="font-bold text-foreground">Админ панель</span>
           </div>
           <nav className="flex items-center gap-2">
-            <Link to="/admin/posts" className={linkCls("/admin/posts")}>
+            <Link to="/posts" className={linkCls("/posts")}>
               <FileText className="w-4 h-4" /> Статьи
             </Link>
-            <Link to="/admin/leads" className={linkCls("/admin/leads")}>
+            <Link to="/leads" className={linkCls("/leads")}>
               <Inbox className="w-4 h-4" /> Заявки
             </Link>
             <button

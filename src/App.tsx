@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import { LanguageProvider } from "@/contexts/language-context";
@@ -30,6 +30,24 @@ const LeadsList = lazy(() => import("./admin/LeadsList"));
 
 const queryClient = new QueryClient();
 
+// The admin panel is served on its own subdomain (admin.leaderaudit.uz), where it
+// lives at the root — no "/admin" prefix. The marketing site keeps its own routes.
+const isAdminHost =
+  typeof window !== "undefined" && window.location.hostname.split(".")[0] === "admin";
+
+const AdminRoutes = () => (
+  <Routes>
+    <Route path="/" element={<AdminLogin />} />
+    <Route element={<AdminLayout />}>
+      <Route path="/posts" element={<PostsList />} />
+      <Route path="/posts/new" element={<PostEditor />} />
+      <Route path="/posts/:slug" element={<PostEditor />} />
+      <Route path="/leads" element={<LeadsList />} />
+    </Route>
+    <Route path="*" element={<Navigate to="/" replace />} />
+  </Routes>
+);
+
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
@@ -39,6 +57,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Suspense fallback={<div className="min-h-screen bg-background" />}>
+            {isAdminHost ? <AdminRoutes /> : (
             <Routes>
               <Route path="/" element={<Index />} />
 
@@ -84,18 +103,10 @@ const App = () => (
               <Route path="/en/blog" element={<BlogIndex />} />
               <Route path="/en/blog/:slug" element={<BlogPost />} />
 
-              {/* Admin */}
-              <Route path="/admin" element={<AdminLogin />} />
-              <Route element={<AdminLayout />}>
-                <Route path="/admin/posts" element={<PostsList />} />
-                <Route path="/admin/posts/new" element={<PostEditor />} />
-                <Route path="/admin/posts/:slug" element={<PostEditor />} />
-                <Route path="/admin/leads" element={<LeadsList />} />
-              </Route>
-
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            )}
             </Suspense>
           </BrowserRouter>
         </TooltipProvider>

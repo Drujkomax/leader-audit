@@ -9,7 +9,7 @@ const LeadsList = () => {
   const { data, isLoading, error } = useQuery({ queryKey: ["admin-leads"], queryFn: api.leads, retry: false });
 
   if (error && (error as Error).message === "unauthorized") {
-    navigate("/admin");
+    navigate("/");
     return null;
   }
 

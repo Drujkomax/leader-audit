@@ -146,13 +146,13 @@ const PostEditor = () => {
           ? `Сохранено и опубликовано (${langNote})`
           : `Черновик сохранён (${langNote})`
       );
-      if (isNew) navigate(`/admin/posts/${slug}`, { replace: true });
+      if (isNew) navigate(`/posts/${slug}`, { replace: true });
     } catch (e) {
       if ((e as Error).message === "unauthorized") {
         // Keep the unsaved work: stash it (keyed by ROUTE, matching restore), restore after re-login.
         localStorage.setItem(`la_draft_${routeSlug || "new"}`, JSON.stringify({ slug, drafts }));
         toast.error("Сессия истекла — войдите заново, текст статьи сохранён локально");
-        return navigate("/admin");
+        return navigate("/");
       }
       toast.error("Ошибка сохранения");
     } finally {
@@ -175,7 +175,7 @@ const PostEditor = () => {
   return (
     <div className="max-w-4xl">
       <button
-        onClick={() => navigate("/admin/posts")}
+        onClick={() => navigate("/posts")}
         className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-4"
       >
         <ArrowLeft className="w-4 h-4" /> К списку статей

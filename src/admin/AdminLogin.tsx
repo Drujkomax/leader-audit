@@ -12,7 +12,7 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (getToken()) navigate("/admin/posts", { replace: true });
+    if (getToken()) navigate("/posts", { replace: true });
   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,7 +22,7 @@ const AdminLogin = () => {
     try {
       const { token } = await api.login(email, password);
       setToken(token);
-      navigate("/admin/posts");
+      navigate("/posts");
     } catch {
       setError("Неверный email или пароль");
     } finally {
