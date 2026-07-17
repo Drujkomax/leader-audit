@@ -19,6 +19,11 @@ const PostsList = () => {
   for (const p of data ?? []) {
     bySlug.set(p.slug, [...(bySlug.get(p.slug) ?? []), p]);
   }
+  // Newest first: sort groups by the most recent updated_at across their languages.
+  const groups = [...bySlug.entries()].sort((a, b) => {
+    const latest = (posts: AdminPost[]) => posts.reduce((m, p) => (p.updated_at > m ? p.updated_at : m), "");
+    return latest(b[1]).localeCompare(latest(a[1]));
+  });
 
   return (
     <div>
@@ -35,7 +40,7 @@ const PostsList = () => {
       {isLoading && <p className="text-muted-foreground">Загрузка…</p>}
 
       <div className="space-y-2">
-        {[...bySlug.entries()].map(([slug, posts]) => {
+        {groups.map(([slug, posts]) => {
           const main = posts.find((p) => p.lang === "ru") ?? posts[0];
           return (
             <Link
