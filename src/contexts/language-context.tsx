@@ -177,6 +177,7 @@ const russianDictionary = {
     validation: {
       nameMin: "Имя должно содержать минимум 2 символа",
       nameMax: "Имя слишком длинное",
+      nameLetters: "Имя не может содержать цифры",
       phoneMin: "Введите корректный номер телефона",
       phoneMax: "Номер слишком длинный",
       companyMin: "Введите название компании",
@@ -389,6 +390,7 @@ const dictionaries = {
       validation: {
         nameMin: "Ism kamida 2 ta belgidan iborat bo'lishi kerak",
         nameMax: "Ism juda uzun",
+        nameLetters: "Ismda raqam bo'lishi mumkin emas",
         phoneMin: "To'g'ri telefon raqamini kiriting",
         phoneMax: "Telefon raqami juda uzun",
         companyMin: "Kompaniya nomini kiriting",
@@ -595,6 +597,7 @@ const dictionaries = {
       validation: {
         nameMin: "Name must contain at least 2 characters",
         nameMax: "Name is too long",
+        nameLetters: "Name cannot contain digits",
         phoneMin: "Enter a valid phone number",
         phoneMax: "Phone number is too long",
         companyMin: "Enter company name",

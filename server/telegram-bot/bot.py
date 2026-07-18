@@ -12,6 +12,7 @@
   POLL_SECONDS        период опроса базы, сек (по умолчанию 10)
   TELEGRAM_API_BASE   переопределение API (для тестов)
 """
+import datetime
 import json
 import os
 import sqlite3
@@ -29,6 +30,19 @@ CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 API_BASE = os.environ.get("TELEGRAM_API_BASE", "https://api.telegram.org")
 
 LANG_LABEL = {"ru": "Русский", "uz": "O'zbek", "en": "English"}
+
+# В базе created_at пишется как datetime('now'), то есть UTC. Узбекистан —
+# фиксированный UTC+5 без перехода на летнее время, поэтому хватает сдвига.
+TASHKENT_OFFSET = datetime.timedelta(hours=5)
+
+
+def format_created_at(raw: str) -> str:
+    """«2026-07-18 08:14:03» (UTC) → «18.07.2026, 13:14 (Ташкент)»."""
+    try:
+        utc = datetime.datetime.strptime(str(raw), "%Y-%m-%d %H:%M:%S")
+    except (TypeError, ValueError):
+        return str(raw)  # неожиданный формат — лучше сырое значение, чем падение
+    return (utc + TASHKENT_OFFSET).strftime("%d.%m.%Y, %H:%M") + " (Ташкент)"
 
 
 def load_last_id() -> int:
@@ -57,7 +71,7 @@ def format_lead(lead: sqlite3.Row) -> str:
         lines.append(f"🌐 Язык: {LANG_LABEL.get(lead['lang'], lead['lang'])}")
     if lead["page"]:
         lines.append(f"📄 Страница: {lead['page']}")
-    lines.append(f"🕒 {lead['created_at']} (UTC)")
+    lines.append(f"🕒 {format_created_at(lead['created_at'])}")
     return "\n".join(lines)
 
 

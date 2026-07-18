@@ -1,12 +1,44 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Phone, Building2, User, CheckCircle, Shield } from "lucide-react";
+import {
+  Send,
+  Phone,
+  Building2,
+  User,
+  CheckCircle,
+  Shield,
+} from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/language-context";
 
-const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/xqegblwl";
+const FORMSPREE_ENDPOINT =
+  import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/xqegblwl";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8787";
+
+// Имя: буквы RU/UZ/EN, пробел, дефис, апостроф. Цифры и спецсимволы — нет.
+const NAME_ALLOWED = /[^A-Za-zА-Яа-яЁёЎўҚқҒғҲҳ\s'’ʻ`-]/g;
+
+// Телефон храним как 9 цифр без кода страны; +998 живёт в разметке.
+const PHONE_DIGITS = 9;
+
+const sanitizeName = (value: string) => value.replace(NAME_ALLOWED, "");
+
+const sanitizePhone = (value: string) => {
+  let digits = value.replace(/\D/g, "");
+  // Вставка из буфера вида «+998 90 123 45 67» или «998901234567».
+  if (digits.length > PHONE_DIGITS && digits.startsWith("998")) {
+    digits = digits.slice(3);
+  }
+  return digits.slice(0, PHONE_DIGITS);
+};
+
+// 901234567 → «90 123 45 67»
+const formatPhone = (digits: string) =>
+  [digits.slice(0, 2), digits.slice(2, 5), digits.slice(5, 7), digits.slice(7, 9)]
+    .filter(Boolean)
+    .join(" ");
+
 type FormData = {
   name: string;
   phone: string;
@@ -16,23 +48,43 @@ type FormData = {
 const LeadFormSection = () => {
   const { t, language } = useLanguage();
   const formSchema = z.object({
-    name: z.string().trim().min(2, t.leadForm.validation.nameMin).max(100, t.leadForm.validation.nameMax),
-    phone: z.string().trim().min(9, t.leadForm.validation.phoneMin).max(20, t.leadForm.validation.phoneMax),
-    company: z.string().trim().min(2, t.leadForm.validation.companyMin).max(200, t.leadForm.validation.companyMax),
+    name: z
+      .string()
+      .trim()
+      .min(2, t.leadForm.validation.nameMin)
+      .max(100, t.leadForm.validation.nameMax)
+      .regex(/^[^0-9]+$/, t.leadForm.validation.nameLetters),
+    phone: z
+      .string()
+      .regex(new RegExp(`^\\d{${PHONE_DIGITS}}$`), t.leadForm.validation.phoneMin),
+    company: z
+      .string()
+      .trim()
+      .min(2, t.leadForm.validation.companyMin)
+      .max(200, t.leadForm.validation.companyMax),
   });
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
     company: "",
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
+    {},
+  );
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
+    // Чистим прямо на вводе: запрещённый символ просто не появляется в поле.
+    const cleaned =
+      name === "name"
+        ? sanitizeName(value)
+        : name === "phone"
+          ? sanitizePhone(value)
+          : value;
+    setFormData((prev) => ({ ...prev, [name]: cleaned }));
+
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -43,10 +95,10 @@ const LeadFormSection = () => {
     setIsSubmitting(true);
 
     try {
-      const validated = formSchema.parse(formData);
+      const parsed = formSchema.parse(formData);
+      // В CRM и Formspree уходит полный номер, а не 9 цифр из поля.
+      const validated = { ...parsed, phone: `+998${parsed.phone}` };
 
-      // Duplicate the lead into our own CRM backend; Formspree stays the
-      // delivery channel the submission result depends on.
       fetch(`${API_URL}/api/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -94,7 +146,10 @@ const LeadFormSection = () => {
 
   if (isSubmitted) {
     return (
-      <section id="contact" className="py-12 sm:py-16 md:py-24 lg:py-32 bg-primary-dark">
+      <section
+        id="contact"
+        className="py-12 sm:py-16 md:py-24 lg:py-32 bg-primary-dark"
+      >
         <div className="container-wide max-w-2xl px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -126,14 +181,15 @@ const LeadFormSection = () => {
   }
 
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-24 lg:py-32 bg-primary-dark relative overflow-hidden">
-      {/* Background decorations */}
+    <section
+      id="contact"
+      className="py-12 sm:py-16 md:py-24 lg:py-32 bg-primary-dark relative overflow-hidden"
+    >
       <div className="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-cta/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-primary-light/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <div className="container-wide relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
-          {/* Left - Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -163,7 +219,6 @@ const LeadFormSection = () => {
             </div>
           </motion.div>
 
-          {/* Right - Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -175,9 +230,11 @@ const LeadFormSection = () => {
               className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg"
             >
               <div className="space-y-4 sm:space-y-5">
-                {/* Name Field */}
                 <div>
-                  <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2"
+                  >
                     {t.leadForm.nameLabel}
                   </label>
                   <div className="relative">
@@ -195,37 +252,50 @@ const LeadFormSection = () => {
                     />
                   </div>
                   {errors.name && (
-                    <p className="text-destructive text-xs sm:text-sm mt-1">{errors.name}</p>
+                    <p className="text-destructive text-xs sm:text-sm mt-1">
+                      {errors.name}
+                    </p>
                   )}
                 </div>
 
-                {/* Phone Field */}
                 <div>
-                  <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2"
+                  >
                     {t.leadForm.phoneLabel}
                   </label>
                   <div className="relative">
                     <Phone className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
+                    <span className="absolute left-10 sm:left-12 top-1/2 -translate-y-1/2 text-foreground text-sm sm:text-base pointer-events-none select-none">
+                      +998
+                    </span>
                     <input
                       type="tel"
+                      inputMode="numeric"
+                      autoComplete="tel-national"
                       id="phone"
                       name="phone"
-                      value={formData.phone}
+                      value={formatPhone(formData.phone)}
                       onChange={handleChange}
-                      placeholder="+998 97 410 04 47"
-                      className={`w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all text-sm sm:text-base ${
+                      placeholder="97 410 04 47"
+                      className={`w-full pl-[5.25rem] sm:pl-24 pr-3 sm:pr-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all text-sm sm:text-base ${
                         errors.phone ? "border-destructive" : "border-border"
                       }`}
                     />
                   </div>
                   {errors.phone && (
-                    <p className="text-destructive text-xs sm:text-sm mt-1">{errors.phone}</p>
+                    <p className="text-destructive text-xs sm:text-sm mt-1">
+                      {errors.phone}
+                    </p>
                   )}
                 </div>
 
-                {/* Company Field */}
                 <div>
-                  <label htmlFor="company" className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2">
+                  <label
+                    htmlFor="company"
+                    className="block text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2"
+                  >
                     {t.leadForm.companyLabel}
                   </label>
                   <div className="relative">
@@ -243,11 +313,12 @@ const LeadFormSection = () => {
                     />
                   </div>
                   {errors.company && (
-                    <p className="text-destructive text-xs sm:text-sm mt-1">{errors.company}</p>
+                    <p className="text-destructive text-xs sm:text-sm mt-1">
+                      {errors.company}
+                    </p>
                   )}
                 </div>
 
-                {/* Submit Button */}
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
