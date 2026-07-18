@@ -110,25 +110,26 @@ app.get("/api/public/posts", (req, res) => {
 });
 
 // ---- leads ----
-const leadTimestamps = new Map(); // naive per-IP rate limit
+// Никакого rate limit: терять настоящую заявку из-за офисного NAT дороже,
+// чем разгрести спам руками в админке.
 app.post("/api/leads", (req, res) => {
-  const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "?";
-  const now = Date.now();
-  const recent = (leadTimestamps.get(ip) || []).filter((t) => now - t < 60_000);
-  if (recent.length >= 5) return res.status(429).json({ error: "too_many_requests" });
-  leadTimestamps.set(ip, [...recent, now]);
-
   const { name, phone, company, lang, page } = req.body || {};
   if (!name || !phone || String(name).length > 200 || String(phone).length > 50) {
     return res.status(400).json({ error: "bad_lead" });
   }
-  db.prepare("INSERT INTO leads (name, phone, company, lang, page) VALUES (?, ?, ?, ?, ?)").run(
-    String(name).slice(0, 200),
-    String(phone).slice(0, 50),
-    String(company || "").slice(0, 300),
-    String(lang || "").slice(0, 5),
-    String(page || "").slice(0, 300)
-  );
+  try {
+    db.prepare("INSERT INTO leads (name, phone, company, lang, page) VALUES (?, ?, ?, ?, ?)").run(
+      String(name).slice(0, 200),
+      String(phone).slice(0, 50),
+      String(company || "").slice(0, 300),
+      String(lang || "").slice(0, 5),
+      String(page || "").slice(0, 300)
+    );
+  } catch (e) {
+    // Заявка важнее тишины: пишем в лог, чтобы сбой записи не растворился.
+    console.error(`LEAD LOST: ${e.message} — ${JSON.stringify({ name, phone, company })}`);
+    return res.status(500).json({ error: "storage_failed" });
+  }
   res.json({ ok: true });
 });
 

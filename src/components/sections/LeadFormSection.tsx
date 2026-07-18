@@ -45,6 +45,26 @@ type FormData = {
   company: string;
 };
 
+type LeadPayload = Record<keyof FormData | "lang" | "page", string>;
+
+const sendToCrm = async (payload: LeadPayload, attempt = 1): Promise<void> => {
+  try {
+    const response = await fetch(`${API_URL}/api/leads`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      // Запрос переживёт закрытие вкладки сразу после отправки формы.
+      keepalive: true,
+    });
+    if (!response.ok) throw new Error(`CRM responded ${response.status}`);
+  } catch (error) {
+    if (attempt < 2) return sendToCrm(payload, attempt + 1);
+    // Лид всё равно уйдёт через Formspree на почту — но в Telegram его не
+    // будет, поэтому оставляем след в консоли, а не глотаем ошибку.
+    console.error("Lead did not reach CRM:", error);
+  }
+};
+
 const LeadFormSection = () => {
   const { t, language } = useLanguage();
   const formSchema = z.object({
@@ -99,15 +119,16 @@ const LeadFormSection = () => {
       // В CRM и Formspree уходит полный номер, а не 9 цифр из поля.
       const validated = { ...parsed, phone: `+998${parsed.phone}` };
 
-      fetch(`${API_URL}/api/leads`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...validated,
-          lang: language,
-          page: window.location.pathname,
-        }),
-      }).catch(() => {});
+      // CRM — источник уведомлений в Telegram, поэтому молча ронять этот
+      // запрос нельзя: одна повторная попытка и keepalive на случай, если
+      // пользователь закроет вкладку сразу после отправки.
+      void sendToCrm({
+        name: String(validated.name),
+        phone: validated.phone,
+        company: String(validated.company),
+        lang: language,
+        page: window.location.pathname,
+      });
 
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
