@@ -110,9 +110,31 @@ app.get("/api/public/posts", (req, res) => {
 });
 
 // ---- leads ----
-// Никакого rate limit: терять настоящую заявку из-за офисного NAT дороже,
-// чем разгрести спам руками в админке.
+// Лимит нарочно щедрый: он ловит скрипт, но не мешает живым людям — даже
+// целый офис за одним NAT-адресом столько заявок за минуту не отправит.
+const LEADS_PER_MINUTE = Number(process.env.LEADS_PER_MINUTE || 50);
+const leadTimestamps = new Map();
+
+// Без уборки карта росла бы вечно: по записи на каждый IP за всё время.
+setInterval(() => {
+  const cutoff = Date.now() - 60_000;
+  for (const [ip, stamps] of leadTimestamps) {
+    const fresh = stamps.filter((t) => t > cutoff);
+    if (fresh.length) leadTimestamps.set(ip, fresh);
+    else leadTimestamps.delete(ip);
+  }
+}, 60_000).unref();
+
 app.post("/api/leads", (req, res) => {
+  const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress || "?";
+  const now = Date.now();
+  const recent = (leadTimestamps.get(ip) || []).filter((t) => now - t < 60_000);
+  if (recent.length >= LEADS_PER_MINUTE) {
+    console.error(`RATE LIMITED: ${ip} — ${recent.length} заявок за минуту`);
+    return res.status(429).json({ error: "too_many_requests" });
+  }
+  leadTimestamps.set(ip, [...recent, now]);
+
   const { name, phone, company, lang, page } = req.body || {};
   if (!name || !phone || String(name).length > 200 || String(phone).length > 50) {
     return res.status(400).json({ error: "bad_lead" });
