@@ -5,6 +5,21 @@ import { CheckCircle2, Circle, Trash2, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 import { api } from "./api";
 
+// В базе created_at лежит в UTC (SQLite datetime('now')) и без пометки о
+// зоне. Показываем ташкентское время — тем же форматом, что шлёт бот.
+const formatCreatedAt = (raw: string) => {
+  const utc = new Date(`${raw.replace(" ", "T")}Z`);
+  if (Number.isNaN(utc.getTime())) return raw;
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Asia/Tashkent",
+  }).format(utc);
+};
+
 const LeadsList = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -93,7 +108,7 @@ const LeadsList = () => {
             {data?.map((lead) => (
               <tr key={lead.id} className={`border-b border-border ${lead.status === "processed" ? "opacity-50" : ""}`}>
                 <td className="py-3 pr-4 whitespace-nowrap text-muted-foreground">
-                  {lead.created_at.replace("T", " ").slice(0, 16)}
+                  {formatCreatedAt(lead.created_at)}
                 </td>
                 <td className="py-3 pr-4 font-medium text-foreground">{lead.name}</td>
                 <td className="py-3 pr-4 whitespace-nowrap">
