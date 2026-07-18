@@ -38,6 +38,15 @@ db.exec(`
   );
 `);
 
+// Миграции для баз, созданных до появления колонки. ALTER TABLE нельзя
+// выполнить дважды, поэтому сверяемся с фактическими колонками таблицы.
+const leadColumns = db.prepare("PRAGMA table_info(leads)").all().map((c) => c.name);
+if (!leadColumns.includes("deleted_at")) {
+  // NULL = заявка активна, дата = когда её убрали в архив.
+  db.exec("ALTER TABLE leads ADD COLUMN deleted_at TEXT");
+  console.log("Migration: leads.deleted_at added");
+}
+
 export function seed() {
   const email = process.env.ADMIN_EMAIL || "director@leaderaudit.uz";
   const password = process.env.ADMIN_PASSWORD || "leader001uz";

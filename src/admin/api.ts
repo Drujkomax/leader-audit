@@ -44,6 +44,7 @@ export type Lead = {
   page: string;
   status: "new" | "processed";
   created_at: string;
+  deleted_at: string | null;
 };
 
 export const api = {
@@ -60,10 +61,15 @@ export const api = {
     }),
   deletePost: (lang: Language, slug: string) =>
     request<{ ok: boolean }>(`/api/posts/${lang}/${slug}`, { method: "DELETE" }),
-  leads: () => request<Lead[]>("/api/leads"),
+  leads: (deleted = false) =>
+    request<Lead[]>(`/api/leads${deleted ? "?deleted=1" : ""}`),
   setLeadStatus: (id: number, status: "new" | "processed") =>
     request<{ ok: boolean }>(`/api/leads/${id}`, {
       method: "PATCH",
       body: JSON.stringify({ status }),
     }),
+  deleteLead: (id: number) =>
+    request<{ ok: boolean }>(`/api/leads/${id}`, { method: "DELETE" }),
+  restoreLead: (id: number) =>
+    request<{ ok: boolean }>(`/api/leads/${id}/restore`, { method: "POST" }),
 };

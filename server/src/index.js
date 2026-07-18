@@ -155,13 +155,33 @@ app.post("/api/leads", (req, res) => {
   res.json({ ok: true });
 });
 
-app.get("/api/leads", auth, (_req, res) => {
-  res.json(db.prepare("SELECT * FROM leads ORDER BY id DESC").all());
+// ?deleted=1 отдаёт архив, по умолчанию — только активные заявки.
+app.get("/api/leads", auth, (req, res) => {
+  const where = req.query.deleted === "1" ? "IS NOT NULL" : "IS NULL";
+  res.json(db.prepare(`SELECT * FROM leads WHERE deleted_at ${where} ORDER BY id DESC`).all());
 });
 
 app.patch("/api/leads/:id", auth, (req, res) => {
   const status = req.body?.status === "processed" ? "processed" : "new";
   db.prepare("UPDATE leads SET status = ? WHERE id = ?").run(status, req.params.id);
+  res.json({ ok: true });
+});
+
+// Удаление мягкое: заявка уходит из списка, но остаётся в базе. Потерять
+// настоящего клиента одним неверным кликом слишком дорого.
+app.delete("/api/leads/:id", auth, (req, res) => {
+  const r = db
+    .prepare("UPDATE leads SET deleted_at = datetime('now') WHERE id = ? AND deleted_at IS NULL")
+    .run(req.params.id);
+  if (!r.changes) return res.status(404).json({ error: "not_found" });
+  res.json({ ok: true });
+});
+
+app.post("/api/leads/:id/restore", auth, (req, res) => {
+  const r = db
+    .prepare("UPDATE leads SET deleted_at = NULL WHERE id = ? AND deleted_at IS NOT NULL")
+    .run(req.params.id);
+  if (!r.changes) return res.status(404).json({ error: "not_found" });
   res.json({ ok: true });
 });
 
